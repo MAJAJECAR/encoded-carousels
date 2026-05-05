@@ -44,6 +44,12 @@ const CAROUSELS = [
     file:   'carousel-v3-identity.html',
     slides: 10,
   },
+
+  {
+  name:   'v4-matt-wagner',
+  file:   'carousel-v4-matt-wagner.html',
+  slides: 10,
+},
   // ── ADD NEW CAROUSELS HERE ──
   // {
   //   name:   'v4-your-topic',
