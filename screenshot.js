@@ -19,7 +19,7 @@ const fs = require('fs');
 // e.g. 'https://yourusername.github.io/encoded-carousels'
 //
 // While it's empty, the script uses local file paths instead.
-const GITHUB_PAGES_URL = '';
+const GITHUB_PAGES_URL = 'https://majajecar.github.io/encoded-carousels';
 
 // ─── CAROUSELS ───────────────────────────────────────────────────────────────
 // Add a new entry here every time you add a new carousel.
