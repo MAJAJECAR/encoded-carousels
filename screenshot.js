@@ -1,113 +1,121 @@
 // screenshot.js
+// ─────────────────────────────────────────────────────────────────────────────
+// Encoded Carousel Screenshot Tool
 // Run with: node screenshot.js
-// Requires: npm install playwright && npx playwright install chromium
 //
-// HOW IT WORKS:
-//   Opens each carousel HTML file in a headless browser
-//   Switches through every slide and captures a 1080x1080 PNG
-//   Saves them into an "output" folder, organised by carousel
-//
-// TO USE WITH GITHUB PAGES:
-//   Replace the file:// paths below with your GitHub Pages URLs
-//   e.g. 'https://yourusername.github.io/encoded-carousels/carousel-v1-capacity.html'
+// HOW TO ADD A NEW CAROUSEL:
+//   1. Drop the new HTML file into this folder
+//   2. Add an entry to the CAROUSELS array below
+//   3. Run: node screenshot.js
+//   4. Find your PNGs in the output/ folder
+// ─────────────────────────────────────────────────────────────────────────────
 
 const { chromium } = require('playwright');
 const path = require('path');
 const fs = require('fs');
 
-// ─── CONFIG ────────────────────────────────────────────────────────────────
-// Edit these paths to point to your HTML files.
-// Use absolute paths for local files, or full URLs for hosted files.
+// ─── YOUR GITHUB PAGES URL ───────────────────────────────────────────────────
+// Once GitHub Pages is live, paste your URL here:
+// e.g. 'https://yourusername.github.io/encoded-carousels'
+//
+// While it's empty, the script uses local file paths instead.
+const GITHUB_PAGES_URL = '';
+
+// ─── CAROUSELS ───────────────────────────────────────────────────────────────
+// Add a new entry here every time you add a new carousel.
+//
+// name:   used as the output folder name — keep it short, no spaces
+// file:   the HTML filename in this folder
+// slides: number of slides (always 10 unless you change it)
 
 const CAROUSELS = [
   {
-    name: 'v1-capacity',
-    // Local file path (update this to match where you saved the files):
-    src: 'file://' + path.resolve(__dirname, 'carousel-v1-capacity.html'),
-    // Or use GitHub Pages URL instead:
-    // src: 'https://yourusername.github.io/encoded-carousels/carousel-v1-capacity.html',
+    name:   'v1-capacity',
+    file:   'carousel-v1-capacity.html',
     slides: 10,
   },
   {
-    name: 'v2-prediction',
-    src: 'file://' + path.resolve(__dirname, 'carousel-v2-prediction.html'),
-    // src: 'https://yourusername.github.io/encoded-carousels/carousel-v2-prediction.html',
+    name:   'v2-prediction',
+    file:   'carousel-v2-prediction.html',
     slides: 10,
   },
   {
-    name: 'v3-identity',
-    src: 'file://' + path.resolve(__dirname, 'carousel-v3-identity.html'),
-    // src: 'https://yourusername.github.io/encoded-carousels/carousel-v3-identity.html',
+    name:   'v3-identity',
+    file:   'carousel-v3-identity.html',
     slides: 10,
   },
+  // ── ADD NEW CAROUSELS HERE ──
+  // {
+  //   name:   'v4-your-topic',
+  //   file:   'carousel-v4-your-topic.html',
+  //   slides: 10,
+  // },
 ];
 
-const OUTPUT_DIR = path.resolve(__dirname, 'output');
+// ─── SETTINGS ────────────────────────────────────────────────────────────────
+const OUTPUT_DIR   = path.resolve(__dirname, 'output');
 const SLIDE_WIDTH  = 1080;
 const SLIDE_HEIGHT = 1080;
-// ───────────────────────────────────────────────────────────────────────────
 
+// ─── RESOLVE URL ─────────────────────────────────────────────────────────────
+function resolveUrl(filename) {
+  if (GITHUB_PAGES_URL) {
+    return `${GITHUB_PAGES_URL.replace(/\/$/, '')}/${filename}`;
+  }
+  return 'file://' + path.resolve(__dirname, filename);
+}
 
+// ─── SCREENSHOT ONE CAROUSEL ─────────────────────────────────────────────────
 async function screenshotCarousel(browser, carousel) {
-  const carouselDir = path.join(OUTPUT_DIR, carousel.name);
-  fs.mkdirSync(carouselDir, { recursive: true });
+  const outDir = path.join(OUTPUT_DIR, carousel.name);
+  fs.mkdirSync(outDir, { recursive: true });
 
-  console.log(`\n📂  ${carousel.name}`);
-  console.log(`    Source: ${carousel.src}`);
+  const url = resolveUrl(carousel.file);
+  console.log(`\n  📂  ${carousel.name}`);
+  console.log(`      ${url}`);
 
   const page = await browser.newPage();
-
-  // Set viewport to exact slide size
   await page.setViewportSize({ width: SLIDE_WIDTH, height: SLIDE_HEIGHT });
+  await page.goto(url, { waitUntil: 'networkidle' });
 
-  // Load the page and wait for fonts
-  await page.goto(carousel.src, { waitUntil: 'networkidle' });
-
-  // Extra wait to ensure Google Fonts have rendered
-  await page.waitForTimeout(1500);
+  // Wait for Google Fonts to fully render
+  await page.waitForTimeout(1800);
 
   for (let i = 0; i < carousel.slides; i++) {
-    const slideNum = String(i + 1).padStart(2, '0');
-    const filename = `slide-${slideNum}.png`;
-    const filepath = path.join(carouselDir, filename);
+    const num  = String(i + 1).padStart(2, '0');
+    const file = path.join(outDir, `slide-${num}.png`);
 
-    // Switch to this slide using the exposed function in each HTML file
-    await page.evaluate((index) => {
-      window.goToSlide(index);
-    }, i);
+    // Switch slide using the function exposed in each HTML file
+    await page.evaluate((index) => window.goToSlide(index), i);
 
-    // Small pause for the opacity transition to complete (300ms in CSS)
-    await page.waitForTimeout(400);
+    // Wait for the opacity transition (300ms in CSS + buffer)
+    await page.waitForTimeout(420);
 
-    // Take the screenshot
     await page.screenshot({
-      path: filepath,
+      path: file,
       type: 'png',
       clip: { x: 0, y: 0, width: SLIDE_WIDTH, height: SLIDE_HEIGHT },
     });
 
-    console.log(`    ✓  slide ${slideNum} → ${filename}`);
+    console.log(`      ✓  slide-${num}.png`);
   }
 
   await page.close();
-  console.log(`    Done. ${carousel.slides} PNGs saved to output/${carousel.name}/`);
 }
 
-
+// ─── MAIN ────────────────────────────────────────────────────────────────────
 async function main() {
-  console.log('');
-  console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
-  console.log('  Encoded Carousel Screenshot Tool');
-  console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
-  console.log(`  Output directory: ${OUTPUT_DIR}`);
-  console.log(`  Carousels to process: ${CAROUSELS.length}`);
-  console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+  console.log('\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+  console.log('  Encoded — Carousel Screenshot Tool');
+  console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+  console.log(`  Mode:   ${GITHUB_PAGES_URL ? 'GitHub Pages' : 'Local files'}`);
+  console.log(`  Output: ${OUTPUT_DIR}`);
+  console.log(`  Queued: ${CAROUSELS.length} carousel(s)`);
+  console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
 
   fs.mkdirSync(OUTPUT_DIR, { recursive: true });
 
-  const browser = await chromium.launch({
-    // If fonts look wrong, try adding: args: ['--font-render-hinting=none']
-  });
+  const browser = await chromium.launch();
 
   for (const carousel of CAROUSELS) {
     try {
@@ -119,15 +127,13 @@ async function main() {
 
   await browser.close();
 
-  console.log('');
-  console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
-  console.log('  All done.');
-  console.log(`  Open the "output" folder to find your PNGs.`);
-  console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
-  console.log('');
+  const total = CAROUSELS.reduce((sum, c) => sum + c.slides, 0);
+  console.log('\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+  console.log(`  Done — ${total} PNGs saved to output/`);
+  console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n');
 }
 
 main().catch(err => {
-  console.error('Fatal error:', err);
+  console.error('\nFatal error:', err);
   process.exit(1);
 });
