@@ -105,19 +105,33 @@ async function screenshotCarousel(browser, carousel) {
 
 // ─── MAIN ────────────────────────────────────────────────────────────────────
 async function main() {
+  // If a name is passed as an argument, only run that one
+  // Usage: node screenshot.js v1-capacity
+  const arg = process.argv[2];
+  let queue = CAROUSELS;
+
+  if (arg) {
+    queue = CAROUSELS.filter(c => c.name === arg);
+    if (queue.length === 0) {
+      console.error(`\n  ✗  No carousel found with name "${arg}"`);
+      console.error(`     Available names: ${CAROUSELS.map(c => c.name).join(', ')}\n`);
+      process.exit(1);
+    }
+  }
+
   console.log('\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
   console.log('  Encoded — Carousel Screenshot Tool');
   console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
   console.log(`  Mode:   ${GITHUB_PAGES_URL ? 'GitHub Pages' : 'Local files'}`);
   console.log(`  Output: ${OUTPUT_DIR}`);
-  console.log(`  Queued: ${CAROUSELS.length} carousel(s)`);
+  console.log(`  Queued: ${queue.length} of ${CAROUSELS.length} carousel(s)${arg ? ` (filtered: ${arg})` : ''}`);
   console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
 
   fs.mkdirSync(OUTPUT_DIR, { recursive: true });
 
   const browser = await chromium.launch();
 
-  for (const carousel of CAROUSELS) {
+  for (const carousel of queue) {
     try {
       await screenshotCarousel(browser, carousel);
     } catch (err) {
@@ -127,7 +141,7 @@ async function main() {
 
   await browser.close();
 
-  const total = CAROUSELS.reduce((sum, c) => sum + c.slides, 0);
+  const total = queue.reduce((sum, c) => sum + c.slides, 0);
   console.log('\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
   console.log(`  Done — ${total} PNGs saved to output/`);
   console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n');
