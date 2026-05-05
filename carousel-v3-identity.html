@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080">
+<title>Encoded — Identity, Beliefs, Intentions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0e0d0a; --bg2: #161410; --bg3: #1c1a11;
+    --gold: #C9A84C; --gdim: #7a6530;
+    --white: #EAE4D6; --gray: #646259; --gray2: #38362e;
+    --border: rgba(201,168,76,0.11);
+    --fh: 'DM Serif Display', serif; --fb: 'DM Sans', sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1080px; height: 1080px; overflow: hidden; background: #000; }
+
+  .slide {
+    position: absolute;
+    width: 1080px; height: 1080px;
+    background: var(--bg);
+    display: flex; flex-direction: column;
+    padding: 88px 86px;
+    font-family: var(--fb);
+    overflow: hidden;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .slide.active { opacity: 1; }
+
+  .ew { font-size: 18px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); display: flex; align-items: center; gap: 18px; flex-shrink: 0; }
+  .ew::before { content: ''; width: 36px; height: 1px; background: var(--gold); flex-shrink: 0; }
+  .hxl { font-family: var(--fh); font-size: 88px; line-height: 1.05; color: var(--white); letter-spacing: -0.02em; }
+  .hl  { font-family: var(--fh); font-size: 66px; line-height: 1.08; color: var(--white); letter-spacing: -0.01em; }
+  .hm  { font-family: var(--fh); font-size: 46px; line-height: 1.14; color: var(--white); }
+  .body { font-size: 26px; font-weight: 300; line-height: 1.65; color: var(--gray); }
+  .sub  { font-size: 28px; font-weight: 300; line-height: 1.6;  color: var(--gray); }
+  .gold { color: var(--gold); }
+  .italic { font-style: italic; }
+  .rule   { width: 100%; height: 1px; background: var(--border); flex-shrink: 0; }
+  .spacer { flex: 1; min-height: 0; }
+  .g8  { height: 16px; flex-shrink: 0; }
+  .g12 { height: 24px; flex-shrink: 0; }
+  .g16 { height: 32px; flex-shrink: 0; }
+  .g20 { height: 40px; flex-shrink: 0; }
+  .g24 { height: 48px; flex-shrink: 0; }
+
+  .card    { background: var(--bg2); border: 1px solid var(--border); padding: 32px 36px; flex: 1; min-width: 0; }
+  .card.em { border-color: var(--gdim); background: var(--bg3); }
+  .cew { font-size: 16px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+  .ct  { font-family: var(--fh); font-size: 32px; color: var(--white); line-height: 1.2; margin-bottom: 10px; }
+  .cb  { font-size: 22px; line-height: 1.55; color: var(--gray); font-weight: 300; }
+
+  .g2  { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; flex: 1; min-height: 0; }
+  .g3h { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+
+  .hflow { display: flex; align-items: stretch; gap: 0; flex: 1; min-height: 0; }
+  .hcard { background: var(--bg2); border: 1px solid var(--border); padding: 28px 30px; flex: 1; display: flex; flex-direction: column; }
+  .hcard.em { border-color: var(--gdim); background: var(--bg3); }
+  .harr { display: flex; align-items: center; justify-content: center; width: 44px; flex-shrink: 0; }
+
+  .nrow { display: flex; align-items: flex-start; gap: 24px; }
+  .nnum { font-size: 18px; letter-spacing: 0.15em; color: var(--gold); padding-top: 4px; flex-shrink: 0; font-weight: 400; }
+
+  .qm { font-family: var(--fh); font-size: 140px; color: var(--gdim); line-height: 0.55; opacity: 0.4; flex-shrink: 0; }
+  .qt { font-family: var(--fh); font-size: 46px; font-style: italic; color: var(--white); line-height: 1.28; }
+  .qa { font-size: 18px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gdim); flex-shrink: 0; }
+
+  .pct  { font-family: var(--fh); font-size: 160px; color: var(--gold); line-height: 1; letter-spacing: -0.02em; }
+  .pct-u { font-size: 60px; color: var(--gdim); font-weight: 300; }
+
+  .bgn    { position: absolute; bottom: 80px; right: 70px; font-family: var(--fh); font-size: 220px; color: rgba(201,168,76,0.03); line-height: 1; pointer-events: none; }
+  .corner { position: absolute; top: 0; right: 0; width: 160px; height: 160px; border-bottom: 1px solid var(--border); border-left: 1px solid var(--border); }
+  .vbar   { display: flex; align-items: flex-start; gap: 22px; }
+  .vline  { width: 3px; min-height: 72px; background: var(--gdim); flex-shrink: 0; margin-top: 4px; }
+  .brand  { font-size: 18px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--gold); flex-shrink: 0; }
+  .act    { display: flex; gap: 36px; flex-shrink: 0; }
+  .aitem  { display: flex; align-items: center; gap: 14px; font-size: 18px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gray); }
+  .adot   { width: 6px; height: 6px; background: var(--gold); border-radius: 50%; flex-shrink: 0; }
+</style>
+</head>
+<body>
+
+<!-- SLIDE 1 — COVER -->
+<div class="slide active" id="slide-1">
+  <div class="corner"></div>
+  <div class="bgn">01</div>
+  <div class="spacer"></div>
+  <div class="ew" style="margin-bottom:44px;">The Foundation — Ch. 9</div>
+  <h1 class="hxl">Identity isn't what<br>you <span class="gold">say</span> you are.</h1>
+  <div class="g20"></div>
+  <p class="sub">It's what the subconscious has already concluded — before any effort is even possible.</p>
+  <div class="g24"></div>
+  <div class="rule"></div>
+  <div class="g16"></div>
+  <div class="brand">Encoded — The Frequency Era</div>
+</div>
+
+<!-- SLIDE 2 — HOW IDENTITY FORMS -->
+<div class="slide" id="slide-2">
+  <div class="bgn">02</div>
+  <div class="ew" style="margin-bottom:44px;">How Identity Forms</div>
+  <h2 class="hl">The "I am" statements<br>running your life were<br>never <span class="gold">chosen.</span></h2>
+  <div class="g20"></div>
+  <p class="body">They were absorbed — through what experience was implying constantly — encoded so deeply the subconscious catalogued them as facts about who you are.</p>
+  <div class="spacer"></div>
+  <div class="vbar">
+    <div class="vline"></div>
+    <p class="body italic" style="color:var(--gdim);">"I am an anxious person." Almost always a belief — never questioned.</p>
+  </div>
+</div>
+
+<!-- SLIDE 3 — 2x2 SYMPTOMS GRID -->
+<div class="slide" id="slide-3">
+  <div class="bgn">03</div>
+  <div class="ew" style="margin-bottom:28px;">Recognizable Symptoms</div>
+  <div class="hm" style="margin-bottom:32px;">When identity is fragmented,<br>the signs are predictable.</div>
+  <div class="g2">
+    <div class="card em">
+      <div class="cew">01</div>
+      <div class="ct">Second-guessing</div>
+      <div class="cb">Decisions that should be straightforward feel impossibly loaded.</div>
+    </div>
+    <div class="card">
+      <div class="cew">02</div>
+      <div class="ct">Harsh inner critic</div>
+      <div class="cb">Constant self-correction that lands as identity, not feedback.</div>
+    </div>
+    <div class="card">
+      <div class="cew">03</div>
+      <div class="ct">Procrastination</div>
+      <div class="cb">The push to act sits far behind the pull toward it.</div>
+    </div>
+    <div class="card">
+      <div class="cew">04</div>
+      <div class="ct">Weak follow-through</div>
+      <div class="cb">High intentions that never convert to consistent action.</div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 4 — DISCIPLINE TRAP COMPARISON -->
+<div class="slide" id="slide-4">
+  <div class="bgn">04</div>
+  <div class="ew" style="margin-bottom:28px;">The Discipline Trap</div>
+  <div class="hm" style="margin-bottom:32px;">Discipline is willpower<br>against an unchanged identity.</div>
+  <div class="g2">
+    <div class="card">
+      <div class="cew">Conventional</div>
+      <div class="ct">Apply more discipline</div>
+      <div class="cb">Willpower against a subconscious program. Works until pressure drops. Same ceiling returns.</div>
+    </div>
+    <div class="card em">
+      <div class="cew">Encoded</div>
+      <div class="ct">Develop the identity</div>
+      <div class="cb">New behavior becomes the natural expression of who the person has become. Built-in persistence.</div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 5 — QUOTE -->
+<div class="slide" id="slide-5">
+  <div class="spacer"></div>
+  <div class="qm">"</div>
+  <div class="g20"></div>
+  <p class="qt">When identity is stable and clear, behavior that matches it requires almost no effort to sustain.</p>
+  <div class="g20"></div>
+  <div class="rule"></div>
+  <div class="g16"></div>
+  <div class="qa">The Frequency Era — Chapter Nine</div>
+  <div class="spacer"></div>
+</div>
+
+<!-- SLIDE 6 — BELIEFS HORIZONTAL FLOW -->
+<div class="slide" id="slide-6">
+  <div class="bgn">06</div>
+  <div class="ew" style="margin-bottom:28px;">Tier Two — Beliefs</div>
+  <div class="hm" style="margin-bottom:32px;">Beliefs define what's<br><span class="gold">considered</span> in the first place.</div>
+  <div class="hflow">
+    <div class="hcard em">
+      <div class="cew">Family</div>
+      <div class="ct" style="font-size:28px;">Patterns</div>
+      <div class="cb">What the household treated as obvious about money, safety, work.</div>
+    </div>
+    <div class="harr">
+      <svg width="36" height="20" viewBox="0 0 36 20" fill="none">
+        <line x1="0" y1="10" x2="26" y2="10" stroke="#C9A84C" stroke-width="1.5"/>
+        <polyline points="18,3 28,10 18,17" stroke="#C9A84C" stroke-width="1.5" fill="none"/>
+      </svg>
+    </div>
+    <div class="hcard">
+      <div class="cew">Early</div>
+      <div class="ct" style="font-size:28px;">Outcomes</div>
+      <div class="cb">What worked and didn't — calcified into rules about how the world is.</div>
+    </div>
+    <div class="harr">
+      <svg width="36" height="20" viewBox="0 0 36 20" fill="none">
+        <line x1="0" y1="10" x2="26" y2="10" stroke="#C9A84C" stroke-width="1.5"/>
+        <polyline points="18,3 28,10 18,17" stroke="#C9A84C" stroke-width="1.5" fill="none"/>
+      </svg>
+    </div>
+    <div class="hcard">
+      <div class="cew">Cultural</div>
+      <div class="ct" style="font-size:28px;">Defaults</div>
+      <div class="cb">The frame that defined what "people like us" expect and deserve.</div>
+    </div>
+  </div>
+  <div class="g16"></div>
+  <p class="body italic" style="color:var(--gdim);">Absorbed, not chosen. The belief doesn't feel like a belief — it feels like the truth.</p>
+</div>
+
+<!-- SLIDE 7 — 95% STAT -->
+<div class="slide" id="slide-7">
+  <div class="bgn">07</div>
+  <div class="ew" style="margin-bottom:44px;">The Invisible Filter</div>
+  <div class="spacer"></div>
+  <div style="display:flex;align-items:baseline;gap:8px;">
+    <span class="pct">95</span><span class="pct-u">%</span>
+  </div>
+  <p class="body" style="margin-top:16px;max-width:600px;">of cognition runs subconsciously — which means almost every decision is filtered through beliefs the conscious mind never selected.</p>
+  <div class="g24"></div>
+  <div class="rule"></div>
+  <div class="g16"></div>
+  <p class="body italic" style="color:var(--gdim);">You can't debate a belief you can't see. It presents as how things are.</p>
+  <div class="spacer"></div>
+</div>
+
+<!-- SLIDE 8 — INTENTIONS TWO MOTORS -->
+<div class="slide" id="slide-8">
+  <div class="bgn">08</div>
+  <div class="ew" style="margin-bottom:28px;">Tier Three — Intentions</div>
+  <div class="hm" style="margin-bottom:32px;">The same action, powered by<br>two different <span class="gold">intentions,</span><br>is not the same action.</div>
+  <div class="g2">
+    <div class="card">
+      <div class="cew">Extrinsic</div>
+      <div class="ct">Proving, protecting</div>
+      <div class="cb">Action powered by what it gets back. Produces results — erodes the operator.</div>
+    </div>
+    <div class="card em">
+      <div class="cew">Intrinsic</div>
+      <div class="ct">Expressing, building</div>
+      <div class="cb">Action powered by what it is. Produces results — and compounds the operator.</div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 9 — SYNTHESIS SEQUENCE -->
+<div class="slide" id="slide-9">
+  <div class="bgn">09</div>
+  <div class="spacer"></div>
+  <div class="ew" style="margin-bottom:44px;">The Sequence</div>
+  <div style="display:flex;flex-direction:column;gap:24px;">
+    <div class="nrow">
+      <span class="nnum" style="padding-top:6px;">01</span>
+      <div>
+        <p class="body" style="color:var(--white);font-size:28px;font-weight:400;margin-bottom:8px;">Identity establishes</p>
+        <p class="body italic">"This is who I am."</p>
+      </div>
+    </div>
+    <div class="rule"></div>
+    <div class="nrow">
+      <span class="nnum" style="padding-top:6px;">02</span>
+      <div>
+        <p class="body" style="color:var(--white);font-size:28px;font-weight:400;margin-bottom:8px;">Beliefs filter</p>
+        <p class="body italic">"This is what's possible for someone like me."</p>
+      </div>
+    </div>
+    <div class="rule"></div>
+    <div class="nrow">
+      <span class="nnum" style="padding-top:6px;">03</span>
+      <div>
+        <p class="body" style="color:var(--white);font-size:28px;font-weight:400;margin-bottom:8px;">Intentions power</p>
+        <p class="body italic">"This is why I'm doing it."</p>
+      </div>
+    </div>
+  </div>
+  <div class="spacer"></div>
+  <p class="body italic" style="color:var(--gdim);">Most effort fails because it's happening downstream of a pattern that was never touched.</p>
+</div>
+
+<!-- SLIDE 10 — CLOSE -->
+<div class="slide" id="slide-10">
+  <div class="brand" style="margin-bottom:56px;">Encoded.ai</div>
+  <div class="ew" style="margin-bottom:28px;">The Frequency Era</div>
+  <h2 class="hl">Change the foundation.<br>Everything downstream<br><span class="gold">follows.</span></h2>
+  <div class="spacer"></div>
+  <div class="rule"></div>
+  <div class="g20"></div>
+  <div class="act">
+    <div class="aitem"><div class="adot"></div>Save this</div>
+    <div class="aitem"><div class="adot"></div>Share</div>
+    <div class="aitem"><div class="adot"></div>Comment IDENTITY</div>
+  </div>
+  <div class="g12"></div>
+  <p style="font-size:17px;letter-spacing:0.15em;text-transform:uppercase;color:var(--gray2);">@encoded — we'll send the full deep-dive</p>
+</div>
+
+<script>
+  const allSlides = document.querySelectorAll('.slide');
+  window.totalSlides = allSlides.length;
+  window.goToSlide = function(n) {
+    allSlides.forEach(s => s.classList.remove('active'));
+    allSlides[n].classList.add('active');
+  };
+</script>
+</body>
+</html>
