@@ -69,7 +69,7 @@ html, body {
 
 /* ── EYEBROW ────────────────────────────────────────────────────────────────── */
 .ew {
-  font-size: 18px;
+  font-size: 22px;
   font-weight: 500;
   letter-spacing: 0.22em;
   text-transform: uppercase;
@@ -114,14 +114,14 @@ html, body {
 
 /* ── BODY TEXT ──────────────────────────────────────────────────────────────── */
 .body {
-  font-size: 26px;
+  font-size: 30px;
   font-weight: 300;
   line-height: 1.65;
   color: var(--gray);
 }
 
 .sub {
-  font-size: 28px;
+  font-size: 32px;
   font-weight: 300;
   line-height: 1.6;
   color: var(--gray);
@@ -163,24 +163,24 @@ html, body {
 
 /* Card internals */
 .cew {
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 500;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--gold);
-  margin-bottom: 12px;
+  margin-bottom: 14px;
 }
 
 .ct {
   font-family: var(--fh);
-  font-size: 32px;
+  font-size: 36px;
   color: var(--white);
   line-height: 1.2;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
 .cb {
-  font-size: 22px;
+  font-size: 26px;
   line-height: 1.55;
   color: var(--gray);
   font-weight: 300;
@@ -277,14 +277,14 @@ html, body {
 
 .qt {
   font-family: var(--fh);
-  font-size: 46px;
+  font-size: 52px;
   font-style: italic;
   color: var(--white);
   line-height: 1.28;
 }
 
 .qa {
-  font-size: 18px;
+  font-size: 22px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--gdim);
@@ -356,7 +356,7 @@ html, body {
 
 /* ── BRAND & CLOSING ────────────────────────────────────────────────────────── */
 .brand {
-  font-size: 18px;
+  font-size: 22px;
   letter-spacing: 0.24em;
   text-transform: uppercase;
   color: var(--gold);
