@@ -260,9 +260,10 @@ html, body {
   font-size: 18px;
   letter-spacing: 0.15em;
   color: var(--gold);
-  padding-top: 4px;
   flex-shrink: 0;
   font-weight: 400;
+  line-height: 1;
+  margin-top: 7px; /* optical alignment with cap height of 30px body text */
 }
 
 /* ── QUOTE ──────────────────────────────────────────────────────────────────── */
