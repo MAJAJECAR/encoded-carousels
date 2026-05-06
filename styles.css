@@ -262,8 +262,9 @@ html, body {
   color: var(--gold);
   flex-shrink: 0;
   font-weight: 400;
-  line-height: 1;
-  margin-top: 7px; /* optical alignment with cap height of 30px body text */
+  /* Match body line-height so the number's first line sits
+     exactly level with the text's first line, even when text wraps */
+  line-height: 1.65;
 }
 
 /* ── QUOTE ──────────────────────────────────────────────────────────────────── */
