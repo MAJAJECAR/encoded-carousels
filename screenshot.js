@@ -29,33 +29,20 @@ const GITHUB_PAGES_URL = 'https://majajecar.github.io/encoded-carousels';
 // slides: number of slides (always 10 unless you change it)
 
 const CAROUSELS = [
-  {
-    name:   'v1-capacity',
-    file:   'carousel-v1-capacity.html',
-    slides: 10,
-  },
-  {
-    name:   'v2-prediction',
-    file:   'carousel-v2-prediction.html',
-    slides: 10,
-  },
-  {
-    name:   'v3-identity',
-    file:   'carousel-v3-identity.html',
-    slides: 10,
-  },
-
-  {
-  name:   'v4-matt-wagner',
-  file:   'carousel-v4-matt-wagner.html',
-  slides: 10,
-},
-{ name: 'v5-compound-loop',       file: 'carousel-v5-compound-loop.html',       slides: 10 },
-{ name: 'v6-three-exits',         file: 'carousel-v6-three-exits.html',          slides: 10 },
-{ name: 'v7-encoding-equation',   file: 'carousel-v7-encoding-equation.html',    slides: 10 },
-{ name: 'v8-intentions-vs-goals', file: 'carousel-v8-intentions-vs-goals.html',  slides: 10 },
-{ name: 'v9-signs-belief-running',file: 'carousel-v9-signs-belief-running.html', slides: 10 },
-{ name: 'v10-foundation',         file: 'carousel-v10-foundation.html',          slides: 10 },
+  { name: 'v1-capacity',             file: 'carousel-v1-capacity.html',             slides: 8 },
+{ name: 'v2-prediction',           file: 'carousel-v2-prediction.html',           slides: 7 },
+{ name: 'v2b-compound-loop',       file: 'carousel-v2b-compound-loop.html',       slides: 6 },
+{ name: 'v3-identity',             file: 'carousel-v3-identity.html',             slides: 7 },
+{ name: 'v3b-identity-symptoms',   file: 'carousel-v3b-identity-symptoms.html',   slides: 5 },
+{ name: 'v5-compound-loop',        file: 'carousel-v5-compound-loop.html',        slides: 6 },
+{ name: 'v6-three-exits',          file: 'carousel-v6-three-exits.html',          slides: 6 },
+{ name: 'v7-encoding-equation',    file: 'carousel-v7-encoding-equation.html',    slides: 7 },
+{ name: 'v8-intentions-vs-goals',  file: 'carousel-v8-intentions-vs-goals.html',  slides: 7 },
+{ name: 'v8b-extrinsic-symptoms',  file: 'carousel-v8b-extrinsic-symptoms.html',  slides: 5 },
+{ name: 'v9-signs-belief-running', file: 'carousel-v9-signs-belief-running.html', slides: 7 },
+{ name: 'v9b-four-signals',        file: 'carousel-v9b-four-signals.html',        slides: 6 },
+{ name: 'v10-foundation',          file: 'carousel-v10-foundation.html',          slides: 7 },
+{ name: 'v10b-what-changes',       file: 'carousel-v10b-what-changes.html',       slides: 5 },
   // ── ADD NEW CAROUSELS HERE ──
   // {
   //   name:   'v4-your-topic',
