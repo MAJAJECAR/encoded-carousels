@@ -30,7 +30,7 @@ const GITHUB_PAGES_URL = 'https://majajecar.github.io/encoded-carousels';
 
 const CAROUSELS = [
   { name: 'v1-capacity',             file: 'carousel-v1-capacity.html',             slides: 8 },
-{ name: 'v2-prediction',           file: 'carousel-v2-prediction.html',           slides: 10 },
+{ name: 'v2-prediction',           file: 'carousel-v2-prediction.html',           slides: 9 },
 { name: 'v2b-compound-loop',       file: 'carousel-v2b-compound-loop.html',       slides: 10 },
 { name: 'v3-identity',             file: 'carousel-v3-identity.html',             slides: 7 },
 { name: 'v3b-identity-symptoms',   file: 'carousel-v3b-identity-symptoms.html',   slides: 7 },
