@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080">
+<title>Encoded — Matt Wagner</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://api.fontshare.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500&family=Space+Mono:wght@400&display=swap" rel="stylesheet">
+<link href="https://api.fontshare.com/v2/css?f[]=switzer@400,500,600,700,800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --fs:'Switzer',sans-serif;
+  --fm:'Manrope',sans-serif;
+  --fmono:'Space Mono',monospace;
+  --bg:#141414;
+  --t1:#F0EDE8;
+  --t4:rgba(240,237,232,0.45);
+  --gold:#CCB085;
+  --b-sub:rgba(240,237,232,0.12);
+}
+body{background:#0a0a0a;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;font-family:var(--fm);padding:20px;gap:16px}
+.slide-wrapper{position:relative;width:1080px;height:1080px}
+.slide{position:absolute;inset:0;width:1080px;height:1080px;background:var(--bg);padding:80px;display:none;flex-direction:column;overflow:hidden}
+.slide.active{display:flex}
+.corner{position:absolute;top:72px;right:80px;width:10px;height:10px;border-radius:50%;background:var(--gold)}
+.brand{font-family:var(--fs);font-size:18px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--gold)}
+.ew{font-family:var(--fmono);font-size:13px;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold)}
+.slide-n{font-family:var(--fmono);font-size:13px;letter-spacing:0.1em;color:var(--t4);flex-shrink:0}
+.spacer{flex:1}
+.g16{height:16px;flex-shrink:0}
+.g20{height:20px;flex-shrink:0}
+.rule{width:100%;height:1px;background:var(--b-sub);flex-shrink:0}
+.hl{font-family:var(--fs);font-size:96px;font-weight:700;line-height:1.02;letter-spacing:-0.03em;color:var(--t1)}
+.body{font-family:var(--fm);font-size:28px;font-weight:300;line-height:1.55;color:var(--t1)}
+.body.muted{color:var(--t4)}
+.qmark{font-family:var(--fs);font-size:120px;font-weight:800;color:var(--gold);line-height:0.8;flex-shrink:0}
+.qtext{font-family:var(--fs);font-size:64px;font-weight:600;line-height:1.12;letter-spacing:-0.02em;color:var(--t1)}
+.avatar-wrap{position:relative;width:300px;height:300px;flex-shrink:0}
+.avatar-wrap img{width:300px;height:300px;border-radius:50%;object-fit:cover;object-position:center top;display:block;position:relative;z-index:1}
+.avatar-wrap::before{content:'';position:absolute;inset:-4px;border-radius:50%;border:1px solid rgba(204,176,133,0.3);z-index:2;pointer-events:none}
+.avatar-wrap::after{content:'';position:absolute;bottom:0;left:0;right:0;height:35%;border-radius:0 0 50% 50%;background:linear-gradient(to top,#141414 0%,rgba(20,20,20,0) 100%);z-index:2;pointer-events:none}
+.member-name{font-family:var(--fs);font-size:38px;font-weight:700;color:var(--t1);line-height:1;letter-spacing:-0.02em}
+.member-role{font-family:var(--fm);font-size:20px;font-weight:300;color:var(--t4);margin-top:8px}
+.member-tag{font-family:var(--fmono);font-size:13px;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);margin-top:10px}
+/* STAT */
+.stat-poster{display:flex;flex-direction:column;flex:1;min-height:0;justify-content:space-between}
+.stat-top{display:flex;align-items:flex-start;justify-content:space-between;flex-shrink:0}
+.stat-number-block{display:flex;flex-direction:column}
+.stat-giant{font-family:var(--fs);font-size:280px;font-weight:800;line-height:0.82;letter-spacing:-0.06em;color:var(--t1)}
+.stat-word{font-family:var(--fm);font-size:32px;font-weight:300;letter-spacing:0.28em;text-transform:uppercase;color:var(--t4);margin-top:16px;padding-left:6px}
+.stat-context{font-family:var(--fs);font-size:32px;font-weight:700;line-height:1.45;color:#ffffff;max-width:360px;text-align:right;align-self:flex-start;padding-top:16px}
+.stat-bottom{flex-shrink:0}
+.stat-row{display:flex;align-items:stretch;height:180px}
+.stat-cell{flex:1;display:flex;flex-direction:column;justify-content:center}
+.stat-cell+.stat-cell{border-left:1px solid var(--b-sub);padding-left:48px}
+.stat-cell-num{font-family:var(--fs);font-size:110px;font-weight:700;line-height:1;letter-spacing:-0.03em;color:var(--t1)}
+.stat-cell-label{font-family:var(--fmono);font-size:16px;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);margin-top:10px}
+.stat-cell-sub{font-family:var(--fm);font-size:26px;font-weight:300;color:var(--t4);margin-top:4px}
+/* NAV */
+.nav{display:flex;align-items:center;gap:16px}
+.nav button{background:rgba(240,237,232,0.08);border:1px solid rgba(240,237,232,0.15);color:#F0EDE8;font-family:'Space Mono',monospace;font-size:13px;letter-spacing:0.1em;padding:10px 28px;cursor:pointer;border-radius:2px;transition:background 0.15s}
+.nav button:hover{background:rgba(240,237,232,0.15)}
+.nav button:disabled{opacity:0.3;cursor:default}
+.nav .counter{font-family:'Space Mono',monospace;font-size:13px;letter-spacing:0.1em;color:rgba(240,237,232,0.45);min-width:60px;text-align:center}
+</style>
+</head>
+<body>
+
+<div class="slide-wrapper">
+
+<!-- S1 — COVER -->
+<div class="slide active" id="slide-1">
+  <div class="corner"></div>
+  <!-- Photo + info row, vertically centered -->
+  <div style="flex:1;display:flex;align-items:center;gap:48px;">
+    <div class="avatar-wrap">
+      <img id="matt-photo" src="" alt="Matt Wagner">
+    </div>
+    <div style="display:flex;flex-direction:column;gap:0;">
+      <div class="member-name">Matt Wagner</div>
+      <div class="member-role">President, Client Focus</div>
+      <div class="member-tag">3 weeks into Encoded</div>
+    </div>
+  </div>
+  <!-- Brand at bottom -->
+  <div class="rule"></div>
+  <div class="g20"></div>
+  <div class="brand">Encoded.Ai</div>
+</div>
+
+<!-- S2 — THE BEFORE -->
+<div class="slide" id="slide-2">
+  <div class="slide-n">02 / 09</div>
+  <div class="spacer"></div>
+  <div class="ew" style="margin-bottom:36px;">Before Encoded</div>
+  <h2 class="hl">He knew where<br>the problem lived.<br>He couldn't reach it.</h2>
+  <div class="g16"></div>
+  <p class="body muted">55 years old. A career spent studying human potential. And still — something kept running underneath everything.</p>
+  <div class="spacer"></div>
+</div>
+
+<!-- S3 — BEFORE 01 -->
+<div class="slide" id="slide-3">
+  <div class="slide-n">03 / 09</div>
+  <div class="spacer"></div>
+  <div class="ew" style="margin-bottom:36px;">The Before</div>
+  <div style="display:flex;align-items:flex-start;gap:28px;">
+    <span style="font-family:var(--fmono);font-size:22px;color:var(--t4);flex-shrink:0;padding-top:8px;letter-spacing:0.05em;">01</span>
+    <h2 class="hl">Anxiety present<br>before he was<br>fully awake.</h2>
+  </div>
+  <div class="spacer"></div>
+</div>
+
+<!-- S4 — BEFORE 02 -->
+<div class="slide" id="slide-4">
+  <div class="slide-n">04 / 09</div>
+  <div class="spacer"></div>
+  <div class="ew" style="margin-bottom:36px;">The Before</div>
+  <div style="display:flex;align-items:flex-start;gap:28px;">
+    <span style="font-family:var(--fmono);font-size:22px;color:var(--t4);flex-shrink:0;padding-top:8px;letter-spacing:0.05em;">02</span>
+    <h2 class="hl">Feeling unworthy<br>of God.<br>For decades.</h2>
+  </div>
+  <div class="spacer"></div>
+</div>
+
+<!-- S5 — QUOTE -->
+<div class="slide" id="slide-5">
+  <div class="slide-n">05 / 09</div>
+  <div class="spacer"></div>
+  <div class="qmark">"</div>
+  <div class="g16"></div>
+  <p class="qtext">It was the first time ever — confronted with the full force of that anxiety — and then it was just gone.</p>
+  <div class="spacer"></div>
+</div>
+
+<!-- S6 — STAT -->
+<div class="slide" id="slide-6">
+  <div class="slide-n">06 / 09</div>
+  <div class="ew" style="margin-bottom:32px;">The Result</div>
+  <div class="stat-poster">
+    <div class="stat-top">
+      <div class="stat-number-block">
+        <div class="stat-giant">3</div>
+        <div class="stat-word">Weeks</div>
+      </div>
+      <!-- Switzer 700 white bold context text -->
+      <div class="stat-context">Decades of anxiety,<br>sleeplessness, and<br>cognitive drag —<br>addressed.</div>
+    </div>
+    <div class="stat-bottom">
+      <div class="rule" style="margin-bottom:32px;"></div>
+      <div class="stat-row">
+        <div class="stat-cell">
+          <div class="stat-cell-num">25</div>
+          <div class="stat-cell-label">Morning</div>
+          <div class="stat-cell-sub">minutes of imprinting</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-cell-num">10</div>
+          <div class="stat-cell-label">Evening</div>
+          <div class="stat-cell-sub">minutes of imprinting</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- S7 — WHAT SHIFTED -->
+<div class="slide" id="slide-7">
+  <div class="slide-n">07 / 09</div>
+  <div class="spacer"></div>
+  <div class="ew" style="margin-bottom:36px;">Three Weeks In</div>
+  <h2 class="hl">The rumination<br>engine is just<br>shut down.</h2>
+  <div class="g16"></div>
+  <p class="body muted">Sleep resolved. ADHD no longer a factor. Morning anxiety gone within 25 minutes.</p>
+  <div class="spacer"></div>
+</div>
+
+<!-- S8 — HIS ADVICE -->
+<div class="slide" id="slide-8">
+  <div class="slide-n">08 / 09</div>
+  <div class="spacer"></div>
+  <div class="ew" style="margin-bottom:36px;">What He'd Tell You</div>
+  <h2 class="hl">You haven't been<br>able to get low<br>enough in the stack.</h2>
+  <div class="g16"></div>
+  <p class="body muted">"To see what's actually driving your emotions in a direction you don't want them driven."</p>
+  <div class="spacer"></div>
+</div>
+
+<!-- S9 — CLOSING -->
+<div class="slide" id="slide-9">
+  <div class="corner"></div>
+  <div class="spacer"></div>
+  <h2 class="hl">Full access to your<br>mind. Your gifts.<br>Your talents.</h2>
+  <div class="spacer"></div>
+  <div class="rule"></div>
+  <div class="g20"></div>
+  <div class="brand">Encoded.Ai</div>
+</div>
+
+</div><!-- end slide-wrapper -->
+
+<!-- Nav -->
+<div class="nav">
+  <button id="prev-btn" onclick="navigate(-1)" disabled>← Prev</button>
+  <span class="counter" id="counter">1 / 9</span>
+  <button id="next-btn" onclick="navigate(1)">Next →</button>
+</div>
+
+<script>
+  // Load Matt's photo from the uploaded file
+  (async () => {
+    try {
+      const data = await window.fs.readFile('matt-wagner-photo.jpg');
+      const blob = new Blob([data], { type: 'image/jpeg' });
+      const url = URL.createObjectURL(blob);
+      document.getElementById('matt-photo').src = url;
+    } catch(e) {
+      // Try other likely filenames
+      const names = ['matt_wagner.jpg','mattwagner.jpg','matt-wagner.png','matt_wagner.png','image.jpg','image.png','photo.jpg'];
+      for (const name of names) {
+        try {
+          const data = await window.fs.readFile(name);
+          const blob = new Blob([data], { type: name.endsWith('.png') ? 'image/png' : 'image/jpeg' });
+          document.getElementById('matt-photo').src = URL.createObjectURL(blob);
+          break;
+        } catch(e2) {}
+      }
+    }
+  })();
+
+  let cur = 0;
+  const slides = document.querySelectorAll('.slide');
+  const total = slides.length;
+
+  function navigate(dir) {
+    slides[cur].classList.remove('active');
+    cur = Math.max(0, Math.min(total - 1, cur + dir));
+    slides[cur].classList.add('active');
+    document.getElementById('counter').textContent = `${cur+1} / ${total}`;
+    document.getElementById('prev-btn').disabled = cur === 0;
+    document.getElementById('next-btn').disabled = cur === total - 1;
+  }
+</script>
+</body>
+</html>
