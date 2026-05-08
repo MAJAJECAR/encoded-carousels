@@ -21,7 +21,7 @@
   --gold:#CCB085;
   --b-sub:rgba(240,237,232,0.12);
 }
-body{background:#141414;margin:0;padding:0;width:1080px;height:1080px;overflow:hidden}
+body{background:#141414;margin:0;padding:0;width:1080px;height:1080px;overflow:hidden;position:relative}
 .slide{position:absolute;inset:0;width:1080px;height:1080px;background:var(--bg);padding:80px;display:none;flex-direction:column;overflow:hidden}
 .slide.active{display:flex}
 .corner{position:absolute;top:72px;right:80px;width:10px;height:10px;border-radius:50%;background:var(--gold)}
@@ -37,8 +37,6 @@ body{background:#141414;margin:0;padding:0;width:1080px;height:1080px;overflow:h
 .body.muted{color:var(--t4)}
 .qmark{font-family:var(--fs);font-size:120px;font-weight:800;color:var(--gold);line-height:0.8;flex-shrink:0}
 .qtext{font-family:var(--fs);font-size:64px;font-weight:600;line-height:1.12;letter-spacing:-0.02em;color:var(--t1)}
-
-/* Avatar */
 .avatar-wrap{position:relative;width:300px;height:300px;flex-shrink:0}
 .avatar-wrap img{width:300px;height:300px;border-radius:50%;object-fit:cover;object-position:center top;display:block;position:relative;z-index:1}
 .avatar-wrap::before{content:'';position:absolute;inset:-4px;border-radius:50%;border:1px solid rgba(204,176,133,0.3);z-index:2;pointer-events:none}
@@ -46,8 +44,6 @@ body{background:#141414;margin:0;padding:0;width:1080px;height:1080px;overflow:h
 .member-name{font-family:var(--fs);font-size:38px;font-weight:700;color:var(--t1);line-height:1;letter-spacing:-0.02em}
 .member-role{font-family:var(--fm);font-size:20px;font-weight:300;color:var(--t4);margin-top:8px}
 .member-tag{font-family:var(--fmono);font-size:13px;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);margin-top:10px}
-
-/* Stat */
 .stat-poster{display:flex;flex-direction:column;flex:1;min-height:0;justify-content:space-between}
 .stat-top{display:flex;align-items:flex-start;justify-content:space-between;flex-shrink:0}
 .stat-number-block{display:flex;flex-direction:column}
@@ -68,21 +64,21 @@ body{background:#141414;margin:0;padding:0;width:1080px;height:1080px;overflow:h
 <!-- S1 — COVER -->
 <div class="slide active" id="slide-1">
   <div class="corner"></div>
-  <!-- Image + info vertically centered -->
-  <div style="flex:1;display:flex;align-items:center;gap:48px;">
+  <div class="brand" style="margin-bottom:28px;">Encoded.Ai</div>
+  <div style="display:flex;align-items:center;gap:48px;flex-shrink:0;">
     <div class="avatar-wrap">
-      <img src="matt-wagner.jpg" alt="Matt Wagner">
+      <img id="matt-photo" src="" alt="Matt Wagner">
     </div>
-    <div style="display:flex;flex-direction:column;">
+    <div style="display:flex;flex-direction:column;justify-content:center;">
       <div class="member-name">Matt Wagner</div>
       <div class="member-role">President, Client Focus</div>
       <div class="member-tag">3 weeks into Encoded</div>
     </div>
   </div>
-  <!-- Brand at bottom -->
+  <div class="g20"></div>
   <div class="rule"></div>
   <div class="g20"></div>
-  <div class="brand">Encoded.Ai</div>
+  <h1 style="font-family:var(--fs);font-size:72px;font-weight:700;line-height:1.02;letter-spacing:-0.025em;color:var(--t1);flex-shrink:0;">Three weeks.<br>No more anxiety.<br>No more cognitive drag.</h1>
 </div>
 
 <!-- S2 — THE BEFORE -->
@@ -194,6 +190,25 @@ body{background:#141414;margin:0;padding:0;width:1080px;height:1080px;overflow:h
 </div>
 
 <script>
+  // Load Matt's photo — reads the uploaded image file
+  (async () => {
+    const filenames = [
+      'matt-wagner.jpg','matt_wagner.jpg','mattwagner.jpg',
+      'matt-wagner.png','matt_wagner.png','mattwagner.png',
+      'photo.jpg','image.jpg','image.png'
+    ];
+    for (const name of filenames) {
+      try {
+        const data = await window.fs.readFile(name);
+        const ext = name.split('.').pop();
+        const mime = ext === 'png' ? 'image/png' : 'image/jpeg';
+        const blob = new Blob([data], { type: mime });
+        document.getElementById('matt-photo').src = URL.createObjectURL(blob);
+        break;
+      } catch(e) {}
+    }
+  })();
+
   const allSlides = document.querySelectorAll('.slide');
   window.totalSlides = allSlides.length;
   window.goToSlide = function(n) {
