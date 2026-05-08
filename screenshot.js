@@ -36,6 +36,7 @@ const CAROUSELS = [
 { name: 'v3b-identity-symptoms',   file: 'carousel-v3b-identity-symptoms.html',   slides: 7 },
 { name: 'v4-matt-wagner', file: 'carousel-v4-matt-wagner.html', slides: 8 },
 { name: 'v4b-matt-wagner-circle', file: 'carousel-v4b-matt-wagner-circle.html', slides: 8 },
+{ name: 'v4c-matt-wagner-circle2', file: 'carousel-v4c-matt-wagner-circle2.html', slides: 9 },
 { name: 'v5-compound-loop',        file: 'carousel-v5-compound-loop.html',        slides: 6 },
 { name: 'v6-three-exits',          file: 'carousel-v6-three-exits.html',          slides: 6 },
 { name: 'v7-encoding-equation',    file: 'carousel-v7-encoding-equation.html',    slides: 7 },
