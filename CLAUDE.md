@@ -7,9 +7,10 @@
 
 ## What This System Is
 
-An Instagram carousel generation system for **Encoded.ai — The Frequency Era**.
-Claude generates HTML carousel files. A Playwright script screenshots them into PNGs.
-PNGs are uploaded to Buffer or Later and scheduled for Instagram.
+An Instagram carousel generation system for **Encoded.Ai**.
+Claude generates HTML carousel files + matching JSON files.
+A Playwright script screenshots them into PNGs.
+PNGs are uploaded to Buffer and scheduled for Instagram.
 
 ---
 
@@ -17,7 +18,6 @@ PNGs are uploaded to Buffer or Later and scheduled for Instagram.
 
 **Repo:** `https://github.com/MAJAJECAR/encoded-carousels`
 **GitHub Pages:** `https://majajecar.github.io/encoded-carousels`
-**Owner:** Personal GitHub account (MAJAJECAR), team access to be added later.
 
 ---
 
@@ -25,74 +25,106 @@ PNGs are uploaded to Buffer or Later and scheduled for Instagram.
 
 ```
 encoded-carousels/
-├── CLAUDE.md                              ← this file
-├── styles.css                             ← shared design system, all carousels link to this
-├── generator.html                         ← web form for manual carousel creation
-├── screenshot.js                          ← Playwright script: node screenshot.js
-├── README.md                              ← team-facing docs
-├── .gitignore                             ← excludes output/ and node_modules/
-├── carousel-v1-capacity.html             ← Nervous System Capacity
-├── carousel-v2-prediction.html           ← The Prediction Model
-├── carousel-v3-identity.html             ← Identity, Beliefs, Intentions
-├── carousel-v4-matt-wagner.html          ← Encoded Experiences: Matt Wagner
-└── output/                               ← PNGs land here (gitignored, local only)
+├── CLAUDE.md
+├── styles.css                              ← shared design system, all carousels link to this
+├── generator.html                          ← web form for manual carousel creation
+├── screenshot.js                           ← Playwright: node screenshot.js [name]
+├── README.md
+├── .gitignore                              ← excludes output/ and node_modules/
+├── carousel-v1-capacity.html
+├── carousel-v1-capacity.json
+├── carousel-v2-prediction.html
+├── carousel-v2-prediction.json
+│   ... (all carousel HTML + JSON pairs)
+└── output/                                 ← PNGs, gitignored, local only
 ```
+
+---
+
+## Output Rule — Always Deliver Both Files
+
+**Every time Claude generates or updates a carousel, it delivers:**
+1. The `.html` file
+2. The matching `.json` file
+
+No exceptions. HTML and JSON are always delivered as a pair.
 
 ---
 
 ## Design System — Color Tokens
 
-All tokens live in `styles.css`. The carousel palette uses warm editorial tones, not the pure
-neutral web app colors. **Do not change these without being asked.**
+All tokens live in `styles.css`. Do not change without being asked.
 
 ```css
---bg:     #111009;                   /* main slide background — warm near-black */
---bg2:    #181612;                   /* card background */
---bg3:    #1d1b12;                   /* emphasized card background */
---gold:   #C9A84C;                   /* primary accent — use sparingly */
---gdim:   #7a6530;                   /* muted gold for italics, pull quotes */
---white:  #EDE8DC;                   /* primary text — warm white, editorial */
---gray:   #68665e;                   /* body text */
---gray2:  #3a3930;                   /* subtle text, handles */
---border: rgba(201,168,76,0.12);     /* card and rule borders */
---fh:     'DM Serif Display', serif; /* headlines */
---fb:     'DM Sans', sans-serif;     /* body, UI */
+/* Surfaces */
+--base:   #141414;   /* main slide background */
+--s1:     #191919;   /* card background */
+--s2:     #1D1D1D;   /* emphasized card */
+--s3:     #272727;   /* tertiary surface */
+--s4:     #313131;   /* strong separation */
+
+/* Text */
+--t1:     #FFFFFF;   /* primary — headlines */
+--t2:     #D0D0D0;   /* secondary — subheads */
+--t3:     #C4C4C4;   /* tertiary — body */
+--t4:     #898989;   /* muted — eyebrows, numbers, counters */
+
+/* Borders */
+--b-sub:  rgba(255,255,255,0.08);   /* subtle */
+--b-def:  rgba(255,255,255,0.14);   /* default */
+
+/* Gold — used ONCE per carousel max, closing brand mark + eyebrows only */
+--gold:   #CCB085;
+--gold-d: #998464;
+
+/* Fonts */
+--fs:    'Switzer', sans-serif;      /* headlines */
+--fm:    'Manrope', sans-serif;      /* body, eyebrows, UI */
+--fmono: 'Space Mono', monospace;   /* numbers, labels, counters */
 ```
 
-### Brand Color System Alignment
+### Brand Color System
 
-The carousel colors are intentionally warmer than the web app (which uses pure neutrals).
-The web app brand file (`color.md`) is available for reference but **carousel colors stay as above**.
-Only pull from the brand file if explicitly asked to match the web app aesthetic.
+The carousel palette uses warm editorial tones. The web app brand file (`color.md`)
+is available but carousel colors stay as above unless explicitly asked to match the web app.
 
-Approximate mapping for reference only:
-- `--bg #111009` ≈ `color/surface/base #141414` (warmer)
-- `--bg2 #181612` ≈ `color/surface/primary #191919` (warmer)
-- `--white #EDE8DC` ≈ `color/text/primary #FFFFFF` (warmer, editorial)
-- `--gold #C9A84C` ≈ `color/brand/gold-light #CCB085` (richer)
-- `--gdim #7a6530` ≈ `color/brand/gold-medium #998464`
-- `--border` ≈ `color/border/subtle` (gold-tinted instead of white alpha)
+---
+
+## Design System — Font Import Block
+
+Every HTML file must include this exact import block:
+
+```html
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://api.fontshare.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500&family=Space+Mono:wght@400&display=swap" rel="stylesheet">
+<link href="https://api.fontshare.com/v2/css?f[]=switzer@400,500,600,700,800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+```
+
+Switzer is from Fontshare (not Google Fonts).
+Manrope and Space Mono are from Google Fonts.
 
 ---
 
 ## Design System — Type Scale
 
 ```
-.hxl  — 88px  DM Serif Display — cover headlines only
-.hl   — 66px  DM Serif Display — statement slides
-.hm   — 46px  DM Serif Display — slide headlines with cards below
-.body — 30px  DM Sans 300      — body copy, always --gray
-.sub  — 32px  DM Sans 300      — cover subheads
-.ew   — 22px  DM Sans 500      — eyebrow labels, all caps, gold, leading rule
-.qt   — 52px  DM Serif italic  — pull quotes
-.qm   — 140px DM Serif         — decorative opening quote mark
-.qa   — 22px  DM Sans 500      — quote attribution, all caps, --gdim
-.sn   — 160px DM Serif Display — large stat numbers
-.su   — 60px  DM Sans 300      — stat units (%, ×, wks)
-.brand— 22px  DM Sans 500      — brand mark, all caps, gold
-.cew  — 18px  DM Sans 500      — card eyebrow labels
-.ct   — 36px  DM Serif Display — card titles
-.cb   — 26px  DM Sans 300      — card body copy
+.hxl   — Switzer 700,  96px,  lh 1.0,   ls -0.03em  — cover headlines only
+.hl    — Switzer 700,  72px,  lh 1.02,  ls -0.025em — statement slides
+.hm    — Switzer 600,  52px,  lh 1.08,  ls -0.02em  — slides with lists below
+.body  — Manrope 300,  26px,  lh 1.6                — body copy, color --t3
+.sub   — Manrope 300,  28px,  lh 1.55               — cover subheads, color --t2
+.muted — color --t4                                  — modifier applied to .body
+.ew    — Manrope 400,  18px,  ls 0.2em, uppercase    — eyebrow, color --gold, leading line
+.brand — Manrope 500,  18px,  ls 0.28em, uppercase   — brand mark, color --gold
+.qmark — Switzer 800, 140px,  lh 0.7                — decorative quote mark, color --s3
+.qtext — Switzer 600,  52px,  lh 1.1,   ls -0.02em  — pull quote text
+.qattr — Manrope 400,  18px,  ls 0.14em, uppercase   — quote attribution, color --t4
+.nnum  — Space Mono,   16px,  ls 0.05em             — list numbers, color --t4
+.ntext — Switzer 500,  36px,  lh 1.25,  ls -0.01em  — list item text, color --t1
+.slide-n — Space Mono, 13px,  ls 0.15em             — slide counter, opacity 0.5
 ```
 
 ---
@@ -100,74 +132,84 @@ Approximate mapping for reference only:
 ## Design System — Layout Classes
 
 ```
-.g2      — 2-column card grid (1fr 1fr, gap 18px)
-.g3h     — 3-column label grid
-.seq     — vertical sequence column (stacked cards + down arrows)
-.hflow   — horizontal flow (3 cards side by side + right arrows)
-.nrow    — numbered list row (gold number + body text)
-.vbar    — vertical gold bar + italic pullout text
-.card    — standard card (bg2, gold-tinted border)
-.card.em — emphasized card (bg3, gold border) — max ONE per slide
-.spacer  — flex:1 spacer, pushes content to edges
-.rule    — full-width 1px gold-tinted divider
-.bgn     — large ghost slide number (bottom right, decorative)
-.corner  — corner bracket decoration (cover slides only)
+.spacer    — flex:1, pushes content to edges
+.rule      — 1px divider, rgba(255,255,255,0.08)
+.nrule     — 1px rule between list items
+.corner    — corner bracket decoration, cover + closing slides only
+.bg-word   — ghost background word, decorative, list/stat slides
+.slide-n   — slide counter, bottom-right, slides 2 onward
+.g8–.g32   — spacing divs (16px, 24px, 32px, 40px, 48px, 64px)
+.g2        — 2-column grid, 1fr 1fr, gap 16px
+.g3        — 3-column grid
+.hflow     — horizontal flow container
+.hcard     — horizontal flow card
+.harr      — horizontal arrow connector
+.seq       — vertical sequence container
+.arr       — vertical arrow connector
 ```
 
 ---
 
-## Slide Types and When to Use Each
+## Slide Types
 
-| Type | Structure | Use when |
-|------|-----------|----------|
-| Cover | `.hxl` + `.sub` + `.brand` + `.corner` | Always slide 1 |
-| Statement | `.ew` + `.hl` only | Strong single idea, no clutter |
-| Statement + sub | `.hl` + `.body` + `.vbar` | Headline needs supporting context |
-| Numbered list | `.hm` + `.rule` + `.nrow` ×4 | Sequential points, symptoms, signs |
-| Comparison | `.hm` + `.g2` (one `.card`, one `.card.em`) | Two opposing ideas |
-| Sequence | `.hm` + `.seq` + down arrows | 3-step process with directional flow |
-| Horizontal flow | `.hm` + `.hflow` + right arrows | 3 parallel items, no hierarchy |
-| Quote | `.qm` + `.qt` + `.qa` + `.spacer` both sides | Powerful single quote, full slide |
-| Stat | `.sn` + `.su` + caption + `.g3h` | Large number as the story |
-| Grid | `.g2` 2×2 cards | 4 parallel items |
-| Closing | `.hl` + `.brand` + CTA line | Always last slide |
+| Type | Key classes | Use when |
+|------|-------------|----------|
+| Cover | `.hxl` + `.sub` + `.brand` + `.corner` + `.rule` | Always slide 1 |
+| Statement | `.ew` + `.hl` + optional `.body.muted` | Single bold idea |
+| Numbered list | `.hm` + `.nrow`/`.nnum`/`.ntext`/`.nrule` | 2–4 short items |
+| Single point | `.ew` + mono number + `.hl` | One point = one slide |
+| Left sequence | Vertical line + bullets + label + title | Flow/process slides |
+| Quote | `.qmark` + `.qtext` | Strong single quote |
+| Stat | large number + caption | Data-led slide |
+| Closing | `.hl` + `.rule` + `.brand` | Always last slide |
 
 ---
 
-## Emphasis Rules
+## Design Rules — Non-Negotiable
 
-- **Maximum ONE `.card.em`** per slide. Never two.
-- Gold `var(--gold)` in headlines: ONE word or phrase per slide maximum.
-- `.bgn` ghost numbers: always present slides 2–9, decorative only.
-- `.corner` bracket: cover slides only.
-- `.qm` quote mark: quote slides only, never decorative.
-- `Encoded.Ai` brand mark: appears ONCE per slide, never repeated.
+**No boxes or card designs.** Remove all `.card` layouts. Type does the visual work.
 
----
+**Left-aligned always.** Nothing centered. Every element aligns to the left edge.
 
-## Density Limits
+**One idea per slide.** Maximum one short supporting line of muted body text.
 
-- Maximum **4 cards** in a `.g2` grid (2×2)
-- Maximum **3 steps** in a `.seq` sequence
-- Maximum **3 columns** in `.hflow`
-- Maximum **4 items** in a `.nrow` numbered list
-- If content exceeds these limits — split across two slides
+**No redundant slides.** Never repeat the same text twice in one carousel.
+If the closing slide says it, no statement slide says it first.
+
+**Numbered list → one point per slide.** Never put all 4 points on one slide.
+Each point = its own slide. More slides with less text beats fewer slides with more.
+
+**Left-aligned sequence slides.** Vertical line on the left, bullets align with
+title text (not label), label above each item, compact spacing. Never centered.
+
+**Gold used once per carousel.** Eyebrow labels and the closing brand mark only.
+Never on body text, never on multiple elements on the same slide.
+
+**Encoded.Ai appears once per slide.** Never repeated on the same slide.
+On closing slides: brand mark only. On cover: brand mark at top only.
+No "— The Frequency Era" suffix. No "Comment [WORD]" lines anywhere.
+
+**Slide counter stays clear.** Must never overlap text, decorations, or lists.
+Counter format: `02 / 08` (zero-padded, space around slash).
+
+**No repeated closing.** If slide N-1 and slide N say the same thing, delete slide N-1.
+
+**Instagram carousel max: 20 slides.** Prefer 6–10. Keep it light.
+When content is dense, split into multiple shorter carousels rather than one long one.
 
 ---
 
 ## HTML File Conventions
 
 Every carousel HTML file must:
-1. Link to `styles.css` — never embed CSS inline
-2. Link to Google Fonts (DM Sans + DM Serif Display)
+1. Use the font import block above
+2. Link to `styles.css` — never embed CSS inline
 3. Set `html, body` to `width:1080px; height:1080px; overflow:hidden`
-4. Set `.slide` to `position:absolute; width:1080px; height:1080px; padding:88px 86px`
+4. Set `.slide` to `position:absolute; inset:0; width:1080px; height:1080px; padding:80px 86px`
 5. Have first slide as `class="slide active"`
-6. Expose `window.goToSlide(n)` for the screenshot script
+6. Expose `window.goToSlide(n)` and `window.totalSlides`
 
 ```html
-<link rel="stylesheet" href="styles.css">
-
 <script>
   const allSlides = document.querySelectorAll('.slide');
   window.totalSlides = allSlides.length;
@@ -180,24 +222,46 @@ Every carousel HTML file must:
 
 ---
 
-## screenshot.js — How It Works
+## JSON File Structure
+
+Every carousel also has a matching `.json` file with three sections:
+
+```json
+{
+  "meta": {
+    "name": "carousel-v1-capacity",
+    "title": "...",
+    "totalSlides": 8,
+    "canvas": { "width": 1080, "height": 1080, "unit": "px" },
+    "fonts": { ... }
+  },
+  "tokens": {
+    "colors": { ... },
+    "typography": { ... },
+    "layout": { ... }
+  },
+  "slides": [
+    {
+      "id": 1,
+      "type": "cover",
+      "elements": [ ... ]
+    }
+  ]
+}
+```
+
+Element types used in slides array:
+`brand`, `eyebrow`, `headline`, `subhead`, `body`, `quote`, `quoteMark`,
+`quoteText`, `numberedList`, `slideCounter`, `rule`, `spacer`, `gap`, `decoration`
+
+---
+
+## screenshot.js Usage
 
 ```bash
-node screenshot.js                    # screenshots all carousels
-node screenshot.js carousel-name      # screenshots one by name
+node screenshot.js                  # all carousels
+node screenshot.js v1-capacity      # one carousel by name
 ```
-
-**To add a new carousel:**
-1. Drop the HTML file in the repo folder
-2. Open `screenshot.js`, add to the CAROUSELS array:
-```js
-{
-  name:   'your-carousel-name',
-  file:   'carousel-your-file.html',
-  slides: 10,
-},
-```
-3. Push to GitHub, run `node screenshot.js your-carousel-name`
 
 **GitHub Pages URL** (line ~18 in screenshot.js):
 ```js
@@ -206,167 +270,168 @@ const GITHUB_PAGES_URL = 'https://majajecar.github.io/encoded-carousels';
 
 ---
 
-## Carousel Types We Make
+## Current Carousel Library
 
-### Type 1 — Series Carousels (Encoded book/content)
-
-Topic-driven educational carousels. Always 10 slides:
-- Slide 1: Cover
-- Slides 2–9: Mix of statement, list, comparison, sequence, quote, stat
-- Slide 10: Closing with CTA
-
-**Tone:** Precise, calm, editorial. Premium neuroscience/performance content.
-**CTA comment words used:** `CAPACITY`, `MODEL`, `IDENTITY`
-**Next available:** `BELIEFS`, `LOOP`, `EXITS`, `EQUATION`, `INTENTIONS`, `SIGNALS`, `FOUNDATION`
-
-### Type 2 — Experience Carousels (member stories)
-
-Real member testimonials. Always 10 slides:
-- Slide 1: Cover with member photo + hero quote
-- Slide 2: The Before (what they were dealing with)
-- Slides 3–4: Quote slides with small avatar
-- Slides 5–6: What shifted (specific changes)
-- Slide 7: Quote slide
-- Slide 8: Stat slide (time, routine, number of shifts)
-- Slide 9: Their advice / statement slide
-- Slide 10: Closing with avatar + CTA
-
-**CTA comment word:** `EXPERIENCE`
-**Member photo:** embed as base64 in HTML (works local + GitHub Pages)
-**Consent:** all members have given consent before publishing
+| File | Topic | Slides | Status |
+|------|-------|--------|--------|
+| carousel-v1-capacity | Nervous System Capacity | 8 | ✅ |
+| carousel-v2-prediction | The Prediction Model | 9 | ✅ |
+| carousel-v2b-compound-loop | The Compound Loop (split) | 10 | ✅ |
+| carousel-v3-identity | Identity, Beliefs, Intentions | 7 | ✅ |
+| carousel-v3b-identity-symptoms | When Identity Is Fragmented | 7 | ✅ |
+| carousel-v5-compound-loop | The Compound Loop | 6 | ✅ |
+| carousel-v6-three-exits | The Three Failed Exits | 6 | ✅ |
+| carousel-v7-encoding-equation | The Encoding Equation | 7 | ✅ |
+| carousel-v8-intentions-vs-goals | Intentions vs Goals | 6 | ✅ |
+| carousel-v8b-extrinsic-symptoms | When The Motor Is Fear | 5 | ✅ |
+| carousel-v9-signs-belief-running | Signs The Belief Is Running | 7 | ✅ |
+| carousel-v9b-four-signals | Four Signals | 6 | ✅ |
+| carousel-v10-foundation | The Foundation | 7 | ✅ |
+| carousel-v10b-what-changes | What Changes When Foundation Shifts | 5 | ✅ |
+| carousel-v11-response-sequence | The Response Sequence | 7 | ✅ |
 
 ---
 
-## Content Sources — What We Have
+## screenshot.js CAROUSELS Array (current)
 
-All source material came from PDFs shared in the original conversation.
+```js
+{ name: 'v1-capacity',              file: 'carousel-v1-capacity.html',             slides: 8  },
+{ name: 'v2-prediction',            file: 'carousel-v2-prediction.html',           slides: 9  },
+{ name: 'v2b-compound-loop',        file: 'carousel-v2b-compound-loop.html',       slides: 10 },
+{ name: 'v3-identity',              file: 'carousel-v3-identity.html',             slides: 7  },
+{ name: 'v3b-identity-symptoms',    file: 'carousel-v3b-identity-symptoms.html',   slides: 7  },
+{ name: 'v5-compound-loop',         file: 'carousel-v5-compound-loop.html',        slides: 6  },
+{ name: 'v6-three-exits',           file: 'carousel-v6-three-exits.html',          slides: 6  },
+{ name: 'v7-encoding-equation',     file: 'carousel-v7-encoding-equation.html',    slides: 7  },
+{ name: 'v8-intentions-vs-goals',   file: 'carousel-v8-intentions-vs-goals.html',  slides: 6  },
+{ name: 'v8b-extrinsic-symptoms',   file: 'carousel-v8b-extrinsic-symptoms.html',  slides: 5  },
+{ name: 'v9-signs-belief-running',  file: 'carousel-v9-signs-belief-running.html', slides: 7  },
+{ name: 'v9b-four-signals',         file: 'carousel-v9b-four-signals.html',        slides: 6  },
+{ name: 'v10-foundation',           file: 'carousel-v10-foundation.html',          slides: 7  },
+{ name: 'v10b-what-changes',        file: 'carousel-v10b-what-changes.html',       slides: 5  },
+{ name: 'v11-response-sequence',    file: 'carousel-v11-response-sequence.html',   slides: 7  },
+```
+
+---
+
+## Content Sources
 
 ### Capacity Carousels PDF
-Four series covering:
-- **Nervous System Capacity** — what the ceiling is, the battery analogy ✅ Built (v1)
-- **The Architecture** — vagal tone, HPA-axis, amygdala threshold (can build separately)
-- **Regulation vs Capacity** — the critical distinction (can build separately)
-- **The Battery Gets Bigger** — capacity is trainable, not fixed (can build separately)
+- Nervous System Capacity ✅ v1
+- The Architecture — can expand
+- Regulation vs Capacity — can expand
+- The Battery Gets Bigger — can expand
 
 ### Social Carousels PDFs
-Eight series covering:
-- **The Prediction Model** — your belief arrives before your thought ✅ Built (v2)
-- **The Compound Loop** — every confirming experience compounds ⬜ Not yet built
-- **The Three Failed Exits** — think/learn/achieve your way out — none work ⬜ Not yet built
-- **The Encoding Equation** — what actually changes a belief ⬜ Not yet built
-- **Intentions vs Goals** — surface vs subconscious driving layer ⬜ Not yet built
-- **Signs The Belief Is Running** — how to recognise the model in action ⬜ Not yet built
-- **Identity, Beliefs, Intentions** — the Foundation series ✅ Built (v3)
-- **Foundation Synthesis** — all three as one operating system ⬜ Not yet built
+- The Prediction Model ✅ v2
+- The Compound Loop ✅ v2b, v5
+- The Three Failed Exits ✅ v6
+- The Encoding Equation ✅ v7
+- Intentions vs Goals ✅ v8
+- Signs The Belief Is Running ✅ v9
+- Identity, Beliefs, Intentions ✅ v3
+- Foundation Synthesis ✅ v10
 
 ### Experience Stories
-- **Matt Wagner** — President, Client Focus, 3 weeks in ✅ Built (v4)
-- Future members: provided as text by team, consent confirmed before publishing
+- Matt Wagner ✅ v4 (old design system — needs rebuilding in new design)
+- Future members: text provided by team, consent confirmed before publishing
 
-### Content Themes Available for New Carousels
-When asked to create content, Claude can draw from these Encoded themes:
+### Original Content
+- The Response Sequence ✅ v11
+
+### Content Themes Available
 - Nervous system capacity and what limits performance
-- Subconscious belief systems and how they drive behaviour
-- The gap between effort and results — why discipline alone fails
+- Subconscious belief systems and automatic responses
+- The gap between effort and results
 - Identity as the source of every other program
-- The difference between regulation and structural change
-- What the encoding process actually looks like
-- Extrinsic vs intrinsic motivation and what each costs
+- Regulation vs structural change
+- The encoding process
+- Extrinsic vs intrinsic motivation
 - Signs that a subconscious program is running
-- Member transformation stories (when provided)
+- Member transformation stories
 
-**What Claude should NOT do:**
-- Invent claims not grounded in the Encoded source material
-- Make medical or therapeutic promises
-- Stray into generic self-help or motivational poster territory
-- Use a casual or hype-driven tone — always precise and premium
-
----
-
-## Branding Rules
-
-- Brand name: **Encoded.Ai** (capital E, capital A — used exactly this way)
-- Brand mark appears ONCE per slide, on closing slides and cover slides only
-- Tagline: **The Frequency Era**
-- Chapter reference: **Ch. 9** (used on Foundation series)
-- Instagram handle: **@encoded** (used only in screenshot.js closing line — currently removed from slides)
-- No Save/Share/Comment action blocks on closing slides (removed per team feedback)
-- No repeated brand marks — if `.brand` and `.ew` would both say Encoded.Ai on the same slide, remove `.ew`
+**Claude must not:** invent claims not in Encoded source material,
+make medical/therapeutic promises, use hype-driven or generic self-help tone.
 
 ---
 
 ## Approval Workflow
 
-1. Claude generates HTML
-2. Download and screenshot locally: `node screenshot.js [name]`
+1. Claude generates HTML + JSON pair
+2. Run: `node screenshot.js [name]`
 3. Review PNGs
-4. Share with team for design/content sign-off
-5. Once approved: push HTML to GitHub, schedule PNGs in Buffer
+4. Share with team for sign-off
+5. Push to GitHub → schedule in Buffer
 
-Currently: approval is by the primary owner. A second reviewer may be added later.
-**Design templates are approved as of v1–v4. Future carousels follow the same system.**
+Design templates approved as of v1–v11.
 
 ---
 
 ## Posting Workflow
 
-1. Claude generates HTML → download → place in `encoded-carousels/` folder
+1. Claude generates HTML + JSON → download both → place in repo folder
 2. Add entry to `screenshot.js` CAROUSELS array
-3. Push to GitHub: stage → commit → sync in VS Code Source Control
-4. Run: `node screenshot.js [carousel-name]`
-5. PNGs appear in `output/[carousel-name]/`
-6. Upload to **Buffer** → schedule for Instagram
-7. Post frequency: high — content calendar to be built
-
----
-
-## Carousels Built So Far
-
-| File | Topic | CTA | Status |
-|------|-------|-----|--------|
-| carousel-v1-capacity.html | Nervous System Capacity | CAPACITY | ✅ Ready |
-| carousel-v2-prediction.html | The Prediction Model | MODEL | ✅ Ready |
-| carousel-v3-identity.html | Identity, Beliefs, Intentions | IDENTITY | ✅ Ready |
-| carousel-v4-matt-wagner.html | Experience: Matt Wagner | EXPERIENCE | ✅ Ready |
-
-**Next up (not yet built):**
-- The Compound Loop
-- The Three Failed Exits
-- The Encoding Equation
-- Intentions vs Goals
-- Signs The Belief Is Running
-- Foundation Synthesis
-- Next experience member (when story provided)
+3. VS Code Source Control: stage → commit → sync
+4. Run: `node screenshot.js [name]`
+5. PNGs in `output/[name]/` → upload to Buffer → schedule
 
 ---
 
 ## Git Workflow in VS Code
 
-**Committing new or changed files:**
-1. Source Control icon (left sidebar — branching tree)
-2. Click `+` to stage files
-3. Type commit message
-4. Click Commit (✓)
-5. Click Sync Changes
+Stage → type commit message → Commit (✓) → Sync Changes
 
-**Commit message conventions:**
+Commit message conventions:
 ```
-Add carousel: compound-loop
-Update styles: increase body text size
-Fix: brand mark duplication on closing slide
-Update CLAUDE.md: add content sources
-Add assets: member-name profile photo
+Add carousel: v12-topic-name
+Update carousel: v2-prediction slide 3
+Fix: slide counter overlap on v7
+Update styles: eyebrow color to gold
+Update CLAUDE.md: add new carousel to library
 ```
 
 ---
 
-## Future Improvements (To Do)
+## How to Ask Claude to Generate a New Carousel
 
-- [ ] Establish proper naming convention — e.g. `capacity-01`, `experiences-matt-wagner`
-- [ ] Move member photos to `assets/` folder once team is on GitHub Pages
-- [ ] Add portrait format (1080×1350) for single statement posts
-- [ ] Build content calendar — Notion or similar, linked to repo
-- [ ] Caption copy generation — Claude to write Instagram caption alongside HTML
-- [ ] Connect Buffer API for more automated scheduling (future)
-- [ ] Add second approver to review workflow
-- [ ] Plan series posting order — carousels build on each other week to week
+Paste this file, then say one of:
+
+- **"Make a carousel about [topic] using the Encoded content"**
+- **"Here is a member story: [paste]. Make an experience carousel."**
+- **"Plan the next 4 carousels and make them all"**
+- **"Come up with 3 new carousel topics"**
+
+Claude will:
+- Choose layouts per slide based on content type
+- Follow all design rules above
+- Output HTML + JSON as a pair
+- Never repeat text across slides
+- Never use boxes or centered layouts
+- Suggest the screenshot.js entry to add
+
+---
+
+## Member Photo Handling
+
+Current approach: base64 embedded in HTML (works everywhere, no hosting needed).
+Future: move to `assets/` folder once team is comfortable.
+
+Experience carousel structure:
+- Slide 1: Cover with photo + hero quote
+- Slide 2: The Before
+- Slides 3–N: One shift per slide (bold, no body text)
+- Second-to-last: Quote slide
+- Last: Closing
+
+---
+
+## Future Improvements
+
+- [ ] Rebuild v4 Matt Wagner in new design system
+- [ ] Generate JSON files for all existing carousels (v2–v11)
+- [ ] Portrait format (1080×1350) — CSS canvas variable system
+- [ ] Content calendar — Notion linked to repo
+- [ ] Caption copy — Claude writes Instagram caption alongside HTML
+- [ ] Proper series naming convention replacing v1, v2... numbering
+- [ ] Pipeline automation (see PIPELINE_TICKET.md)
+- [ ] YouTube thumbnail system (see THUMBNAIL_TICKET.md)

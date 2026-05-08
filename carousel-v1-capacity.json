@@ -1,0 +1,342 @@
+{
+  "meta": {
+    "name": "carousel-v1-capacity",
+    "title": "Encoded — Nervous System Capacity",
+    "version": "1.0",
+    "totalSlides": 8,
+    "canvas": {
+      "width": 1080,
+      "height": 1080,
+      "unit": "px"
+    },
+    "fonts": {
+      "headline": {
+        "family": "Switzer",
+        "source": "https://api.fontshare.com/v2/css?f[]=switzer@400,500,600,700,800&display=swap",
+        "weights": [400, 500, 600, 700, 800]
+      },
+      "body": {
+        "family": "Manrope",
+        "source": "https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500&display=swap",
+        "weights": [300, 400, 500]
+      },
+      "mono": {
+        "family": "Space Mono",
+        "source": "https://fonts.googleapis.com/css2?family=Space+Mono:wght@400&display=swap",
+        "weights": [400]
+      }
+    }
+  },
+
+  "tokens": {
+    "colors": {
+      "surfaces": {
+        "base":  "#141414",
+        "s1":    "#191919",
+        "s2":    "#1D1D1D",
+        "s3":    "#272727",
+        "s4":    "#313131"
+      },
+      "text": {
+        "t1": "#FFFFFF",
+        "t2": "#D0D0D0",
+        "t3": "#C4C4C4",
+        "t4": "#898989"
+      },
+      "borders": {
+        "subtle":  "rgba(255, 255, 255, 0.08)",
+        "default": "rgba(255, 255, 255, 0.14)"
+      },
+      "brand": {
+        "gold":   "#CCB085",
+        "goldDim": "#998464"
+      }
+    },
+    "typography": {
+      "hxl": {
+        "fontFamily": "Switzer",
+        "fontSize": "96px",
+        "fontWeight": 700,
+        "lineHeight": 1.0,
+        "letterSpacing": "-0.03em",
+        "color": "#FFFFFF"
+      },
+      "hl": {
+        "fontFamily": "Switzer",
+        "fontSize": "72px",
+        "fontWeight": 700,
+        "lineHeight": 1.02,
+        "letterSpacing": "-0.025em",
+        "color": "#FFFFFF"
+      },
+      "hm": {
+        "fontFamily": "Switzer",
+        "fontSize": "52px",
+        "fontWeight": 600,
+        "lineHeight": 1.08,
+        "letterSpacing": "-0.02em",
+        "color": "#FFFFFF"
+      },
+      "body": {
+        "fontFamily": "Manrope",
+        "fontSize": "26px",
+        "fontWeight": 300,
+        "lineHeight": 1.6,
+        "color": "#C4C4C4"
+      },
+      "sub": {
+        "fontFamily": "Manrope",
+        "fontSize": "28px",
+        "fontWeight": 300,
+        "lineHeight": 1.55,
+        "color": "#D0D0D0"
+      },
+      "muted": {
+        "color": "#898989"
+      },
+      "eyebrow": {
+        "fontFamily": "Manrope",
+        "fontSize": "18px",
+        "fontWeight": 400,
+        "letterSpacing": "0.2em",
+        "textTransform": "uppercase",
+        "color": "#CCB085",
+        "leadingLine": {
+          "width": "28px",
+          "height": "1px",
+          "color": "#CCB085"
+        }
+      },
+      "brand": {
+        "fontFamily": "Manrope",
+        "fontSize": "18px",
+        "fontWeight": 500,
+        "letterSpacing": "0.28em",
+        "textTransform": "uppercase",
+        "color": "#CCB085"
+      },
+      "quote": {
+        "mark": {
+          "fontFamily": "Switzer",
+          "fontSize": "140px",
+          "fontWeight": 800,
+          "color": "#272727",
+          "lineHeight": 0.7,
+          "letterSpacing": "-0.04em"
+        },
+        "text": {
+          "fontFamily": "Switzer",
+          "fontSize": "52px",
+          "fontWeight": 600,
+          "lineHeight": 1.1,
+          "color": "#FFFFFF",
+          "letterSpacing": "-0.02em"
+        },
+        "attribution": {
+          "fontFamily": "Manrope",
+          "fontSize": "18px",
+          "fontWeight": 400,
+          "letterSpacing": "0.14em",
+          "textTransform": "uppercase",
+          "color": "#898989"
+        }
+      },
+      "numberedList": {
+        "number": {
+          "fontFamily": "Space Mono",
+          "fontSize": "16px",
+          "fontWeight": 400,
+          "color": "#898989",
+          "letterSpacing": "0.05em",
+          "lineHeight": 1.25,
+          "paddingTop": "6px"
+        },
+        "text": {
+          "fontFamily": "Switzer",
+          "fontSize": "36px",
+          "fontWeight": 500,
+          "lineHeight": 1.25,
+          "color": "#FFFFFF",
+          "letterSpacing": "-0.01em"
+        }
+      },
+      "slideCounter": {
+        "fontFamily": "Space Mono",
+        "fontSize": "13px",
+        "color": "#898989",
+        "letterSpacing": "0.15em",
+        "opacity": 0.5,
+        "position": {
+          "bottom": "80px",
+          "right": "86px"
+        }
+      }
+    },
+    "layout": {
+      "slide": {
+        "padding": "80px 86px",
+        "background": "#141414"
+      },
+      "spacingScale": {
+        "g8":  "16px",
+        "g12": "24px",
+        "g16": "32px",
+        "g20": "40px",
+        "g24": "48px",
+        "g32": "64px"
+      },
+      "rule": {
+        "height": "1px",
+        "background": "rgba(255, 255, 255, 0.08)"
+      },
+      "cornerBracket": {
+        "width": "140px",
+        "height": "140px",
+        "borderBottom": "1px solid rgba(255, 255, 255, 0.08)",
+        "borderLeft": "1px solid rgba(255, 255, 255, 0.08)",
+        "position": "absolute",
+        "top": 0,
+        "right": 0
+      },
+      "bgWord": {
+        "fontFamily": "Switzer",
+        "fontSize": "260px",
+        "fontWeight": 800,
+        "color": "rgba(255, 255, 255, 0.025)",
+        "position": "absolute",
+        "bottom": "-20px",
+        "right": "60px",
+        "letterSpacing": "-0.06em"
+      },
+      "nrule": {
+        "height": "1px",
+        "background": "rgba(255, 255, 255, 0.08)"
+      }
+    }
+  },
+
+  "slides": [
+    {
+      "id": 1,
+      "type": "cover",
+      "active": true,
+      "elements": [
+        { "type": "decoration", "name": "cornerBracket" },
+        { "type": "brand", "text": "Encoded.Ai", "position": "top" },
+        { "type": "spacer" },
+        { "type": "eyebrow", "text": "Nervous System Capacity", "marginBottom": "36px" },
+        { "type": "headline", "style": "hxl", "text": "Your nervous\nsystem has\na ceiling." },
+        { "type": "gap", "size": "g20" },
+        { "type": "subhead", "text": "And almost every performance problem is happening above it." },
+        { "type": "gap", "size": "g24" },
+        { "type": "rule" }
+      ]
+    },
+    {
+      "id": 2,
+      "type": "statement",
+      "counter": "02 / 08",
+      "elements": [
+        { "type": "slideCounter", "text": "02 / 08" },
+        { "type": "spacer" },
+        { "type": "eyebrow", "text": "The Definition", "marginBottom": "36px" },
+        { "type": "headline", "style": "hl", "text": "It's a ceiling.\nNot a feeling." },
+        { "type": "gap", "size": "g16" },
+        { "type": "body", "muted": true, "text": "The maximum demand your nervous system can hold before clear thinking fragments." },
+        { "type": "spacer" }
+      ]
+    },
+    {
+      "id": 3,
+      "type": "numberedList",
+      "counter": "03 / 08",
+      "elements": [
+        { "type": "slideCounter", "text": "03 / 08" },
+        { "type": "decoration", "name": "bgWord", "text": "3×" },
+        { "type": "eyebrow", "text": "The Architecture", "marginBottom": "36px" },
+        { "type": "headline", "style": "hm", "text": "Three systems.\nOne ceiling.", "marginBottom": "44px" },
+        {
+          "type": "numberedList",
+          "items": [
+            { "number": "01", "text": "Vagal Tone — how fast you recover" },
+            { "number": "02", "text": "HPA-Axis — resting cortisol baseline" },
+            { "number": "03", "text": "Amygdala — threat threshold" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "type": "statement",
+      "counter": "04 / 08",
+      "elements": [
+        { "type": "slideCounter", "text": "04 / 08" },
+        { "type": "spacer" },
+        { "type": "eyebrow", "text": "Same Effort", "marginBottom": "36px" },
+        { "type": "headline", "style": "hl", "text": "Two people.\nSame work.\nDifferent ceiling." },
+        { "type": "gap", "size": "g16" },
+        { "type": "body", "muted": true, "text": "One drains in an hour. One sustains all day. The difference isn't effort." },
+        { "type": "spacer" }
+      ]
+    },
+    {
+      "id": 5,
+      "type": "numberedList",
+      "counter": "05 / 08",
+      "elements": [
+        { "type": "slideCounter", "text": "05 / 08" },
+        { "type": "decoration", "name": "bgWord", "text": "signs" },
+        { "type": "eyebrow", "text": "Recognisable Signs", "marginBottom": "36px" },
+        { "type": "headline", "style": "hm", "text": "Not personality.\nOutputs.", "marginBottom": "44px" },
+        {
+          "type": "numberedList",
+          "items": [
+            { "number": "01", "text": "Thinking fragments under load" },
+            { "number": "02", "text": "Emotions arrive before conscious choice" },
+            { "number": "03", "text": "Output quality collapses as the day progresses" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "type": "quote",
+      "counter": "06 / 08",
+      "elements": [
+        { "type": "slideCounter", "text": "06 / 08" },
+        { "type": "spacer" },
+        { "type": "quoteMark" },
+        { "type": "gap", "size": "g16" },
+        { "type": "quoteText", "text": "It's not how hard\nyou work. It's the size\nof the container." },
+        { "type": "spacer" }
+      ]
+    },
+    {
+      "id": 7,
+      "type": "statement",
+      "counter": "07 / 08",
+      "elements": [
+        { "type": "slideCounter", "text": "07 / 08" },
+        { "type": "spacer" },
+        { "type": "eyebrow", "text": "The Critical Distinction", "marginBottom": "36px" },
+        { "type": "headline", "style": "hl", "text": "Regulation restores.\nCapacity raises\nthe ceiling." },
+        { "type": "gap", "size": "g16" },
+        { "type": "body", "muted": true, "text": "If regulation is the only tool, the ceiling never moves." },
+        { "type": "spacer" }
+      ]
+    },
+    {
+      "id": 8,
+      "type": "closing",
+      "elements": [
+        { "type": "decoration", "name": "cornerBracket" },
+        { "type": "spacer" },
+        { "type": "headline", "style": "hl", "text": "Change the container.\nEverything inside\nfollows." },
+        { "type": "spacer" },
+        { "type": "rule" },
+        { "type": "gap", "size": "g20" },
+        { "type": "brand", "text": "Encoded.Ai", "position": "bottom" }
+      ]
+    }
+  ]
+}
