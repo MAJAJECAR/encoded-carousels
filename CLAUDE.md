@@ -227,9 +227,70 @@ Instagram does not support clickable links in carousel posts.
 Standard approach: "Link in bio" on CTA slide + keep `encoded.ai` in bio at all times.
 Always include `encoded.ai` link in every caption when scheduling in Buffer.
 
+### CTA Repetition Rule
+`encoded.ai` appears MAX ONCE per CTA slide — either as the URL element OR as @handle, never both at full size.
+Brand mark (`Encoded.Ai`) is optional on CTA slide — omit if URL already carries the brand.
+Approved CTA variations are in `cta-variations.html` (slides A–H). Choose one per carousel.
+
 ---
 
-This is the second layer of the design system, added on top of the existing typography and layout system.
+## Visual Inspo — Approved Slide Patterns
+
+These patterns were approved from reference images shared May 2026.
+Use them for data-led or visually rich slides within carousels.
+All adapted to Encoded design tokens — never copy the inspo layouts verbatim.
+
+### Pattern 1 — Big Number Hero
+Full-slide stat. Number dominates. Decorative ring behind it (optional).
+- Number: Switzer 800, 200–280px, `--t1`
+- Rule below number
+- Label: Manrope 300, uppercase, `--t4`
+- Optional: large ghost ring SVG centered behind content (`stroke: rgba(255,255,255,0.06)`)
+- Reference: `Big_Number.png` inspo (72.5% with ring)
+- Use when: one number tells the whole story
+
+### Pattern 2 — Split Stat
+Text/quote left, large number or visual right. Divided by a vertical rule.
+- Left: eyebrow + headline or quote + attribution
+- Right: big number (Switzer 700, 100–140px) + label below
+- Vertical rule: `1px solid rgba(255,255,255,0.08)`, full height
+- Reference: inspo slide with "1,000+ Five-star reviews"
+- Use when: proof point needs context
+
+### Pattern 3 — 3-Column Stat Grid
+Three equal columns, each with a number + label + body line.
+- Numbers: Switzer 700, 60–80px, `--t1`
+- Labels: Manrope 300, uppercase, `--t4`
+- Body: Manrope 300, 20px, `--t3`
+- Thin top rule above each column
+- Reference: inspo slide with 66% / 50% / 25% circles (use without circles — numbers only)
+- Use when: three parallel data points need comparison
+
+### Pattern 4 — Concentric Circles (Scale)
+Text left, nested circles right showing scale/hierarchy.
+- Circles: SVG, filled with `--s2`, `--s3`, `--s4` (darkest = smallest/inner)
+- Labels float outside each ring, right-aligned
+- Left: eyebrow + headline + body
+- Reference: inspo slide with $1.5B / $10.5B / $105B
+- Use when: showing nested scale — capacity levels, depth of encoding, system layers
+
+### Pattern 5 — Traction / Image + Stat Grid
+Three columns each with a dark image background + large number overlay + caption.
+- Images: dark, desaturated, `object-fit:cover`
+- Number: Switzer 700, 120px, white, overlaid on image
+- Caption: Manrope 300, centered below
+- Reference: inspo slide with 12.5 / 1,000 / 5.6M
+- Use when: real member or program data becomes available
+
+### General Rules for Visual Slides
+- Real data preferred. Use conceptual numbers only when grounded in Encoded methodology.
+- Never invent statistics — use process numbers (35 min, 25 min, 10 min) or methodology-based concepts.
+- Icons can be added in future — placeholder with geometric shapes for now.
+- Visual slides work best when surrounded by pure-text slides. Never stack two visual slides.
+
+---
+
+## Visual Layer — Modular Elements
 The goal is visual depth WITHOUT increased cognitive load.
 
 ### Core Principle
