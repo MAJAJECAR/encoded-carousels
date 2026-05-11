@@ -10,36 +10,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500&family=Space+Mono:wght@400&display=swap" rel="stylesheet">
 <link href="https://api.fontshare.com/v2/css?f[]=switzer@400,500,600,700,800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
-<style>
-/* ── per-carousel visual styles ── */
-
-.cta-url {
-  font-family: var(--fs);
-  font-size: 52px;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  color: var(--gold);
-  line-height: 1;
-}
-.cta-action {
-  font-family: var(--fmono);
-  font-size: 13px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--t4);
-}
-
-/* Hero ring */
-.hero-ring {
-  position: absolute;
-  border-radius: 50%;
-  border: 1px solid rgba(255,255,255,0.05);
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  pointer-events: none;
-}
-</style>
 </head>
 <body>
 
@@ -72,12 +42,12 @@
   <div class="slide-n">03 / 09</div>
 
   <div class="hero-ring" style="width:820px; height:820px;"></div>
-  <div class="hero-ring" style="width:620px; height:620px; border-color:rgba(255,255,255,0.07);"></div>
+  <div class="hero-ring bright" style="width:620px; height:620px;"></div>
 
   <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-52%); text-align:left; width:720px;">
     <div class="ew" style="margin-bottom:32px;">The Protocol</div>
     <div style="font-family:var(--fs); font-size:220px; font-weight:800; letter-spacing:-0.04em; line-height:0.88; color:var(--t1);">35</div>
-    <div style="font-family:var(--fm); font-size:20px; font-weight:300; letter-spacing:0.12em; text-transform:uppercase; color:var(--t4); margin-top:8px;">minutes per day</div>
+    <div class="hero-label">minutes per day</div>
     <div class="rule" style="margin:32px 0 24px;"></div>
     <p style="font-family:var(--fm); font-size:24px; font-weight:300; color:var(--t3); line-height:1.5; margin:0;">
       Split across two windows — morning and evening — when the subconscious is most open to new encoding.
@@ -91,18 +61,18 @@
 
   <div class="ew" style="margin-bottom:40px;">Morning Window</div>
 
-  <div style="display:flex; align-items:center; flex:1; gap:0;">
+  <div class="split-wrap">
 
     <div style="flex:1; display:flex; flex-direction:column; gap:20px;">
-      <div style="font-family:var(--fs); font-size:180px; font-weight:800; letter-spacing:-0.04em; line-height:0.88; color:var(--t1);">25</div>
-      <div style="font-family:var(--fm); font-size:16px; font-weight:300; letter-spacing:0.12em; text-transform:uppercase; color:var(--t4);">minutes</div>
+      <div class="split-num" style="font-size:180px;">25</div>
+      <div class="hero-label">minutes</div>
     </div>
 
-    <div style="width:1px; background:rgba(255,255,255,0.08); align-self:stretch; margin:0 56px;"></div>
+    <div class="split-rule"></div>
 
     <div style="flex:1; display:flex; flex-direction:column; gap:24px; justify-content:center;">
-      <div style="font-family:var(--fmono); font-size:13px; letter-spacing:0.14em; text-transform:uppercase; color:var(--gold);">Why morning</div>
-      <p style="font-family:var(--fm); font-size:24px; font-weight:300; color:var(--t2); line-height:1.55; margin:0;">
+      <div class="split-label gold">Why morning</div>
+      <p class="split-body">
         The brain transitions from sleep to waking in a theta-alpha state — naturally receptive to new encoding. The window closes within the first 20 minutes of full alertness.
       </p>
     </div>
@@ -117,18 +87,18 @@
 
   <div class="ew" style="margin-bottom:40px;">Evening Window</div>
 
-  <div style="display:flex; align-items:center; flex:1; gap:0;">
+  <div class="split-wrap">
 
     <div style="flex:1; display:flex; flex-direction:column; gap:20px;">
-      <div style="font-family:var(--fs); font-size:180px; font-weight:800; letter-spacing:-0.04em; line-height:0.88; color:var(--t1);">10</div>
-      <div style="font-family:var(--fm); font-size:16px; font-weight:300; letter-spacing:0.12em; text-transform:uppercase; color:var(--t4);">minutes</div>
+      <div class="split-num" style="font-size:180px;">10</div>
+      <div class="hero-label">minutes</div>
     </div>
 
-    <div style="width:1px; background:rgba(255,255,255,0.08); align-self:stretch; margin:0 56px;"></div>
+    <div class="split-rule"></div>
 
     <div style="flex:1; display:flex; flex-direction:column; gap:24px; justify-content:center;">
-      <div style="font-family:var(--fmono); font-size:13px; letter-spacing:0.14em; text-transform:uppercase; color:var(--t4);">Why evening</div>
-      <p style="font-family:var(--fm); font-size:24px; font-weight:300; color:var(--t2); line-height:1.55; margin:0;">
+      <div class="split-label">Why evening</div>
+      <p class="split-body">
         As the brain descends back toward sleep, a second receptive window opens. Evening encoding reinforces what was set in the morning — compounding the signal.
       </p>
     </div>
@@ -143,26 +113,26 @@
 
   <div class="ew" style="margin-bottom:40px;">What Compounds</div>
 
-  <div style="display:flex; gap:0; flex:1; align-items:flex-start;">
+  <div class="col-grid">
 
-    <div style="flex:1; display:flex; flex-direction:column; gap:20px; padding-right:40px; border-right:1px solid rgba(255,255,255,0.08);">
-      <div style="font-family:var(--fs); font-size:64px; font-weight:700; letter-spacing:-0.03em; line-height:1; color:var(--t1);">Week 1</div>
+    <div class="col-item">
+      <div class="col-num" style="font-size:64px;">Week 1</div>
       <div class="rule"></div>
-      <div style="font-family:var(--fm); font-size:13px; font-weight:400; letter-spacing:0.14em; text-transform:uppercase; color:var(--gold);">Receptivity</div>
+      <div class="col-label gold">Receptivity</div>
       <p style="font-family:var(--fm); font-size:20px; font-weight:300; color:var(--t3); line-height:1.5; margin:0;">The nervous system begins recognizing the encoding state. Access deepens.</p>
     </div>
 
-    <div style="flex:1; display:flex; flex-direction:column; gap:20px; padding:0 40px; border-right:1px solid rgba(255,255,255,0.08);">
-      <div style="font-family:var(--fs); font-size:64px; font-weight:700; letter-spacing:-0.03em; line-height:1; color:var(--t1);">Week 3</div>
+    <div class="col-item">
+      <div class="col-num" style="font-size:64px;">Week 3</div>
       <div class="rule"></div>
-      <div style="font-family:var(--fm); font-size:13px; font-weight:400; letter-spacing:0.14em; text-transform:uppercase; color:var(--t4);">Responses</div>
+      <div class="col-label">Responses</div>
       <p style="font-family:var(--fm); font-size:20px; font-weight:300; color:var(--t3); line-height:1.5; margin:0;">Automatic responses begin shifting. Old patterns fire with less charge.</p>
     </div>
 
-    <div style="flex:1; display:flex; flex-direction:column; gap:20px; padding-left:40px;">
-      <div style="font-family:var(--fs); font-size:64px; font-weight:700; letter-spacing:-0.03em; line-height:1; color:var(--t1);">Week 6+</div>
+    <div class="col-item">
+      <div class="col-num" style="font-size:64px;">Week 6+</div>
       <div class="rule"></div>
-      <div style="font-family:var(--fm); font-size:13px; font-weight:400; letter-spacing:0.14em; text-transform:uppercase; color:var(--t4);">Momentum</div>
+      <div class="col-label">Momentum</div>
       <p style="font-family:var(--fm); font-size:20px; font-weight:300; color:var(--t3); line-height:1.5; margin:0;">New beliefs begin operating automatically. Compound momentum builds across all areas.</p>
     </div>
 

@@ -417,3 +417,294 @@ html, body {
   margin: 8px 0;
   flex-shrink: 0;
 }
+
+/* ── CTA SLIDE ─────────────────────────────────────────────────────────────── */
+/* Used on the final CTA slide of every carousel */
+
+.cta-url {
+  font-family: var(--fs);
+  font-size: 52px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--gold);
+  line-height: 1;
+}
+
+.cta-action {
+  font-family: var(--fmono);
+  font-size: 13px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--t4);
+}
+
+.cta-follow {
+  font-family: var(--fm);
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--t3);
+  letter-spacing: 0.04em;
+}
+
+/* ── VISUAL SLIDES — BIG NUMBER HERO ───────────────────────────────────────── */
+/* Full-slide stat. Large number dominates. Optional decorative ring behind. */
+
+.hero-num {
+  font-family: var(--fs);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 0.88;
+  color: var(--t1);
+}
+
+.hero-label {
+  font-family: var(--fm);
+  font-size: 20px;
+  font-weight: 300;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--t4);
+  margin-top: 8px;
+}
+
+/* Decorative ring — sits behind hero number, position:absolute on slide */
+.hero-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.hero-ring.bright {
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.hero-ring.gold {
+  border-color: rgba(204, 176, 133, 0.06);
+}
+
+/* ── VISUAL SLIDES — SPLIT STAT ─────────────────────────────────────────────── */
+/* Text/context left, large stat right (or vice versa). Divided by vertical rule. */
+
+.split-wrap {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  gap: 0;
+}
+
+.split-left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.split-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Vertical divider between split halves */
+.split-rule {
+  width: 1px;
+  background: rgba(255, 255, 255, 0.08);
+  align-self: stretch;
+  flex-shrink: 0;
+  margin: 0 56px;
+}
+
+/* Large split number */
+.split-num {
+  font-family: var(--fs);
+  font-size: 160px;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 0.88;
+  color: var(--t1);
+}
+
+/* Small label above or below split number */
+.split-label {
+  font-family: var(--fmono);
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--t4);
+}
+
+.split-label.gold {
+  color: var(--gold);
+}
+
+/* Body text in split context */
+.split-body {
+  font-family: var(--fm);
+  font-size: 22px;
+  font-weight: 300;
+  color: var(--t2);
+  line-height: 1.55;
+}
+
+/* ── VISUAL SLIDES — 3-COLUMN STAT GRID ────────────────────────────────────── */
+/* Three equal columns with number + label + body. No cards — type only. */
+
+.col-grid {
+  display: flex;
+  gap: 0;
+  flex: 1;
+  align-items: flex-start;
+}
+
+.col-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.col-item + .col-item {
+  padding-left: 40px;
+  border-left: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* First col gets right padding to match */
+.col-item:not(:last-child) {
+  padding-right: 40px;
+}
+
+.col-num {
+  font-family: var(--fs);
+  font-size: 72px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: var(--t1);
+}
+
+.col-label {
+  font-family: var(--fm);
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--t4);
+}
+
+.col-label.gold {
+  color: var(--gold);
+}
+
+.col-body {
+  font-family: var(--fm);
+  font-size: 22px;
+  font-weight: 300;
+  color: var(--t3);
+  line-height: 1.5;
+}
+
+/* ── VISUAL SLIDES — CONCENTRIC CIRCLES ────────────────────────────────────── */
+/* Nested circles showing scale or depth. Labels outside or inside each ring. */
+
+.cc-wrap {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.cc-circle {
+  position: absolute;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.cc-label {
+  font-family: var(--fm);
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--t4);
+}
+
+.cc-label.gold {
+  color: var(--gold);
+}
+
+/* ── VISUAL SLIDES — STEP PILL ──────────────────────────────────────────────── */
+/* Small gold dot + label used on process/step slides */
+
+.step-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.step-pill-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--gold);
+  flex-shrink: 0;
+}
+
+.step-pill-text {
+  font-family: var(--fmono);
+  font-size: 13px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+/* ── VISUAL SLIDES — CIRCULAR LOOP DIAGRAM ──────────────────────────────────── */
+/* Approved exception to left-align rule. Center on canvas via absolute positioning. */
+/* Usage: position:absolute; top:42%; left:50%; transform:translate(-50%,-50%) */
+
+.loop-wrap {
+  position: relative;
+  width: 600px;
+  height: 600px;
+  flex-shrink: 0;
+}
+
+.loop-wrap svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.loop-node {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.loop-node-label {
+  font-family: var(--fmono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.loop-node-text {
+  font-family: var(--fs);
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--t1);
+  line-height: 1.1;
+}

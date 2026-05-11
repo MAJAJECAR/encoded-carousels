@@ -10,46 +10,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500&family=Space+Mono:wght@400&display=swap" rel="stylesheet">
 <link href="https://api.fontshare.com/v2/css?f[]=switzer@400,500,600,700,800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
-<style>
-/* ── per-carousel visual styles ── */
-
-/* Big number hero ring */
-.hero-ring {
-  position: absolute;
-  border-radius: 50%;
-  border: 1px solid rgba(255,255,255,0.05);
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  pointer-events: none;
-}
-
-/* Split stat vertical rule */
-.split-rule {
-  width: 1px;
-  background: rgba(255,255,255,0.08);
-  align-self: stretch;
-  flex-shrink: 0;
-  margin: 0 56px;
-}
-
-/* CTA styles */
-.cta-url {
-  font-family: var(--fs);
-  font-size: 52px;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  color: var(--gold);
-  line-height: 1;
-}
-.cta-action {
-  font-family: var(--fmono);
-  font-size: 13px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--t4);
-}
-</style>
 </head>
 <body>
 
@@ -94,7 +54,7 @@
 
   <!-- decorative ring -->
   <div class="hero-ring" style="width:780px; height:780px;"></div>
-  <div class="hero-ring" style="width:580px; height:580px; border-color:rgba(255,255,255,0.08);"></div>
+  <div class="hero-ring bright" style="width:580px; height:580px;"></div>
 
   <!-- content centered -->
   <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-52%); text-align:left; width:700px;">
@@ -124,30 +84,30 @@
 
   <div class="ew" style="margin-bottom:40px;">Three Conditions</div>
 
-  <div style="display:flex; gap:0; flex:1; align-items:flex-start;">
+  <div class="col-grid">
 
     <!-- col 1 -->
-    <div style="flex:1; display:flex; flex-direction:column; gap:20px; padding-right:40px; border-right:1px solid rgba(255,255,255,0.08);">
-      <div style="font-family:var(--fs); font-size:72px; font-weight:700; letter-spacing:-0.03em; line-height:1; color:var(--t1);">01</div>
+    <div class="col-item">
+      <div class="col-num">01</div>
       <div class="rule"></div>
-      <div style="font-family:var(--fm); font-size:13px; font-weight:400; letter-spacing:0.14em; text-transform:uppercase; color:var(--gold);">Experience</div>
-      <p style="font-family:var(--fm); font-size:22px; font-weight:300; color:var(--t3); line-height:1.5; margin:0;">Something happens that the nervous system registers as significant.</p>
+      <div class="col-label gold">Experience</div>
+      <p class="col-body">Something happens that the nervous system registers as significant.</p>
     </div>
 
     <!-- col 2 -->
-    <div style="flex:1; display:flex; flex-direction:column; gap:20px; padding:0 40px; border-right:1px solid rgba(255,255,255,0.08);">
-      <div style="font-family:var(--fs); font-size:72px; font-weight:700; letter-spacing:-0.03em; line-height:1; color:var(--t1);">02</div>
+    <div class="col-item">
+      <div class="col-num">02</div>
       <div class="rule"></div>
-      <div style="font-family:var(--fm); font-size:13px; font-weight:400; letter-spacing:0.14em; text-transform:uppercase; color:var(--t4);">Emotion</div>
-      <p style="font-family:var(--fm); font-size:22px; font-weight:300; color:var(--t3); line-height:1.5; margin:0;">Emotional charge amplifies the signal. The stronger the feeling, the deeper the groove.</p>
+      <div class="col-label">Emotion</div>
+      <p class="col-body">Emotional charge amplifies the signal. The stronger the feeling, the deeper the groove.</p>
     </div>
 
     <!-- col 3 -->
-    <div style="flex:1; display:flex; flex-direction:column; gap:20px; padding-left:40px;">
-      <div style="font-family:var(--fs); font-size:72px; font-weight:700; letter-spacing:-0.03em; line-height:1; color:var(--t1);">03</div>
+    <div class="col-item">
+      <div class="col-num">03</div>
       <div class="rule"></div>
-      <div style="font-family:var(--fm); font-size:13px; font-weight:400; letter-spacing:0.14em; text-transform:uppercase; color:var(--t4);">Repetition</div>
-      <p style="font-family:var(--fm); font-size:22px; font-weight:300; color:var(--t3); line-height:1.5; margin:0;">Repeated activation cements the pattern into automatic response.</p>
+      <div class="col-label">Repetition</div>
+      <p class="col-body">Repeated activation cements the pattern into automatic response.</p>
     </div>
 
   </div>

@@ -51,6 +51,11 @@ const CAROUSELS = [
 { name: 'v14-imprinting',  file: 'carousel-v14-imprinting.html', slides: 9 },
 { name: 'v15-effort',      file: 'carousel-v15-effort.html',     slides: 9 },
 { name: 'v16-protocol',    file: 'carousel-v16-protocol.html',   slides: 9 },
+{ name: 'v17-stack',             file: 'carousel-v17-stack.html',             slides: 9 },
+{ name: 'v18-therapy',           file: 'carousel-v18-therapy.html',           slides: 9 },
+{ name: 'v19-frequency',         file: 'carousel-v19-frequency.html',         slides: 9 },
+{ name: 'v20-hardware',          file: 'carousel-v20-hardware.html',          slides: 9 },
+{ name: 'v21-identity-ceiling',  file: 'carousel-v21-identity-ceiling.html',  slides: 9 },
   // ── ADD NEW CAROUSELS HERE ──
   // {
   //   name:   'v4-your-topic',
