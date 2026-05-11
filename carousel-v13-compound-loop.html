@@ -11,111 +11,115 @@
 <link href="https://api.fontshare.com/v2/css?f[]=switzer@400,500,600,700,800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 <style>
-  /* ── CIRCULAR LOOP DIAGRAM — per-carousel ── */
-  .loop-wrap {
-    position: relative;
-    width: 560px;
-    height: 560px;
-    flex-shrink: 0;
-    align-self: center;
-  }
+/* ── CIRCULAR LOOP DIAGRAM — per-carousel ── */
 
-  /* SVG takes full space */
-  .loop-wrap svg {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-  }
+.loop-wrap {
+  position: relative;
+  width: 600px;
+  height: 600px;
+  flex-shrink: 0;
+  align-self: flex-start;
+  margin-top: 8px;
+}
 
-  /* Node labels positioned absolutely around the circle */
-  .loop-node {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
-  .loop-node-label {
-    font-family: var(--fmono);
-    font-size: 12px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--gold);
-  }
-  .loop-node-text {
-    font-family: var(--fs);
-    font-size: 30px;
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    color: var(--t1);
-    line-height: 1.05;
-  }
-  .loop-node-sub {
-    font-family: var(--fm);
-    font-size: 18px;
-    font-weight: 300;
-    color: var(--t4);
-    line-height: 1.4;
-    max-width: 180px;
-  }
+.loop-wrap svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
 
-  /* Top node */
-  .loop-node.top {
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    text-align: center;
-    align-items: center;
-  }
-  /* Right node */
-  .loop-node.right {
-    top: 50%;
-    right: 0;
-    transform: translateY(-50%);
-    text-align: left;
-    align-items: flex-start;
-    padding-left: 16px;
-  }
-  /* Bottom node */
-  .loop-node.bottom {
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    text-align: center;
-    align-items: center;
-  }
-  /* Left node */
-  .loop-node.left {
-    top: 50%;
-    left: 0;
-    transform: translateY(-50%);
-    text-align: right;
-    align-items: flex-end;
-    padding-right: 16px;
-  }
+/* Node labels — all positioned relative to the 600×600 wrap */
+.loop-node {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
 
-  /* Step highlight pill used on step slides */
-  .step-pill {
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 36px;
-    flex-shrink: 0;
-  }
-  .step-pill-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--gold);
-    flex-shrink: 0;
-  }
-  .step-pill-text {
-    font-family: var(--fmono);
-    font-size: 13px;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--gold);
-  }
+.loop-node-label {
+  font-family: var(--fmono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.loop-node-text {
+  font-family: var(--fs);
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--t1);
+  line-height: 1.1;
+}
+
+/*
+  Circle r=160, centered at 300,300.
+  Node dots at: top(300,140) right(460,300) bottom(300,460) left(140,300)
+  Labels clear the dot by ~40px on each side.
+*/
+
+/* TOP — label sits above dot, centered */
+.loop-node.top {
+  bottom: calc(600px - 140px + 16px); /* from bottom so text grows upward */
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  align-items: center;
+}
+
+/* RIGHT — label sits to the right of dot */
+.loop-node.right {
+  top: 50%;
+  left: calc(460px + 24px);
+  transform: translateY(-50%);
+  text-align: left;
+  align-items: flex-start;
+}
+
+/* BOTTOM — label sits below dot, centered */
+.loop-node.bottom {
+  top: calc(460px + 16px);
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  align-items: center;
+}
+
+/* LEFT — label sits to the left of dot, right-aligned */
+.loop-node.left {
+  top: 50%;
+  right: calc(600px - 140px + 24px);
+  transform: translateY(-50%);
+  text-align: right;
+  align-items: flex-end;
+}
+
+/* Step highlight pill */
+.step-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 36px;
+  flex-shrink: 0;
+}
+
+.step-pill-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--gold);
+  flex-shrink: 0;
+}
+
+.step-pill-text {
+  font-family: var(--fmono);
+  font-size: 13px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
 </style>
 </head>
 <body>
@@ -189,67 +193,79 @@
 <!-- S6 — FULL LOOP DIAGRAM -->
 <div class="slide" id="slide-6">
   <div class="slide-n">06 / 07</div>
-  <div class="ew" style="margin-bottom:40px;">The Full Loop</div>
 
-  <div class="loop-wrap">
-    <!-- SVG circle + arrows -->
-    <svg viewBox="0 0 560 560" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <!-- Circle track -->
-      <circle cx="280" cy="280" r="190" stroke="rgba(255,255,255,0.10)" stroke-width="1"/>
+  <div class="ew" style="margin-bottom: 32px;">The Full Loop</div>
 
-      <!-- Arc arrows — clockwise, one per quadrant -->
-      <!-- Top-right arc → pointing right-downward -->
-      <path d="M 280 90 A 190 190 0 0 1 470 280"
-            stroke="rgba(255,255,255,0.22)" stroke-width="1" fill="none"
-            marker-end="url(#arr)"/>
-      <!-- Right-bottom arc → pointing left-downward -->
-      <path d="M 470 280 A 190 190 0 0 1 280 470"
-            stroke="rgba(255,255,255,0.22)" stroke-width="1" fill="none"
-            marker-end="url(#arr)"/>
-      <!-- Bottom-left arc → pointing left-upward -->
-      <path d="M 280 470 A 190 190 0 0 1 90 280"
-            stroke="rgba(255,255,255,0.22)" stroke-width="1" fill="none"
-            marker-end="url(#arr)"/>
-      <!-- Left-top arc → pointing right-upward -->
-      <path d="M 90 280 A 190 190 0 0 1 280 90"
-            stroke="rgba(255,255,255,0.22)" stroke-width="1" fill="none"
-            marker-end="url(#arr)"/>
+  <!-- diagram + caption stacked, both left-aligned -->
+  <div style="display:flex; flex-direction:column; gap:0; flex:1;">
 
-      <!-- Node dots on the circle -->
-      <circle cx="280" cy="90"  r="6" fill="#CCB085"/>
-      <circle cx="470" cy="280" r="5" fill="#C4C4C4"/>
-      <circle cx="280" cy="470" r="5" fill="#C4C4C4"/>
-      <circle cx="90"  cy="280" r="5" fill="#C4C4C4"/>
+    <div class="loop-wrap">
+      <svg viewBox="0 0 600 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <marker id="arr" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+            <path d="M0,0 L6,3 L0,6 Z" fill="rgba(255,255,255,0.35)"/>
+          </marker>
+        </defs>
 
-      <!-- Arrowhead marker -->
-      <defs>
-        <marker id="arr" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
-          <path d="M0,0 L6,3 L0,6 Z" fill="rgba(255,255,255,0.4)"/>
-        </marker>
-      </defs>
-    </svg>
+        <!-- Circle track, r=160, centered 300,300 -->
+        <circle cx="300" cy="300" r="160" stroke="rgba(255,255,255,0.10)" stroke-width="1"/>
 
-    <!-- Node labels -->
-    <div class="loop-node top">
-      <div class="loop-node-label">Fires</div>
-      <div class="loop-node-text">The belief<br>activates</div>
+        <!-- Clockwise arc arrows, stopping short of each dot so arrow tip lands clean -->
+        <!-- Top → Right -->
+        <path d="M 314 141 A 160 160 0 0 1 459 314"
+              stroke="rgba(255,255,255,0.22)" stroke-width="1" fill="none"
+              marker-end="url(#arr)"/>
+        <!-- Right → Bottom -->
+        <path d="M 459 286 A 160 160 0 0 1 314 459"
+              stroke="rgba(255,255,255,0.22)" stroke-width="1" fill="none"
+              marker-end="url(#arr)"/>
+        <!-- Bottom → Left -->
+        <path d="M 286 459 A 160 160 0 0 1 141 286"
+              stroke="rgba(255,255,255,0.22)" stroke-width="1" fill="none"
+              marker-end="url(#arr)"/>
+        <!-- Left → Top -->
+        <path d="M 141 314 A 160 160 0 0 1 286 141"
+              stroke="rgba(255,255,255,0.22)" stroke-width="1" fill="none"
+              marker-end="url(#arr)"/>
+
+        <!-- Node dots -->
+        <circle cx="300" cy="140" r="5" fill="#CCB085"/>
+        <circle cx="460" cy="300" r="4" fill="#C4C4C4"/>
+        <circle cx="300" cy="460" r="4" fill="#C4C4C4"/>
+        <circle cx="140" cy="300" r="4" fill="#C4C4C4"/>
+      </svg>
+
+      <!-- TOP node — below the top dot, text grows downward into the circle center area (above circle center) -->
+      <!-- Actually placed ABOVE the dot via bottom positioning -->
+      <div class="loop-node top">
+        <div class="loop-node-label">Fires</div>
+        <div class="loop-node-text">The belief<br>activates</div>
+      </div>
+
+      <!-- RIGHT node -->
+      <div class="loop-node right">
+        <div class="loop-node-label">Filters</div>
+        <div class="loop-node-text">Evidence<br>is kept</div>
+      </div>
+
+      <!-- BOTTOM node -->
+      <div class="loop-node bottom">
+        <div class="loop-node-label">Encodes</div>
+        <div class="loop-node-text">Pathway<br>deepens</div>
+      </div>
+
+      <!-- LEFT node -->
+      <div class="loop-node left">
+        <div class="loop-node-label">Repeats</div>
+        <div class="loop-node-text">Faster.<br>Stronger.</div>
+      </div>
     </div>
-    <div class="loop-node right">
-      <div class="loop-node-label">Filters</div>
-      <div class="loop-node-text">Evidence<br>is kept</div>
+
+    <div style="padding-top: 32px; max-width: 560px;">
+      <p class="body muted">Belief-based programs do not resolve with more experience or more success. They intensify.</p>
     </div>
-    <div class="loop-node bottom">
-      <div class="loop-node-label">Encodes</div>
-      <div class="loop-node-text">Pathway<br>deepens</div>
-    </div>
-    <div class="loop-node left">
-      <div class="loop-node-label">Repeats</div>
-      <div class="loop-node-text">Faster.<br>Stronger.</div>
-    </div>
+
   </div>
-
-  <div class="g20"></div>
-  <p class="body muted" style="max-width:640px;">Belief-based programs do not resolve with more experience or more success. They intensify.</p>
 </div>
 
 <!-- S7 — CLOSING -->
