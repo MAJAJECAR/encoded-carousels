@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080">
+<title>Encoded — What Is Imprinting</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://api.fontshare.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500&family=Space+Mono:wght@400&display=swap" rel="stylesheet">
+<link href="https://api.fontshare.com/v2/css?f[]=switzer@400,500,600,700,800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  /* ── VISUAL LAYER — per-carousel, not in styles.css yet ── */
+
+  /* Flow node row */
+  .flow-row {
+    display: flex;
+    align-items: center;
+    gap: 0;
+  }
+
+  /* Individual node */
+  .flow-node {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .flow-node-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--t3);
+    flex-shrink: 0;
+  }
+  .flow-node-dot.active {
+    background: var(--gold);
+    box-shadow: 0 0 0 3px rgba(204,176,133,0.15);
+  }
+  .flow-node-label {
+    font-family: var(--fmono);
+    font-size: 13px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--t4);
+  }
+  .flow-node-text {
+    font-family: var(--fs);
+    font-size: 38px;
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.015em;
+    color: var(--t1);
+  }
+
+  /* Connector line between nodes */
+  .flow-connector {
+    flex: 1;
+    height: 1px;
+    background: var(--b-def);
+    margin-top: -52px; /* align with dot row */
+    flex-shrink: 0;
+  }
+
+  /* Vertical flow (stacked steps) */
+  .vflow {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 0;
+  }
+  .vflow-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 0;
+  }
+  .vflow-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+    width: 36px;
+    padding-top: 4px;
+  }
+  .vflow-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--t3);
+    flex-shrink: 0;
+  }
+  .vflow-dot.active { background: var(--gold); }
+  .vflow-line {
+    width: 1px;
+    flex: 1;
+    background: var(--b-def);
+    margin-top: 6px;
+  }
+  .vflow-content {
+    padding-left: 24px;
+    padding-bottom: 44px;
+    flex: 1;
+  }
+  .vflow-label {
+    font-family: var(--fmono);
+    font-size: 13px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--t4);
+    margin-bottom: 10px;
+  }
+  .vflow-title {
+    font-family: var(--fs);
+    font-size: 46px;
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--t1);
+  }
+  .vflow-sub {
+    font-family: var(--fm);
+    font-size: 22px;
+    font-weight: 300;
+    line-height: 1.5;
+    color: var(--t4);
+    margin-top: 8px;
+  }
+
+  /* List items for slide 6 */
+  .imp-list {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 0;
+    justify-content: center;
+    gap: 0;
+  }
+  .imp-item {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    padding: 32px 0;
+    border-bottom: 1px solid var(--b-sub);
+  }
+  .imp-item:first-child { border-top: 1px solid var(--b-sub); }
+  .imp-num {
+    font-family: var(--fmono);
+    font-size: 14px;
+    color: var(--t4);
+    letter-spacing: 0.1em;
+    flex-shrink: 0;
+    width: 28px;
+  }
+  .imp-text {
+    font-family: var(--fs);
+    font-size: 42px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: var(--t1);
+    line-height: 1.05;
+  }
+</style>
+</head>
+<body>
+
+<!-- S1 — COVER -->
+<div class="slide active" id="slide-1">
+  <div class="corner"></div>
+  <div class="brand" style="margin-bottom:auto;">Encoded.Ai</div>
+  <div class="spacer"></div>
+  <div class="ew" style="margin-bottom:36px;">The Mechanism</div>
+  <h1 class="hxl">Your brain was<br>programmed before<br>you could question it.</h1>
+  <div class="g20"></div>
+  <p class="sub">That's not a metaphor.<br>That's imprinting.</p>
+  <div class="g24"></div>
+  <div class="rule"></div>
+</div>
+
+<!-- S2 — THE RELATABLE BEFORE -->
+<div class="slide" id="slide-2">
+  <div class="slide-n">02 / 08</div>
+  <div class="spacer"></div>
+  <div class="ew" style="margin-bottom:36px;">Sound Familiar</div>
+  <h2 class="hl">You've done the work.<br>Read the books.<br>Tried the therapy.</h2>
+  <div class="g16"></div>
+  <p class="body muted">And something still runs underneath. A pattern you can see but can't seem to reach.</p>
+  <div class="spacer"></div>
+</div>
+
+<!-- S3 — WHAT IMPRINTING IS -->
+<div class="slide" id="slide-3">
+  <div class="slide-n">03 / 08</div>
+  <div class="spacer"></div>
+  <div class="ew" style="margin-bottom:36px;">What It Is</div>
+  <h2 class="hl">Imprinting is how<br>the subconscious<br>writes its rules.</h2>
+  <div class="g16"></div>
+  <p class="body muted">Early experiences — charged with emotion — get encoded as facts. Not memories. Facts. The subconscious catalogues them as: this is how life works.</p>
+  <div class="spacer"></div>
+</div>
+
+<!-- S4 — THE SEQUENCE (vertical flow visual) -->
+<div class="slide" id="slide-4">
+  <div class="slide-n">04 / 08</div>
+  <div class="ew" style="margin-bottom:40px;">How It Happens</div>
+  <div class="vflow">
+    <div class="vflow-step">
+      <div class="vflow-left">
+        <div class="vflow-dot active"></div>
+        <div class="vflow-line"></div>
+      </div>
+      <div class="vflow-content">
+        <div class="vflow-label">01 — Experience</div>
+        <div class="vflow-title">Something happens</div>
+        <div class="vflow-sub">Charged with enough emotion to matter.</div>
+      </div>
+    </div>
+    <div class="vflow-step">
+      <div class="vflow-left">
+        <div class="vflow-dot"></div>
+        <div class="vflow-line"></div>
+      </div>
+      <div class="vflow-content">
+        <div class="vflow-label">02 — Interpretation</div>
+        <div class="vflow-title">A conclusion forms</div>
+        <div class="vflow-sub">The subconscious assigns meaning — fast, automatic, unchosen.</div>
+      </div>
+    </div>
+    <div class="vflow-step">
+      <div class="vflow-left">
+        <div class="vflow-dot"></div>
+      </div>
+      <div class="vflow-content" style="padding-bottom:0;">
+        <div class="vflow-label">03 — Encoding</div>
+        <div class="vflow-title">It becomes a rule</div>
+        <div class="vflow-sub">Stored below conscious awareness. Running silently ever since.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- S5 — WHY IT'S INVISIBLE -->
+<div class="slide" id="slide-5">
+  <div class="slide-n">05 / 08</div>
+  <div class="spacer"></div>
+  <div class="ew" style="margin-bottom:36px;">Why You Can't See It</div>
+  <h2 class="hl">It doesn't feel<br>like a belief.<br>It feels like the truth.</h2>
+  <div class="g16"></div>
+  <p class="body muted">That's what makes it invisible. The rule isn't tagged as a rule. It's experienced as reality — the way things simply are.</p>
+  <div class="spacer"></div>
+</div>
+
+<!-- S6 — WHAT GETS IMPRINTED (list visual) -->
+<div class="slide" id="slide-6">
+  <div class="slide-n">06 / 08</div>
+  <div class="ew" style="margin-bottom:40px;">What Gets Imprinted</div>
+  <div class="imp-list">
+    <div class="imp-item">
+      <span class="imp-num">01</span>
+      <span class="imp-text">Who you are</span>
+    </div>
+    <div class="imp-item">
+      <span class="imp-num">02</span>
+      <span class="imp-text">What you're worth</span>
+    </div>
+    <div class="imp-item">
+      <span class="imp-num">03</span>
+      <span class="imp-text">What's possible for you</span>
+    </div>
+    <div class="imp-item">
+      <span class="imp-num">04</span>
+      <span class="imp-text">Whether you're safe</span>
+    </div>
+  </div>
+</div>
+
+<!-- S7 — QUOTE -->
+<div class="slide" id="slide-7">
+  <div class="slide-n">07 / 08</div>
+  <div class="spacer"></div>
+  <div class="qmark">"</div>
+  <div class="g16"></div>
+  <p class="qtext">The program wasn't chosen.<br>But it can be rewritten.</p>
+  <div class="spacer"></div>
+</div>
+
+<!-- S8 — CLOSING -->
+<div class="slide" id="slide-8">
+  <div class="corner"></div>
+  <div class="spacer"></div>
+  <h2 class="hl">Rewrite what was<br>written before<br>you had a say.</h2>
+  <div class="spacer"></div>
+  <div class="rule"></div>
+  <div class="g20"></div>
+  <div class="brand">Encoded.Ai</div>
+</div>
+
+<script>
+  const allSlides = document.querySelectorAll('.slide');
+  window.totalSlides = allSlides.length;
+  window.goToSlide = function(n) {
+    allSlides.forEach(s => s.classList.remove('active'));
+    allSlides[n].classList.add('active');
+  };
+</script>
+</body>
+</html>

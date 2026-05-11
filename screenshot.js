@@ -46,6 +46,7 @@ const CAROUSELS = [
 { name: 'v9b-four-signals',        file: 'carousel-v9b-four-signals.html',        slides: 6 },
 { name: 'v10-foundation',          file: 'carousel-v10-foundation.html',          slides: 7 },
 { name: 'v10b-what-changes',       file: 'carousel-v10b-what-changes.html',       slides: 5 },
+{ name: 'v12-imprinting', file: 'carousel-v12-imprinting.html', slides: 8 },
   // ── ADD NEW CAROUSELS HERE ──
   // {
   //   name:   'v4-your-topic',
