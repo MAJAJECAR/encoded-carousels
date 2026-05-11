@@ -48,6 +48,9 @@ const CAROUSELS = [
 { name: 'v10b-what-changes',       file: 'carousel-v10b-what-changes.html',       slides: 5 },
 { name: 'cta-variations', file: 'cta-variations.html', slides: 8 },
 { name: 'v13-compound-loop', file: 'carousel-v13-compound-loop.html', slides: 7 },
+{ name: 'v14-imprinting',  file: 'carousel-v14-imprinting.html', slides: 9 },
+{ name: 'v15-effort',      file: 'carousel-v15-effort.html',     slides: 9 },
+{ name: 'v16-protocol',    file: 'carousel-v16-protocol.html',   slides: 9 },
   // ── ADD NEW CAROUSELS HERE ──
   // {
   //   name:   'v4-your-topic',
