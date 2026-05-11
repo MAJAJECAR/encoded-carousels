@@ -83,11 +83,6 @@ All tokens live in `styles.css`. Do not change without being asked.
 --fmono: 'Space Mono', monospace;   /* numbers, labels, counters */
 ```
 
-### Brand Color System
-
-The carousel palette uses warm editorial tones. The web app brand file (`color.md`)
-is available but carousel colors stay as above unless explicitly asked to match the web app.
-
 ---
 
 ## Design System — Font Import Block
@@ -165,6 +160,68 @@ Manrope and Space Mono are from Google Fonts.
 
 ---
 
+## Visual Layer — Modular Elements
+
+This is the second layer of the design system, added on top of the existing typography and layout system.
+The goal is visual depth WITHOUT increased cognitive load.
+
+### Core Principle
+Do NOT make slides more complex. Distribute complexity across more slides.
+**More slides with less = better than fewer slides with more.**
+
+### When to Use Visual Elements
+
+Actively evaluate for every concept: *"Would this idea benefit from a visual structure?"*
+
+| Element | Use when |
+|---------|----------|
+| **Flow nodes** | Cause → effect → outcome / trigger → belief → behavior |
+| **Timeline** | Progression over time / before → during → after |
+| **List structure** | Multiple outcomes or symptoms (max 3–5 items per slide) |
+| **Minimal diagram** | Relationships between elements |
+
+If YES → implement using rules below.
+If NO → keep it pure text.
+
+### Progressive Reveal Rule
+Treat the carousel like a story. Each slide reveals one part of the system.
+Never place a full chart on one slide if it becomes visually heavy.
+
+Instead of one full flowchart → break into steps:
+- Slide A: Step 1
+- Slide B: Step 2
+- Slide C: Step 3
+- Slide D: Complete system overview (optional recap)
+
+### Visual Element Design Rules
+- All layouts stay consistent with existing design system
+- Left-aligned always
+- Use lines, nodes, dots, and minimal shapes — not complex diagrams
+- Visual elements feel **embedded**, not added on top
+- Connector lines: `1px solid var(--b-def)` or `rgba(255,255,255,0.14)`
+- Node dots: small circles, `background: var(--t3)` or `var(--gold)` for emphasis
+- Every slide must be instantly understandable in under 1 second
+
+### CSS Implementation Rule
+Visual element styles go in a **per-carousel `<style>` block**, NOT in `styles.css`.
+Once a pattern is tested and approved across multiple carousels, graduate it into `styles.css`.
+This keeps the core system stable while we iterate.
+
+### Pre-Generation Questions
+Before building any new carousel, ask:
+1. **Goal** — awareness / explanation / conversion?
+2. **Depth** — surface / moderate / deep?
+3. **Tone** — emotional or structured?
+4. **Audience** — cold or warm?
+
+### Retention Rules
+- Every slide must encourage the next swipe
+- Avoid overwhelming the viewer
+- Reduce friction to understanding
+- Do not optimize for "smartness" — optimize for understanding and swipe-through rate
+
+---
+
 ## Design Rules — Non-Negotiable
 
 **No boxes or card designs.** Remove all `.card` layouts. Type does the visual work.
@@ -197,13 +254,15 @@ Counter format: `02 / 08` (zero-padded, space around slash).
 **Instagram carousel max: 20 slides.** Prefer 6–10. Keep it light.
 When content is dense, split into multiple shorter carousels rather than one long one.
 
+**Never delete or change content unless explicitly asked.** If a slide has text, keep it exactly as-is. Only change what is specifically requested. Do not rewrite, trim, or reorder slides on your own judgment.
+
 ---
 
 ## HTML File Conventions
 
 Every carousel HTML file must:
 1. Use the font import block above
-2. Link to `styles.css` — never embed CSS inline
+2. Link to `styles.css` — never embed CSS inline (exception: experience carousels with avatar/stat overrides may use a small `<style>` block for those specific components only)
 3. Set `html, body` to `width:1080px; height:1080px; overflow:hidden`
 4. Set `.slide` to `position:absolute; inset:0; width:1080px; height:1080px; padding:80px 86px`
 5. Have first slide as `class="slide active"`
@@ -256,11 +315,44 @@ Element types used in slides array:
 
 ---
 
+## Experience Carousel — Special Format (v4c template)
+
+Experience carousels follow a distinct layout. The approved template is
+**`carousel-v4c-matt-wagner-circle2.html`**. Use this as the reference for all future
+member story carousels.
+
+### Slide 1 — Cover layout
+- `Encoded.Ai` brand mark at the **top left**
+- Avatar (circular, 300×300, `object-position: center top`, gold ring border, fade-to-dark gradient at bottom) + member info block — **vertically centered together** in the slide
+- Member info: name (Switzer 700 38px), role (Manrope 300 20px --t4), tag (Space Mono 13px uppercase --gold)
+- `rule` + `g20` + cover headline (Switzer 700 72px) at the **bottom**
+- `.corner` decoration top-right
+
+### Slides 2–N — Story slides
+- Same statement/quote/numbered layout as regular carousels
+- Eyebrow: "The Before", "Three Weeks In", "What He'd Tell You", etc.
+
+### Stat slide (slide 6 in Matt Wagner)
+- Large stat number (Switzer 800 280px)
+- Stat word label (Manrope 300 uppercase --t4)
+- Context text: **Switzer 700, white (#ffffff), right-aligned**
+- Bottom row: two stat cells divided by a rule
+
+### Closing slide
+- Standard: `.hl` + `.spacer` + `.rule` + `.g20` + `.brand`
+
+### Member photo handling
+- Photo referenced as `[member-name].jpg` in the same folder as the HTML
+- Filename convention: `matt-wagner.jpg`, `jane-smith.jpg`, etc.
+- Do not base64 embed — keep as external file reference
+
+---
+
 ## screenshot.js Usage
 
 ```bash
 node screenshot.js                  # all carousels
-node screenshot.js v1-capacity      # one carousel by name
+node screenshot.js v4c-matt-wagner-circle2   # one carousel by name
 ```
 
 **GitHub Pages URL** (line ~18 in screenshot.js):
@@ -279,6 +371,9 @@ const GITHUB_PAGES_URL = 'https://majajecar.github.io/encoded-carousels';
 | carousel-v2b-compound-loop | The Compound Loop (split) | 10 | ✅ |
 | carousel-v3-identity | Identity, Beliefs, Intentions | 7 | ✅ |
 | carousel-v3b-identity-symptoms | When Identity Is Fragmented | 7 | ✅ |
+| carousel-v4-matt-wagner | Matt Wagner (old layout) | 8 | ⚠️ old design |
+| carousel-v4b-matt-wagner-circle | Matt Wagner circle v1 | 8 | ⚠️ old design |
+| carousel-v4c-matt-wagner-circle2 | Matt Wagner circle v2 ← **current approved** | 9 | ✅ |
 | carousel-v5-compound-loop | The Compound Loop | 6 | ✅ |
 | carousel-v6-three-exits | The Three Failed Exits | 6 | ✅ |
 | carousel-v7-encoding-equation | The Encoding Equation | 7 | ✅ |
@@ -300,6 +395,9 @@ const GITHUB_PAGES_URL = 'https://majajecar.github.io/encoded-carousels';
 { name: 'v2b-compound-loop',        file: 'carousel-v2b-compound-loop.html',       slides: 10 },
 { name: 'v3-identity',              file: 'carousel-v3-identity.html',             slides: 7  },
 { name: 'v3b-identity-symptoms',    file: 'carousel-v3b-identity-symptoms.html',   slides: 7  },
+{ name: 'v4-matt-wagner',           file: 'carousel-v4-matt-wagner.html',          slides: 8  },
+{ name: 'v4b-matt-wagner-circle',   file: 'carousel-v4b-matt-wagner-circle.html',  slides: 8  },
+{ name: 'v4c-matt-wagner-circle2',  file: 'carousel-v4c-matt-wagner-circle2.html', slides: 9  },
 { name: 'v5-compound-loop',         file: 'carousel-v5-compound-loop.html',        slides: 6  },
 { name: 'v6-three-exits',           file: 'carousel-v6-three-exits.html',          slides: 6  },
 { name: 'v7-encoding-equation',     file: 'carousel-v7-encoding-equation.html',    slides: 7  },
@@ -333,8 +431,8 @@ const GITHUB_PAGES_URL = 'https://majajecar.github.io/encoded-carousels';
 - Foundation Synthesis ✅ v10
 
 ### Experience Stories
-- Matt Wagner ✅ v4 (old design system — needs rebuilding in new design)
-- Future members: text provided by team, consent confirmed before publishing
+- Matt Wagner ✅ v4c — **approved layout, photo: matt-wagner.jpg**
+- Future members: text + photo provided by team, consent confirmed before publishing
 
 ### Original Content
 - The Response Sequence ✅ v11
@@ -355,6 +453,18 @@ make medical/therapeutic promises, use hype-driven or generic self-help tone.
 
 ---
 
+## Content Strategy — Carousel Priority Queue
+
+Based on the Encoded methodology, highest-engagement carousel topics to build next:
+
+1. **"The Stack" explainer** — what "getting low enough in the stack" actually means
+2. **"Why therapy didn't work"** — why top-down approaches don't resolve the source
+3. **The 35-minute protocol** — 25 min morning + 10 min evening imprinting, made concrete
+4. **"What is imprinting?"** — core mechanism explained simply
+5. **Another member story** — rotate with a second person when story + consent available
+
+---
+
 ## Approval Workflow
 
 1. Claude generates HTML + JSON pair
@@ -363,7 +473,7 @@ make medical/therapeutic promises, use hype-driven or generic self-help tone.
 4. Share with team for sign-off
 5. Push to GitHub → schedule in Buffer
 
-Design templates approved as of v1–v11.
+Design templates approved as of v1–v11 + v4c experience format.
 
 ---
 
@@ -407,27 +517,13 @@ Claude will:
 - Output HTML + JSON as a pair
 - Never repeat text across slides
 - Never use boxes or centered layouts
+- Never change content that wasn't asked to be changed
 - Suggest the screenshot.js entry to add
-
----
-
-## Member Photo Handling
-
-Current approach: base64 embedded in HTML (works everywhere, no hosting needed).
-Future: move to `assets/` folder once team is comfortable.
-
-Experience carousel structure:
-- Slide 1: Cover with photo + hero quote
-- Slide 2: The Before
-- Slides 3–N: One shift per slide (bold, no body text)
-- Second-to-last: Quote slide
-- Last: Closing
 
 ---
 
 ## Future Improvements
 
-- [ ] Rebuild v4 Matt Wagner in new design system
 - [ ] Generate JSON files for all existing carousels (v2–v11)
 - [ ] Portrait format (1080×1350) — CSS canvas variable system
 - [ ] Content calendar — Notion linked to repo
