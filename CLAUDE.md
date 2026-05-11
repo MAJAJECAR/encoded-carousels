@@ -141,6 +141,14 @@ Manrope and Space Mono are from Google Fonts.
 .harr      — horizontal arrow connector
 .seq       — vertical sequence container
 .arr       — vertical arrow connector
+.loop-wrap      — circular loop diagram container, 600×600px, position:relative
+.loop-node      — label container for each node (top/right/bottom/left)
+.loop-node-label — eyebrow above node text, Space Mono 11px, gold
+.loop-node-text  — node headline, Switzer 700 26px
+.step-pill      — horizontal pill with gold dot + label, used on step slides
+.step-pill-dot  — 8×8px gold circle
+.step-pill-text — Space Mono 13px uppercase gold
+.cta-url        — encoded.ai display element, Switzer 700 52px, --gold
 ```
 
 ---
@@ -156,11 +164,70 @@ Manrope and Space Mono are from Google Fonts.
 | Left sequence | Vertical line + bullets + label + title | Flow/process slides |
 | Quote | `.qmark` + `.qtext` | Strong single quote |
 | Stat | large number + caption | Data-led slide |
-| Closing | `.hl` + `.rule` + `.brand` | Always last slide |
+| Closing | `.hl` + `.rule` + `.brand` | Always second-to-last slide |
+| Circular loop diagram | `.loop-wrap` + `.loop-node` (top/right/bottom/left) | Repeating cycle or system |
+| CTA | `.hl` + `.body` + `.cta-url` + `.rule` + `.brand` | Always final slide |
 
 ---
 
-## Visual Layer — Modular Elements
+## Visual Diagram — Circular Loop
+
+Used when content is a repeating cycle (e.g. The Compound Loop).
+Approved template: carousel-v13-compound-loop.html slide 6.
+
+### Layout
+- Slide uses standard padding (80px 86px)
+- Eyebrow sits in normal flow at top left
+- Diagram: `position:absolute; top:42%; left:50%; transform:translate(-50%,-50%)`
+- This centers it on the full 1080×1080 canvas regardless of padding
+- Caption: `position:absolute; bottom:120px; left:86px; right:86px`
+- Caption gives breathing room above the slide counter
+
+### CSS lives in styles.css (graduated from v13)
+- `.loop-wrap`, `.loop-node`, `.loop-node-label`, `.loop-node-text`
+- `.step-pill`, `.step-pill-dot`, `.step-pill-text`
+- Do not re-declare these inline in new carousels
+
+### Node positioning (all relative to 600×600 wrap, circle r=160 centered at 300,300)
+- Top node: dot at 300,140 — label above via `bottom:calc(600px - 140px + 16px)`
+- Right node: dot at 460,300 — label at `left:calc(460px + 24px)`
+- Bottom node: dot at 300,460 — label at `top:calc(460px + 16px)`
+- Left node: dot at 140,300 — label at `right:calc(600px - 140px + 24px)`
+
+### Exception to left-align rule
+The circular diagram is the ONE approved exception to the left-align rule.
+Center alignment works here because the diagram is a self-contained visual system.
+All other slides remain left-aligned.
+
+---
+
+## CTA Slide — Standard Closing
+
+Every carousel ends with TWO closing slides:
+1. The existing closing slide (`.hl` + `.rule` + `.brand`) — unchanged, thematic resolution
+2. A new dedicated CTA slide — always the absolute final slide
+
+### CTA Slide Design
+- Headline: `"Train what AI can't replace."` — Switzer 700, `.hl` size
+- Subhead: `"Science-backed training for the capacities that compound."` — `.body`, `--t2`
+- URL: `encoded.ai` — Switzer 700 52px, `--gold`, class `.cta-url`
+- Action line: `"Link in bio"` — Space Mono, `--t4`, uppercase, `ls 0.14em`
+- Follow line: `"@encoded.ai"` — Manrope 400, `--t3`
+- Rule + brand mark at bottom — same as closing slide
+- Gold used on `.cta-url` only
+- No slide counter on the CTA slide
+- No `.corner` decoration
+
+### Copy rule
+The CTA headline never repeats the closing slide headline.
+Closing slide = thematic resolution. CTA slide = action.
+
+### Instagram linking
+Instagram does not support clickable links in carousel posts.
+Standard approach: "Link in bio" on CTA slide + keep `encoded.ai` in bio at all times.
+Always include `encoded.ai` link in every caption when scheduling in Buffer.
+
+---
 
 This is the second layer of the design system, added on top of the existing typography and layout system.
 The goal is visual depth WITHOUT increased cognitive load.
@@ -384,6 +451,9 @@ const GITHUB_PAGES_URL = 'https://majajecar.github.io/encoded-carousels';
 | carousel-v10-foundation | The Foundation | 7 | ✅ |
 | carousel-v10b-what-changes | What Changes When Foundation Shifts | 5 | ✅ |
 | carousel-v11-response-sequence | The Response Sequence | 7 | ✅ |
+| carousel-v12-imprinting | What Is Imprinting? | ? | ✅ |
+| carousel-v13-compound-loop | The Compound Loop (visual) | 7 | ✅ |
+| carousel-matt-v5 | Matt Wagner v5 | ? | ✅ |
 
 ---
 
@@ -408,6 +478,9 @@ const GITHUB_PAGES_URL = 'https://majajecar.github.io/encoded-carousels';
 { name: 'v10-foundation',           file: 'carousel-v10-foundation.html',          slides: 7  },
 { name: 'v10b-what-changes',        file: 'carousel-v10b-what-changes.html',       slides: 5  },
 { name: 'v11-response-sequence',    file: 'carousel-v11-response-sequence.html',   slides: 7  },
+{ name: 'v12-imprinting',           file: 'carousel-v12-imprinting.html',           slides: 0  },
+{ name: 'v13-compound-loop',        file: 'carousel-v13-compound-loop.html',        slides: 7  },
+{ name: 'matt-v5',                  file: 'carousel-matt-v5.html',                  slides: 0  },
 ```
 
 ---
@@ -515,8 +588,10 @@ Claude will:
 - Choose layouts per slide based on content type
 - Follow all design rules above
 - Output HTML + JSON as a pair
+- Always include a CTA slide as the final slide
+- Write an Instagram caption with encoded.ai link alongside every carousel
 - Never repeat text across slides
-- Never use boxes or centered layouts
+- Never use boxes or centered layouts (exception: circular loop diagram)
 - Never change content that wasn't asked to be changed
 - Suggest the screenshot.js entry to add
 
@@ -524,10 +599,14 @@ Claude will:
 
 ## Future Improvements
 
-- [ ] Generate JSON files for all existing carousels (v2–v11)
+- [ ] Generate JSON files for all existing carousels (v2–v13)
 - [ ] Portrait format (1080×1350) — CSS canvas variable system
 - [ ] Content calendar — Notion linked to repo
-- [ ] Caption copy — Claude writes Instagram caption alongside HTML
+- [ ] Caption copy — Claude writes Instagram caption + encoded.ai link alongside every HTML
 - [ ] Proper series naming convention replacing v1, v2... numbering
 - [ ] Pipeline automation (see PIPELINE_TICKET.md)
 - [ ] YouTube thumbnail system (see THUMBNAIL_TICKET.md)
+- [ ] CTA slide added to: v11, v12, v13, matt-wagner v4c, matt-v5
+- [ ] Graduate loop diagram CSS (.loop-wrap, .loop-node, .step-pill) into styles.css
+- [ ] Strip inline styles from v11, v12, v13 after styles.css update
+- [ ] Update screenshot.js slide counts for v12 and matt-v5 once confirmed
