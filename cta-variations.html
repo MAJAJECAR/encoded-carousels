@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080">
+<title>Encoded — CTA Variations</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://api.fontshare.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500&family=Space+Mono:wght@400&display=swap" rel="stylesheet">
+<link href="https://api.fontshare.com/v2/css?f[]=switzer@400,500,600,700,800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+
+/* ── SHARED CTA ELEMENTS ── */
+.cta-url {
+  font-family: var(--fs);
+  font-size: 52px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--gold);
+  line-height: 1;
+}
+
+.cta-action {
+  font-family: var(--fmono);
+  font-size: 13px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--t4);
+}
+
+.cta-follow {
+  font-family: var(--fm);
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--t3);
+  letter-spacing: 0.04em;
+}
+
+/* ── VARIATION A — Bold minimal, poster energy ── */
+/* Full slide is a clean vertical stack, URL dominates */
+
+/* ── VARIATION B — Split layout ── */
+.cta-b-left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-bottom: 4px;
+}
+
+.cta-b-right {
+  width: 380px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding-bottom: 4px;
+  border-left: 1px solid rgba(255,255,255,0.08);
+  padding-left: 52px;
+}
+
+.cta-b-right .cta-url {
+  font-size: 44px;
+  text-align: right;
+}
+
+/* ── VARIATION C — Ring background, layered ── */
+.cta-ring {
+  position: absolute;
+  width: 720px;
+  height: 720px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.05);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.cta-ring-inner {
+  position: absolute;
+  width: 520px;
+  height: 520px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.08);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.cta-ring-gold {
+  position: absolute;
+  width: 900px;
+  height: 900px;
+  border-radius: 50%;
+  border: 1px solid rgba(204,176,133,0.06);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+</style>
+</head>
+<body>
+
+<!-- ─────────────────────────────────────────── -->
+<!-- VARIATION A — Bold Minimal / Poster        -->
+<!-- ─────────────────────────────────────────── -->
+<div class="slide active" id="slide-1">
+
+  <!-- top bar -->
+  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:auto;">
+    <div class="brand">Encoded.Ai</div>
+    <div class="cta-action" style="color:var(--t4);">A — Bold Minimal</div>
+  </div>
+
+  <!-- center stack -->
+  <div style="display:flex; flex-direction:column; gap:0; flex:1; justify-content:center;">
+    <div class="ew" style="margin-bottom:28px;">Start Here</div>
+    <h2 style="font-family:var(--fs); font-size:80px; font-weight:700; letter-spacing:-0.03em; line-height:1.0; color:var(--t1); margin:0 0 32px 0;">
+      Train what AI<br>can't replace.
+    </h2>
+    <p class="body" style="color:var(--t2); max-width:580px; margin:0;">
+      Science-backed training for the capacities that compound.
+    </p>
+  </div>
+
+  <!-- bottom block -->
+  <div style="display:flex; flex-direction:column; gap:0;">
+    <div class="rule" style="margin-bottom:28px;"></div>
+    <div style="display:flex; align-items:flex-end; justify-content:space-between;">
+      <div style="display:flex; flex-direction:column; gap:12px;">
+        <div class="cta-url">encoded.ai</div>
+        <div class="cta-action">Link in bio</div>
+      </div>
+      <div style="display:flex; flex-direction:column; align-items:flex-end; gap:8px;">
+        <div class="cta-follow">@encoded.ai</div>
+        <div class="cta-action">Follow for more</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ─────────────────────────────────────────── -->
+<!-- VARIATION B — Split Layout                 -->
+<!-- ─────────────────────────────────────────── -->
+<div class="slide" id="slide-2">
+
+  <div class="brand" style="margin-bottom:auto;">Encoded.Ai</div>
+
+  <!-- main split row -->
+  <div style="display:flex; align-items:flex-end; gap:0; flex:1; padding-bottom:0;">
+
+    <div class="cta-b-left">
+      <div class="ew" style="margin-bottom:24px;">Start Here</div>
+      <h2 style="font-family:var(--fs); font-size:72px; font-weight:700; letter-spacing:-0.025em; line-height:1.02; color:var(--t1); margin:0 0 24px 0;">
+        Train what<br>AI can't<br>replace.
+      </h2>
+      <p class="body" style="color:var(--t2); margin:0; max-width:460px;">
+        Science-backed training for the capacities that compound.
+      </p>
+    </div>
+
+    <div class="cta-b-right">
+      <div style="display:flex; flex-direction:column; align-items:flex-end; gap:14px;">
+        <div class="cta-action">Visit</div>
+        <div class="cta-url" style="font-size:44px; text-align:right;">encoded.ai</div>
+        <div class="cta-action">Link in bio</div>
+        <div style="width:100%; height:1px; background:rgba(255,255,255,0.08); margin:8px 0;"></div>
+        <div class="cta-follow">@encoded.ai</div>
+        <div class="cta-action">Follow</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div style="margin-top:36px;">
+    <div class="rule"></div>
+  </div>
+
+</div>
+
+
+<!-- ─────────────────────────────────────────── -->
+<!-- VARIATION C — Ring / Layered               -->
+<!-- ─────────────────────────────────────────── -->
+<div class="slide" id="slide-3">
+
+  <!-- decorative rings -->
+  <div class="cta-ring-gold"></div>
+  <div class="cta-ring"></div>
+  <div class="cta-ring-inner"></div>
+
+  <!-- top -->
+  <div class="brand" style="position:relative; z-index:2;">Encoded.Ai</div>
+
+  <!-- center — URL hero -->
+  <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-52%); text-align:center; z-index:2;">
+    <div class="cta-action" style="margin-bottom:20px; text-align:center;">Start Here</div>
+    <div style="font-family:var(--fs); font-size:96px; font-weight:700; letter-spacing:-0.03em; line-height:1; color:var(--gold);">
+      encoded.ai
+    </div>
+    <div style="width:1px; height:48px; background:rgba(255,255,255,0.12); margin:28px auto;"></div>
+    <p style="font-family:var(--fs); font-size:36px; font-weight:700; letter-spacing:-0.02em; line-height:1.1; color:var(--t1); margin:0;">
+      Train what AI<br>can't replace.
+    </p>
+  </div>
+
+  <!-- bottom -->
+  <div style="position:absolute; bottom:80px; left:86px; right:86px; z-index:2;">
+    <div class="rule" style="margin-bottom:24px;"></div>
+    <div style="display:flex; justify-content:space-between; align-items:center;">
+      <div class="cta-action">Link in bio</div>
+      <div class="cta-follow">@encoded.ai</div>
+    </div>
+  </div>
+
+</div>
+
+
+<script>
+  const allSlides = document.querySelectorAll('.slide');
+  window.totalSlides = allSlides.length;
+  window.goToSlide = function(n) {
+    allSlides.forEach(s => s.classList.remove('active'));
+    allSlides[n].classList.add('active');
+  };
+</script>
+</body>
+</html>
