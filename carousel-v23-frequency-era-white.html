@@ -69,16 +69,22 @@
   background: rgba(0,0,0,0.10);
 }
 .slide.white .swipe-circle {
-  border-color: rgba(0,0,0,0.2);
-  color: rgba(0,0,0,0.35);
+  background: var(--gold);
+  color: #F2EDE6;
 }
 .slide.white .swipe {
   color: rgba(0,0,0,0.35);
   opacity: 1;
 }
 
-/* Gold stays gold on white — same value, reads warmer */
+/* Gold on dark slides */
 .g { color: var(--gold); }
+/* Gold on white slides — more saturated amber so it pops against light bg */
+.slide.white .g { color: #B8860B; }
+.slide.white .col-label.gold { color: #B8860B; }
+.slide.white .ew { color: #B8860B; }
+.slide.white .ew::before { background: #B8860B; }
+.slide.white .split-label.gold { color: #B8860B; }
 
 /* col-item border override for white */
 .slide.white .col-item + .col-item {
@@ -117,12 +123,13 @@
   width: 28px;
   height: 28px;
   border-radius: 50%;
-  border: 1px solid rgba(255,255,255,0.2);
+  background: var(--gold);
+  border: none;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 12px;
-  color: var(--t4);
+  color: var(--base);
   flex-shrink: 0;
 }
 </style>
@@ -139,7 +146,6 @@
   <div class="g20"></div>
   <p class="sub">Every era needs a name before it can be navigated.</p>
   <div class="g24"></div>
-  <div class="rule"></div>
   <div class="swipe">SWIPE <div class="swipe-circle">→</div></div>
 </div>
 
