@@ -474,6 +474,51 @@ member story carousels.
 - Filename convention: `matt-wagner.jpg`, `jane-smith.jpg`, etc.
 - Do not base64 embed — keep as external file reference
 
+### Photo-split gradient — approved technique (v4-matt-wagner)
+Full-bleed portrait photo on the right half of the slide, blending into the dark background.
+
+**Key rules:**
+- Photo width: `630px` — wide enough to overlap the text area, not so wide it crowds it
+- Photo position: `right: 0; object-position: center top` — anchors to right edge, face at top
+- Two gradients combined on the overlay (`::after`):
+  1. **Bottom-to-top fade** — keeps face fully visible, darkens only below chin toward text
+  2. **Left-to-right fade** — smooth dissolve from dark background into photo, 5 stops for no hard line
+- Left gradient stops: `#141414 0% → 0.85 15% → 0.5 30% → 0.15 50% → 0 65%`
+- **Never** use a single left-to-right gradient — it will cut across the face
+- **Never** move the photo further right to create distance from text — widen the photo instead
+- If blend looks too harsh: add more gradient stops between 0% and 30%
+- If blend starts too close to text: reduce photo width by 10px increments
+
+```css
+.photo-split img {
+  position: absolute;
+  right: 0; top: 0;
+  width: 630px; height: 1080px;
+  object-fit: cover;
+  object-position: center top;
+}
+.photo-split::after {
+  content: '';
+  position: absolute;
+  right: 0; top: 0;
+  width: 630px; height: 1080px;
+  background:
+    linear-gradient(to bottom,
+      rgba(20,20,20,0) 0%,
+      rgba(20,20,20,0) 50%,
+      rgba(20,20,20,0.6) 75%,
+      #141414 100%
+    ),
+    linear-gradient(to right,
+      #141414 0%,
+      rgba(20,20,20,0.85) 15%,
+      rgba(20,20,20,0.5) 30%,
+      rgba(20,20,20,0.15) 50%,
+      rgba(20,20,20,0) 65%
+    );
+}
+```
+
 ---
 
 ## screenshot.js Usage
@@ -499,7 +544,7 @@ const GITHUB_PAGES_URL = 'https://majajecar.github.io/encoded-carousels';
 | carousel-v2b-compound-loop | The Compound Loop (split) | 10 | ✅ |
 | carousel-v3-identity | Identity, Beliefs, Intentions | 7 | ✅ |
 | carousel-v3b-identity-symptoms | When Identity Is Fragmented | 7 | ✅ |
-| carousel-v4-matt-wagner | Matt Wagner (old layout) | 8 | ⚠️ old design |
+| carousel-v4-matt-wagner | Matt Wagner split layout | 8 | ✅ gradient updated |
 | carousel-v4b-matt-wagner-circle | Matt Wagner circle v1 | 8 | ⚠️ old design |
 | carousel-v4c-matt-wagner-circle2 | Matt Wagner circle v2 ← **current approved** | 9 | ✅ |
 | carousel-v5-compound-loop | The Compound Loop | 6 | ✅ |

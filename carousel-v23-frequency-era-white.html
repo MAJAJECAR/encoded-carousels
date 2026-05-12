@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080">
+<title>Encoded — The Frequency Era (White)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://api.fontshare.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500&family=Space+Mono:wght@400&display=swap" rel="stylesheet">
+<link href="https://api.fontshare.com/v2/css?f[]=switzer@400,500,600,700,800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+/* ── WHITE SLIDE VARIANT ── */
+.slide.white {
+  background: #F2EDE6;
+}
+
+/* Text overrides for white slides */
+.slide.white .ew {
+  color: #8B7355;
+}
+.slide.white .ew::before {
+  background: #8B7355;
+}
+.slide.white .hl,
+.slide.white .hm,
+.slide.white h2 {
+  color: #1A1A1A;
+}
+.slide.white .body,
+.slide.white p {
+  color: #4A4A4A;
+}
+.slide.white .muted {
+  color: #6A6A6A;
+}
+.slide.white .rule {
+  background: rgba(0,0,0,0.12);
+}
+.slide.white .tag-tr {
+  color: rgba(0,0,0,0.3);
+}
+.slide.white .swipe {
+  color: rgba(0,0,0,0.3);
+}
+.slide.white .split-label {
+  color: rgba(0,0,0,0.4);
+}
+.slide.white .split-body {
+  color: #4A4A4A;
+}
+.slide.white .col-body {
+  color: #4A4A4A;
+}
+.slide.white .col-label {
+  color: rgba(0,0,0,0.4);
+}
+.slide.white .col-num {
+  color: #1A1A1A;
+}
+.slide.white .nnum {
+  color: rgba(0,0,0,0.35);
+}
+.slide.white .ntext {
+  color: #1A1A1A;
+}
+.slide.white .nrule {
+  background: rgba(0,0,0,0.10);
+}
+
+/* Gold stays gold on white — same value, reads warmer */
+.g { color: var(--gold); }
+
+/* col-item border override for white */
+.slide.white .col-item + .col-item {
+  border-left-color: rgba(0,0,0,0.10);
+}
+
+/* swipe + tag */
+.tag-tr {
+  position: absolute;
+  top: 80px;
+  right: 86px;
+  font-family: var(--fmono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--t4);
+  opacity: 0.7;
+}
+
+.swipe {
+  position: absolute;
+  bottom: 80px;
+  right: 86px;
+  font-family: var(--fmono);
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--t4);
+  opacity: 0.6;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+</style>
+</head>
+<body>
+
+<!-- S1 — COVER (BLACK) -->
+<div class="slide active" id="slide-1">
+  <div class="corner"></div>
+  <div class="brand" style="margin-bottom:auto;">Encoded.Ai</div>
+  <div class="spacer"></div>
+  <div class="ew" style="margin-bottom:36px;">A New Era</div>
+  <h1 class="hxl">The <span class="g">Frequency</span><br>Era.</h1>
+  <div class="g20"></div>
+  <p class="sub">Every era needs a name before it can be navigated.</p>
+  <div class="g24"></div>
+  <div class="rule"></div>
+  <div class="swipe">SWIPE →</div>
+</div>
+
+<!-- S2 — WHITE -->
+<div class="slide white" id="slide-2">
+  <div class="tag-tr">Encoded.Ai</div>
+  <div class="swipe">SWIPE →</div>
+  <div class="spacer"></div>
+  <div class="ew" style="margin-bottom:36px;">The Rules</div>
+  <h2 class="hl">The rules were given<br>to most people before<br>they were old enough<br>to <span class="g">question them.</span></h2>
+  <div class="g16"></div>
+  <p class="body muted">Work hard. Get the degree. Climb the ladder. Nobody called them rules. They were just "how things work." Every operating manual has an expiration date.</p>
+  <div class="spacer"></div>
+</div>
+
+<!-- S3 — WHITE -->
+<div class="slide white" id="slide-3">
+  <div class="tag-tr">Encoded.Ai</div>
+  <div class="swipe">SWIPE →</div>
+  <div class="spacer"></div>
+  <div class="ew" style="margin-bottom:36px;">Mid-Game Shift</div>
+  <h2 class="hl">The rules <span class="g">changed</span><br>while most people<br>were in the middle<br>of playing them.</h2>
+  <div class="g16"></div>
+  <p class="body muted">This is the feeling so many people are walking around with right now and can't name. You aren't behind. The map is.</p>
+  <div class="spacer"></div>
+</div>
+
+<!-- S4 — WHITE SPLIT -->
+<div class="slide white" id="slide-4">
+  <div class="tag-tr">Encoded.Ai</div>
+  <div class="swipe">SWIPE →</div>
+  <div class="ew" style="margin-bottom:40px;">The Shift</div>
+  <div class="split-wrap">
+    <div class="split-left">
+      <div class="split-label">Then</div>
+      <div style="font-family:var(--fs); font-size:60px; font-weight:700; letter-spacing:-0.025em; line-height:1.05; color:#1A1A1A;">Information<br>was scarce.</div>
+    </div>
+    <div class="split-rule"></div>
+    <div class="split-right">
+      <div class="split-label gold">Now</div>
+      <div style="font-family:var(--fs); font-size:60px; font-weight:700; letter-spacing:-0.025em; line-height:1.05; color:#1A1A1A;">Now it's <span class="g">infinite.</span></div>
+      <p class="split-body" style="margin-top:16px; color:#4A4A4A;">When the scarce resource of an era becomes abundant, every premium attached to it collapses — gradually, then all at once.</p>
+    </div>
+  </div>
+</div>
+
+<!-- S5 — WHITE -->
+<div class="slide white" id="slide-5">
+  <div class="tag-tr">Encoded.Ai</div>
+  <div class="swipe">SWIPE →</div>
+  <div class="spacer"></div>
+  <div class="ew" style="margin-bottom:36px;">Why Effort Isn't Working</div>
+  <h2 class="hl">The effort is <span class="g">real.</span><br>The commitment<br>is <span class="g">real.</span><br>The strategy is broken.</h2>
+  <div class="g16"></div>
+  <p class="body muted">More effort in the wrong direction is just faster arrival at the wrong destination.</p>
+  <div class="spacer"></div>
+</div>
+
+<!-- S6 — WHITE 3-COLUMN -->
+<div class="slide white" id="slide-6">
+  <div class="swipe">SWIPE →</div>
+  <div class="ew" style="margin-bottom:40px;">What AI Cannot Replace</div>
+  <div class="col-grid">
+    <div class="col-item">
+      <div class="col-num" style="color:var(--gold);">01</div>
+      <div class="rule" style="background:rgba(0,0,0,0.12);"></div>
+      <div class="col-label gold">Presence</div>
+      <p class="col-body" style="color:#4A4A4A;">AI can simulate fluency. It cannot be present. Your nervous system reads the difference instantly.</p>
+    </div>
+    <div class="col-item">
+      <div class="col-num" style="color:#1A1A1A;">02</div>
+      <div class="rule" style="background:rgba(0,0,0,0.12);"></div>
+      <div class="col-label" style="color:rgba(0,0,0,0.4);">Discernment</div>
+      <p class="col-body" style="color:#4A4A4A;">Models can rank a thousand options. They cannot tell you which is right for this person, with this history.</p>
+    </div>
+    <div class="col-item">
+      <div class="col-num" style="color:#1A1A1A;">03</div>
+      <div class="rule" style="background:rgba(0,0,0,0.12);"></div>
+      <div class="col-label" style="color:rgba(0,0,0,0.4);">Frequency</div>
+      <p class="col-body" style="color:#4A4A4A;">The quality of the human doing the thinking. The clarity from which they operate. That's the new currency.</p>
+    </div>
+  </div>
+</div>
+
+<!-- S7 — WHITE -->
+<div class="slide white" id="slide-7">
+  <div class="tag-tr">Encoded.Ai</div>
+  <div class="swipe">SWIPE →</div>
+  <div class="spacer"></div>
+  <div class="ew" style="margin-bottom:36px;">The New Currency</div>
+  <h2 class="hl">When information<br>is infinite,<br>what's <span class="g">scarce?</span></h2>
+  <div class="g16"></div>
+  <p class="body muted">The answer is the thing AI cannot replicate. Regulation. Presence. Discernment. The developed human nervous system. The frequency you operate from.</p>
+  <div class="spacer"></div>
+</div>
+
+<!-- S8 — WHITE NUMBERED LIST -->
+<div class="slide white" id="slide-8">
+  <div class="tag-tr">Encoded.Ai</div>
+  <div class="swipe">SWIPE →</div>
+  <div class="ew" style="margin-bottom:40px;">Every Era's Scarce Resource</div>
+  <div style="display:flex; flex-direction:column; gap:0; flex:1; justify-content:center;">
+    <div class="nrow" style="padding:28px 0;">
+      <div class="nnum">01</div>
+      <div class="ntext" style="color:#1A1A1A;">Land <span style="color:#6A6A6A; font-weight:300; font-size:24px;">— Agricultural era</span></div>
+    </div>
+    <div class="nrule" style="background:rgba(0,0,0,0.10);"></div>
+    <div class="nrow" style="padding:28px 0;">
+      <div class="nnum">02</div>
+      <div class="ntext" style="color:#1A1A1A;">Capital <span style="color:#6A6A6A; font-weight:300; font-size:24px;">— Industrial era</span></div>
+    </div>
+    <div class="nrule" style="background:rgba(0,0,0,0.10);"></div>
+    <div class="nrow" style="padding:28px 0;">
+      <div class="nnum">03</div>
+      <div class="ntext" style="color:#1A1A1A;">Knowledge <span style="color:#6A6A6A; font-weight:300; font-size:24px;">— Information era</span></div>
+    </div>
+    <div class="nrule" style="background:rgba(0,0,0,0.10);"></div>
+    <div class="nrow" style="padding:28px 0;">
+      <div class="nnum">04</div>
+      <div class="ntext"><span class="g">Frequency</span> <span style="color:#6A6A6A; font-weight:300; font-size:24px;">— Now</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- S9 — CLOSING (BLACK) -->
+<div class="slide" id="slide-9">
+  <div class="corner"></div>
+  <div class="spacer"></div>
+  <h2 class="hl">Every AI release makes<br>a fully developed<br>human <span class="g">more valuable</span> —<br>not less.</h2>
+  <div class="spacer"></div>
+  <div class="rule"></div>
+  <div class="g20"></div>
+  <div class="brand">Encoded.Ai</div>
+</div>
+
+<!-- S10 — CTA (BLACK) -->
+<div class="slide" id="slide-10">
+  <div class="brand" style="margin-bottom:auto;">Encoded.Ai</div>
+  <div style="flex:1; display:flex; flex-direction:column; justify-content:center; gap:0;">
+    <div class="ew" style="margin-bottom:28px;">Start Here</div>
+    <h2 class="hl" style="margin:0;">Train what AI<br>can't replace.</h2>
+    <div class="cta-url" style="margin-top:4px;">encoded.ai</div>
+  </div>
+  <div style="display:flex; flex-direction:column; gap:16px;">
+    <div class="rule"></div>
+    <div style="display:flex; justify-content:space-between; align-items:center;">
+      <div class="cta-action">Link in bio</div>
+      <div class="cta-follow" style="color:var(--t4); font-size:14px;">@encoded.ai</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const allSlides = document.querySelectorAll('.slide');
+  window.totalSlides = allSlides.length;
+  window.goToSlide = function(n) {
+    allSlides.forEach(s => s.classList.remove('active'));
+    allSlides[n].classList.add('active');
+  };
+</script>
+</body>
+</html>
