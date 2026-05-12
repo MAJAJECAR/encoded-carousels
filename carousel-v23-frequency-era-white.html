@@ -68,6 +68,14 @@
 .slide.white .nrule {
   background: rgba(0,0,0,0.10);
 }
+.slide.white .swipe-circle {
+  border-color: rgba(0,0,0,0.2);
+  color: rgba(0,0,0,0.35);
+}
+.slide.white .swipe {
+  color: rgba(0,0,0,0.35);
+  opacity: 1;
+}
 
 /* Gold stays gold on white — same value, reads warmer */
 .g { color: var(--gold); }
@@ -94,15 +102,28 @@
   position: absolute;
   bottom: 80px;
   right: 86px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
   font-family: var(--fmono);
-  font-size: 12px;
+  font-size: 11px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--t4);
   opacity: 0.6;
+}
+
+.swipe-circle {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.2);
   display: flex;
   align-items: center;
-  gap: 8px;
+  justify-content: center;
+  font-size: 12px;
+  color: var(--t4);
+  flex-shrink: 0;
 }
 </style>
 </head>
@@ -119,13 +140,13 @@
   <p class="sub">Every era needs a name before it can be navigated.</p>
   <div class="g24"></div>
   <div class="rule"></div>
-  <div class="swipe">SWIPE →</div>
+  <div class="swipe">SWIPE <div class="swipe-circle">→</div></div>
 </div>
 
 <!-- S2 — WHITE -->
 <div class="slide white" id="slide-2">
   <div class="tag-tr">Encoded.Ai</div>
-  <div class="swipe">SWIPE →</div>
+  <div class="swipe">SWIPE <div class="swipe-circle">→</div></div>
   <div class="spacer"></div>
   <div class="ew" style="margin-bottom:36px;">The Rules</div>
   <h2 class="hl">The rules were given<br>to most people before<br>they were old enough<br>to <span class="g">question them.</span></h2>
@@ -137,7 +158,7 @@
 <!-- S3 — WHITE -->
 <div class="slide white" id="slide-3">
   <div class="tag-tr">Encoded.Ai</div>
-  <div class="swipe">SWIPE →</div>
+  <div class="swipe">SWIPE <div class="swipe-circle">→</div></div>
   <div class="spacer"></div>
   <div class="ew" style="margin-bottom:36px;">Mid-Game Shift</div>
   <h2 class="hl">The rules <span class="g">changed</span><br>while most people<br>were in the middle<br>of playing them.</h2>
@@ -149,7 +170,7 @@
 <!-- S4 — WHITE SPLIT -->
 <div class="slide white" id="slide-4">
   <div class="tag-tr">Encoded.Ai</div>
-  <div class="swipe">SWIPE →</div>
+  <div class="swipe">SWIPE <div class="swipe-circle">→</div></div>
   <div class="ew" style="margin-bottom:40px;">The Shift</div>
   <div class="split-wrap">
     <div class="split-left">
@@ -168,7 +189,7 @@
 <!-- S5 — WHITE -->
 <div class="slide white" id="slide-5">
   <div class="tag-tr">Encoded.Ai</div>
-  <div class="swipe">SWIPE →</div>
+  <div class="swipe">SWIPE <div class="swipe-circle">→</div></div>
   <div class="spacer"></div>
   <div class="ew" style="margin-bottom:36px;">Why Effort Isn't Working</div>
   <h2 class="hl">The effort is <span class="g">real.</span><br>The commitment<br>is <span class="g">real.</span><br>The strategy is broken.</h2>
@@ -179,11 +200,11 @@
 
 <!-- S6 — WHITE 3-COLUMN -->
 <div class="slide white" id="slide-6">
-  <div class="swipe">SWIPE →</div>
+  <div class="swipe">SWIPE <div class="swipe-circle">→</div></div>
   <div class="ew" style="margin-bottom:40px;">What AI Cannot Replace</div>
   <div class="col-grid">
     <div class="col-item">
-      <div class="col-num" style="color:var(--gold);">01</div>
+      <div class="col-num" style="color:#1A1A1A;">01</div>
       <div class="rule" style="background:rgba(0,0,0,0.12);"></div>
       <div class="col-label gold">Presence</div>
       <p class="col-body" style="color:#4A4A4A;">AI can simulate fluency. It cannot be present. Your nervous system reads the difference instantly.</p>
@@ -191,13 +212,13 @@
     <div class="col-item">
       <div class="col-num" style="color:#1A1A1A;">02</div>
       <div class="rule" style="background:rgba(0,0,0,0.12);"></div>
-      <div class="col-label" style="color:rgba(0,0,0,0.4);">Discernment</div>
+      <div class="col-label gold">Discernment</div>
       <p class="col-body" style="color:#4A4A4A;">Models can rank a thousand options. They cannot tell you which is right for this person, with this history.</p>
     </div>
     <div class="col-item">
       <div class="col-num" style="color:#1A1A1A;">03</div>
       <div class="rule" style="background:rgba(0,0,0,0.12);"></div>
-      <div class="col-label" style="color:rgba(0,0,0,0.4);">Frequency</div>
+      <div class="col-label gold">Frequency</div>
       <p class="col-body" style="color:#4A4A4A;">The quality of the human doing the thinking. The clarity from which they operate. That's the new currency.</p>
     </div>
   </div>
@@ -206,7 +227,7 @@
 <!-- S7 — WHITE -->
 <div class="slide white" id="slide-7">
   <div class="tag-tr">Encoded.Ai</div>
-  <div class="swipe">SWIPE →</div>
+  <div class="swipe">SWIPE <div class="swipe-circle">→</div></div>
   <div class="spacer"></div>
   <div class="ew" style="margin-bottom:36px;">The New Currency</div>
   <h2 class="hl">When information<br>is infinite,<br>what's <span class="g">scarce?</span></h2>
@@ -218,7 +239,7 @@
 <!-- S8 — WHITE NUMBERED LIST -->
 <div class="slide white" id="slide-8">
   <div class="tag-tr">Encoded.Ai</div>
-  <div class="swipe">SWIPE →</div>
+  <div class="swipe">SWIPE <div class="swipe-circle">→</div></div>
   <div class="ew" style="margin-bottom:40px;">Every Era's Scarce Resource</div>
   <div style="display:flex; flex-direction:column; gap:0; flex:1; justify-content:center;">
     <div class="nrow" style="padding:28px 0;">
@@ -243,15 +264,15 @@
   </div>
 </div>
 
-<!-- S9 — CLOSING (BLACK) -->
-<div class="slide" id="slide-9">
+<!-- S9 — CLOSING (WHITE) -->
+<div class="slide white" id="slide-9">
   <div class="corner"></div>
   <div class="spacer"></div>
-  <h2 class="hl">Every AI release makes<br>a fully developed<br>human <span class="g">more valuable</span> —<br>not less.</h2>
+  <h2 style="font-family:var(--fs); font-size:72px; font-weight:700; line-height:1.02; letter-spacing:-0.025em; color:#1A1A1A;">Every AI release makes<br>a fully developed<br>human <span class="g">more valuable</span> —<br>not less.</h2>
   <div class="spacer"></div>
-  <div class="rule"></div>
+  <div class="rule" style="background:rgba(0,0,0,0.12);"></div>
   <div class="g20"></div>
-  <div class="brand">Encoded.Ai</div>
+  <div style="font-family:var(--fm); font-size:18px; font-weight:500; letter-spacing:0.28em; text-transform:uppercase; color:var(--gold);">Encoded.Ai</div>
 </div>
 
 <!-- S10 — CTA (BLACK) -->
