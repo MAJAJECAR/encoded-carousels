@@ -338,6 +338,23 @@ Instead of one full flowchart → break into steps:
 - Node dots: small circles, `background: var(--t3)` or `var(--gold)` for emphasis
 - Every slide must be instantly understandable in under 1 second
 
+### Vertical Centering on Visual Slides
+`col-grid` and `vflow` have `flex:1` by default — they stretch to fill the slide, which is correct for most layouts. When a visual slide needs content vertically centered instead of top-aligned, do NOT change the CSS class. Use a wrapper:
+
+```html
+<!-- Centered visual slide pattern -->
+<div class="slide" id="slide-n">
+  <div style="display:flex; flex-direction:column; justify-content:center; flex:1;">
+    <div class="ew" ...>Eyebrow</div>
+    <div class="col-grid" style="flex:0;">
+      <!-- columns here -->
+    </div>
+  </div>
+</div>
+```
+
+The `flex:0` on the inner element tells it to only take the space it needs, letting the wrapper center it. Works the same for `.vflow`. Never add `justify-content:center` to the slide div itself — it won't work when inner content has `flex:1`.
+
 ### CSS Implementation Rule
 Visual element styles go in a **per-carousel `<style>` block**, NOT in `styles.css`.
 Once a pattern is tested and approved across multiple carousels, graduate it into `styles.css`.
