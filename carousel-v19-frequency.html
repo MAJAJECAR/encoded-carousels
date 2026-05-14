@@ -10,6 +10,55 @@
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500&family=Space+Mono:wght@400&display=swap" rel="stylesheet">
 <link href="https://api.fontshare.com/v2/css?f[]=switzer@400,500,600,700,800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+<style>
+/* ── STANDARD TREATMENTS ── */
+.g { color: var(--gold); }
+
+.tag-tr {
+  position: absolute;
+  top: 80px;
+  right: 86px;
+  font-family: var(--fmono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--t4);
+  opacity: 0.7;
+}
+
+.swipe {
+  position: absolute;
+  bottom: 80px;
+  right: 86px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--fmono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--t4);
+  opacity: 0.6;
+}
+
+.swipe-circle {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.swipe-circle svg {
+  display: block;
+  width: 12px;
+  height: 12px;
+}
+</style>
 </head>
 <body>
 
@@ -23,12 +72,13 @@
   <div class="g20"></div>
   <p class="sub">Not a mood. Not a mindset. A structural shift in how you move through the world.</p>
   <div class="g24"></div>
-  <div class="rule"></div>
+  <div class="swipe">SWIPE <div class="swipe-circle"><svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 6H11M11 6L6.5 1.5M11 6L6.5 10.5" stroke="#141414" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
 </div>
 
 <!-- S2 — WHAT MOST PEOPLE FEEL INSTEAD -->
 <div class="slide" id="slide-2">
-  <div class="slide-n">02 / 09</div>
+  <div class="tag-tr">Encoded.Ai</div>
+  <div class="swipe">SWIPE <div class="swipe-circle"><svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 6H11M11 6L6.5 1.5M11 6L6.5 10.5" stroke="#141414" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
   <div class="spacer"></div>
   <div class="ew" style="margin-bottom:36px;">The Default</div>
   <h2 class="hl">Friction everywhere.<br>Effort that doesn't<br>compound. A ceiling<br>you can't name.</h2>
@@ -39,18 +89,19 @@
 
 <!-- S3 — WHAT FREQUENCY MEANS -->
 <div class="slide" id="slide-3">
-  <div class="slide-n">03 / 09</div>
+  <div class="tag-tr">Encoded.Ai</div>
+  <div class="swipe">SWIPE <div class="swipe-circle"><svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 6H11M11 6L6.5 1.5M11 6L6.5 10.5" stroke="#141414" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
   <div class="spacer"></div>
   <div class="ew" style="margin-bottom:36px;">The Definition</div>
-  <h2 class="hl">Frequency is the<br>signal your nervous<br>system broadcasts<br>by default.</h2>
+  <h2 class="hl">Frequency is the<br>signal your nervous<br>system <span class="g">broadcasts</span><br>by default.</h2>
   <div class="g16"></div>
   <p class="body muted">It's set by the beliefs running underneath. Change the beliefs — the frequency changes. Everything that responds to frequency changes with it.</p>
   <div class="spacer"></div>
 </div>
 
 <!-- S4 — 3-COLUMN — what shifts -->
-<div class="slide" id="slide-4">
-  <div class="slide-n">04 / 09</div>
+<div class="slide" id="slide-4" style="justify-content:center;">
+  <div class="swipe">SWIPE <div class="swipe-circle"><svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 6H11M11 6L6.5 1.5M11 6L6.5 10.5" stroke="#141414" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
 
   <div class="ew" style="margin-bottom:40px;">What Changes</div>
 
@@ -64,13 +115,13 @@
     <div class="col-item">
       <div class="col-num">02</div>
       <div class="rule"></div>
-      <div class="col-label">Creativity</div>
+      <div class="col-label gold">Creativity</div>
       <p class="col-body">Access to generative thinking opens. Solutions arrive without forcing. Output quality compounds.</p>
     </div>
     <div class="col-item">
       <div class="col-num">03</div>
       <div class="rule"></div>
-      <div class="col-label">Connection</div>
+      <div class="col-label gold">Connection</div>
       <p class="col-body">Relationships deepen. The frequency you broadcast begins attracting what matches it.</p>
     </div>
   </div>
@@ -79,10 +130,11 @@
 
 <!-- S5 — THE PHYSICAL FEEL -->
 <div class="slide" id="slide-5">
-  <div class="slide-n">05 / 09</div>
+  <div class="tag-tr">Encoded.Ai</div>
+  <div class="swipe">SWIPE <div class="swipe-circle"><svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 6H11M11 6L6.5 1.5M11 6L6.5 10.5" stroke="#141414" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
   <div class="spacer"></div>
   <div class="ew" style="margin-bottom:36px;">The Experience</div>
-  <h2 class="hl">Less friction.<br>More access.<br>Momentum that<br>builds on itself.</h2>
+  <h2 class="hl">Less friction.<br>More <span class="g">access.</span><br>Momentum that<br>builds on itself.</h2>
   <div class="g16"></div>
   <p class="body muted">Not because circumstances changed — because the program generating the experience changed. The same life, processed differently.</p>
   <div class="spacer"></div>
@@ -90,7 +142,7 @@
 
 <!-- S6 — BIG NUMBER — compound effect -->
 <div class="slide" id="slide-6">
-  <div class="slide-n">06 / 09</div>
+  <div class="swipe">SWIPE <div class="swipe-circle"><svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 6H11M11 6L6.5 1.5M11 6L6.5 10.5" stroke="#141414" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
 
   <div class="hero-ring" style="width:800px; height:800px;"></div>
   <div class="hero-ring bright" style="width:580px; height:580px;"></div>
@@ -108,10 +160,11 @@
 
 <!-- S7 — HOW TO GET THERE -->
 <div class="slide" id="slide-7">
-  <div class="slide-n">07 / 09</div>
+  <div class="tag-tr">Encoded.Ai</div>
+  <div class="swipe">SWIPE <div class="swipe-circle"><svg viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 6H11M11 6L6.5 1.5M11 6L6.5 10.5" stroke="#141414" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
   <div class="spacer"></div>
   <div class="ew" style="margin-bottom:36px;">The Path</div>
-  <h2 class="hl">You don't find<br>the right frequency.<br>You encode it.</h2>
+  <h2 class="hl">You don't find<br>the right frequency.<br>You <span class="g">encode it.</span></h2>
   <div class="g16"></div>
   <p class="body muted">Structured, repeated imprinting at depth. The nervous system doesn't need to be convinced — it needs to be retrained. That's a process, not an insight.</p>
   <div class="spacer"></div>
@@ -121,7 +174,7 @@
 <div class="slide" id="slide-8">
   <div class="corner"></div>
   <div class="spacer"></div>
-  <h2 class="hl">The right frequency<br>isn't a destination.<br>It's the new default.</h2>
+  <h2 class="hl">The right frequency<br>isn't a destination.<br>It's the <span class="g">new default.</span></h2>
   <div class="spacer"></div>
   <div class="rule"></div>
   <div class="g20"></div>

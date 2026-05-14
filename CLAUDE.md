@@ -83,6 +83,14 @@ All tokens live in `styles.css`. Do not change without being asked.
 --fmono: 'Space Mono', monospace;   /* numbers, labels, counters */
 ```
 
+### New Standard Classes (in styles.css)
+```css
+.g            — gold accent word inline: color: var(--gold)
+.tag-tr       — ENCODED.AI top-right tag: Space Mono 11px, --t4, opacity 0.7
+.swipe        — SWIPE → bottom-right indicator
+.swipe-circle — gold circle with SVG arrow cutout (stroke: #141414)
+```
+
 ---
 
 ## Design System — Font Import Block
@@ -368,7 +376,7 @@ Each point = its own slide. More slides with less text beats fewer slides with m
 title text (not label), label above each item, compact spacing. Never centered.
 
 **Gold used once per carousel.** Eyebrow labels and the closing brand mark only.
-Never on body text, never on multiple elements on the same slide.
+Exception: gold accent words mid-sentence (see Gold Accent Words below).
 
 **Encoded.Ai appears once per slide.** Never repeated on the same slide.
 On closing slides: brand mark only. On cover: brand mark at top only.
@@ -383,6 +391,81 @@ Counter format: `02 / 08` (zero-padded, space around slash).
 When content is dense, split into multiple shorter carousels rather than one long one.
 
 **Never delete or change content unless explicitly asked.** If a slide has text, keep it exactly as-is. Only change what is specifically requested. Do not rewrite, trim, or reorder slides on your own judgment.
+
+**All dark always.** No white or light background slides. Ever. The system is dark only.
+
+---
+
+## Standard Slide Treatments — Applied to Every Carousel
+
+These three elements are now part of every carousel by default:
+
+### 1. Gold Accent Words
+Key words or phrases highlighted in `--gold` mid-sentence using `<span class="g">word</span>`.
+- CSS: `.g { color: var(--gold); }`
+- Use on 1–3 words per slide maximum — the most important word or phrase
+- Never entire sentences, never headings, never body text blocks
+- Works on `.hl`, `.hxl`, `.hm` headlines
+- Gold is still used only once per slide — accent word counts as the gold usage
+- Do NOT combine accent word + gold eyebrow on the same slide
+
+### 2. SWIPE → Indicator
+Replaces the slide counter on content slides. Small, bottom right.
+```css
+.swipe {
+  position: absolute;
+  bottom: 80px;
+  right: 86px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--fmono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--t4);
+  opacity: 0.6;
+}
+.swipe-circle {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+```
+HTML: `<div class="swipe">SWIPE <div class="swipe-circle"><svg viewBox="0 0 12 12" ...arrow path.../></svg></div></div>`
+- Arrow SVG stroke: `#141414` (dark cutout on gold circle)
+- Present on all slides except the final CTA slide
+- Cover slide: swipe indicator present, rule removed from bottom
+
+### 3. ENCODED.AI Top-Right Tag
+Small Space Mono label, top right corner, on content slides only.
+```css
+.tag-tr {
+  position: absolute;
+  top: 80px;
+  right: 86px;
+  font-family: var(--fmono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--t4);
+  opacity: 0.7;
+}
+```
+HTML: `<div class="tag-tr">Encoded.Ai</div>`
+- Only on slides where it fits without crowding other elements
+- NEVER on cover slide (brand mark already there top left)
+- NEVER on CTA slide
+- NEVER on slides with top-right corner decoration (`.corner`)
+- NEVER repeated — if brand mark is present, no tag-tr
+- Max once per slide, anywhere on the slide
+
+---
 
 ---
 
@@ -692,8 +775,9 @@ Paste this file, then say one of:
 
 Claude will:
 - Choose layouts per slide based on content type
-- Follow all design rules above
+- Follow all design rules above — dark only, no white slides ever
 - Output HTML + JSON as a pair
+- Apply standard treatments to every carousel: gold accent words, SWIPE → indicator, ENCODED.AI tag where appropriate
 - Always include a CTA slide as the final slide
 - Write an Instagram caption with encoded.ai link alongside every carousel
 - Never repeat text across slides
@@ -705,8 +789,7 @@ Claude will:
 
 ## Future Improvements
 
-- [ ] Generate JSON files for all existing carousels (v2–v13)
-- [ ] Portrait format (1080×1350) — CSS canvas variable system
+- [ ] Generate JSON files for all existing carousels (v2–v21)
 - [ ] Content calendar — Notion linked to repo
 - [ ] Caption copy — Claude writes Instagram caption + encoded.ai link alongside every HTML
 - [ ] Proper series naming convention replacing v1, v2... numbering
@@ -714,5 +797,6 @@ Claude will:
 - [ ] YouTube thumbnail system (see THUMBNAIL_TICKET.md)
 - [ ] CTA slide added to: v11, v12, v13, matt-wagner v4c, matt-v5
 - [ ] Graduate loop diagram CSS (.loop-wrap, .loop-node, .step-pill) into styles.css
-- [ ] Strip inline styles from v11, v12, v13 after styles.css update
+- [ ] Add .g, .tag-tr, .swipe, .swipe-circle to styles.css
+- [ ] Full redesign pass — apply new standard treatments (gold accents, swipe, tag) to all v1–v21
 - [ ] Update screenshot.js slide counts for v12 and matt-v5 once confirmed
