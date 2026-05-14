@@ -165,16 +165,25 @@ Manrope and Space Mono are from Google Fonts.
 
 | Type | Key classes | Use when |
 |------|-------------|----------|
-| Cover | `.hxl` + `.sub` + `.brand` + `.corner` + `.rule` | Always slide 1 |
+| Cover | `.hxl` + `.sub` + `.brand` + `.corner` | Always slide 1 |
 | Statement | `.ew` + `.hl` + optional `.body.muted` | Single bold idea |
-| Numbered list | `.hm` + `.nrow`/`.nnum`/`.ntext`/`.nrule` | 2–4 short items |
-| Single point | `.ew` + mono number + `.hl` | One point = one slide |
-| Left sequence | Vertical line + bullets + label + title | Flow/process slides |
+| Numbered list | `.nrow` + `.nnum` + `.ntext` + `.nrule` | 2–4 short items |
+| Single point | `.ew` + mono number + `.hl` | One striking point, no body |
 | Quote | `.qmark` + `.qtext` | Strong single quote |
-| Stat | large number + caption | Data-led slide |
-| Closing | `.hl` + `.rule` + `.brand` | Always second-to-last slide |
+| Vertical flow | `.vflow` + `.vflow-step` + `.vflow-title` | Sequential process steps |
+| 3-column grid | `.col-grid` + `.col-item` + `.col-label.gold` | Three parallel stats or categories |
+| Split stat | `.split-wrap` + `.split-rule` + `.split-num` | Two contrasting numbers or ideas |
+| Split number + context | giant number left + full-height rule + label/body right | One number IS the story, context right |
+| Experience stat poster | giant number + context top, two stat cells bottom | Member story result slides |
+| Big number hero | `.hero-ring` + absolute centered content | One number tells the whole story |
+| Concentric circles | `.cc-wrap` + `.cc-circle` + `.cc-label` | Nested scale or hierarchy |
 | Circular loop diagram | `.loop-wrap` + `.loop-node` (top/right/bottom/left) | Repeating cycle or system |
-| CTA | `.hl` + `.body` + `.cta-url` + `.rule` + `.brand` | Always final slide |
+| Closing | `.hl` + `.rule` + `.brand` + `.corner` | Always second-to-last slide |
+| CTA | `.cta-url` + `.cta-action` + `.cta-follow` | Always final slide |
+| Experience cover | `.photo-split` + photo-split gradient | Member story carousels only |
+
+See `carousel-master-template.html` for a live example of every type.
+See `TEMPLATES.md` for full HTML snippets and usage rules for each type.
 
 ---
 

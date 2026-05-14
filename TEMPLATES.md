@@ -286,6 +286,21 @@ These three elements are required on every carousel. Add them to every content s
 
 ---
 
+### TYPE 08c — EXPERIENCE STAT POSTER
+**Use:** Member story result slides. Giant number tells the outcome, bold context right, two protocol stats at bottom.
+
+**Key rules:**
+- Giant number: Switzer 800, 280px, `--t1`, `letter-spacing:-0.06em`
+- Word label below number: Manrope 300, uppercase, `--t4`, `letter-spacing:0.28em`
+- Context text: Switzer 700, 32px, white, right-aligned, max-width 360px
+- Rule divides top/bottom sections
+- Bottom row: two stat cells, `height:180px`, divided by `border-left:1px solid var(--b-sub)`
+- Stat cell numbers: Switzer 700, 110px
+- Stat cell labels: Space Mono, uppercase, gold
+- swipe only — no tag-tr
+
+---
+
 ### TYPE 09 — BIG NUMBER HERO
 **Use:** One number tells the whole story. Full-slide stat with decorative rings.
 
@@ -461,6 +476,7 @@ These three elements are required on every carousel. Add them to every content s
 | 07 3-Column Grid | `.col-grid` `.col-item` `.col-num` `.col-label` | ✅ | ❌ | ❌ |
 | 08 Split Stat | `.split-wrap` `.split-rule` `.split-num` | ✅ | ✅ | ❌ |
 | 08b Split Number + Context | giant number left + rule + context right | ✅ | ✅ | ❌ |
+| 08c Experience Stat Poster | giant number + context top, two stat cells bottom | ✅ | ❌ | ❌ |
 | 09 Big Number Hero | `.hero-ring` + absolute content | ✅ | ❌ | ❌ |
 | 10 Concentric Circles | `.cc-wrap` `.cc-circle` `.cc-label` | ✅ | ✅ | ❌ |
 | 11 Circular Loop | `.loop-wrap` `.loop-node` | ✅ | ❌ | ❌ |
