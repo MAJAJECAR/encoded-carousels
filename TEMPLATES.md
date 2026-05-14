@@ -255,6 +255,37 @@ These three elements are required on every carousel. Add them to every content s
 
 ---
 
+### TYPE 08b — SPLIT NUMBER + CONTEXT
+**Use:** Giant number dominates left, context text right. Cleaner and more visual than 08. Use when the number IS the story and the right side is explanation only.
+
+**Key rules:**
+- Number: Switzer 800, 180px+, `--t1`
+- Label below number: Manrope 300, uppercase, `--t4`
+- Full-height vertical rule between halves: `margin:0 56px`
+- Right side: gold label + body paragraph only — no number
+- Content vertically centered via `align-items:center` on the flex row
+
+```html
+<div class="slide" id="slide-n">
+  <div class="tag-tr">Encoded.Ai</div>
+  <div class="swipe"><!-- swipe indicator --></div>
+  <div class="ew" style="margin-bottom:40px;">EYEBROW</div>
+  <div style="display:flex; align-items:center; flex:1; gap:0;">
+    <div style="flex:1; display:flex; flex-direction:column; gap:16px;">
+      <div style="font-family:var(--fs); font-size:180px; font-weight:800; letter-spacing:-0.04em; line-height:0.88; color:var(--t1);">25</div>
+      <div style="font-family:var(--fm); font-size:16px; font-weight:300; letter-spacing:0.12em; text-transform:uppercase; color:var(--t4);">label</div>
+    </div>
+    <div style="width:1px; background:rgba(255,255,255,0.08); align-self:stretch; margin:0 56px;"></div>
+    <div style="flex:1; display:flex; flex-direction:column; gap:24px; justify-content:center;">
+      <div class="split-label gold">Context label</div>
+      <p class="split-body">Explanation of what the number means.</p>
+    </div>
+  </div>
+</div>
+```
+
+---
+
 ### TYPE 09 — BIG NUMBER HERO
 **Use:** One number tells the whole story. Full-slide stat with decorative rings.
 
@@ -429,6 +460,7 @@ These three elements are required on every carousel. Add them to every content s
 | 06 Vertical Flow | `.vflow` `.vflow-step` `.vflow-title` | ✅ | ❌ | ❌ |
 | 07 3-Column Grid | `.col-grid` `.col-item` `.col-num` `.col-label` | ✅ | ❌ | ❌ |
 | 08 Split Stat | `.split-wrap` `.split-rule` `.split-num` | ✅ | ✅ | ❌ |
+| 08b Split Number + Context | giant number left + rule + context right | ✅ | ✅ | ❌ |
 | 09 Big Number Hero | `.hero-ring` + absolute content | ✅ | ❌ | ❌ |
 | 10 Concentric Circles | `.cc-wrap` `.cc-circle` `.cc-label` | ✅ | ✅ | ❌ |
 | 11 Circular Loop | `.loop-wrap` `.loop-node` | ✅ | ❌ | ❌ |
