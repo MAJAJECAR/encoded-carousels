@@ -60,7 +60,7 @@ const CAROUSELS = [
 { name: 'v21-identity-ceiling',  file: 'carousel-v21-identity-ceiling.html',  slides: 9 },
 { name: 'v22-frequency-era',       file: 'carousel-v22-frequency-era.html',       slides: 10 },
 { name: 'v23-frequency-era-white', file: 'carousel-v23-frequency-era-white.html', slides: 10 },
-{ name: 'master-template', file: 'carousel-master-template.html', slides: 23 }
+{ name: 'master-template', file: 'carousel-master-template.html', slides: 24 }
   // ── ADD NEW CAROUSELS HERE ──
   // {
   //   name:   'v4-your-topic',
