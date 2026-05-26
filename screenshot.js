@@ -60,7 +60,8 @@ const CAROUSELS = [
 { name: 'v21-identity-ceiling',  file: 'carousel-v21-identity-ceiling.html',  slides: 9 },
 { name: 'v22-frequency-era',       file: 'carousel-v22-frequency-era.html',       slides: 10 },
 { name: 'v23-frequency-era-white', file: 'carousel-v23-frequency-era-white.html', slides: 10 },
-{ name: 'master-template', file: 'carousel-master-template.html', slides: 24 }
+{ name: 'master-template',          file: 'carousel-master-template.html',          slides: 24 },
+{ name: 'master-template-portrait',  file: 'carousel-master-template-portrait.html',  slides: 24, portrait: true }
   // ── ADD NEW CAROUSELS HERE ──
   // {
   //   name:   'v4-your-topic',
@@ -70,9 +71,10 @@ const CAROUSELS = [
 ];
 
 // ─── SETTINGS ────────────────────────────────────────────────────────────────
-const OUTPUT_DIR   = path.resolve(__dirname, 'output');
-const SLIDE_WIDTH  = 1080;
-const SLIDE_HEIGHT = 1080;
+const OUTPUT_DIR    = path.resolve(__dirname, 'output');
+const SLIDE_WIDTH   = 1080;
+const SLIDE_HEIGHT  = 1080;   // square
+const PORTRAIT_HEIGHT = 1350; // portrait (1080×1350)
 
 // ─── RESOLVE URL ─────────────────────────────────────────────────────────────
 function resolveUrl(filename) {
@@ -91,8 +93,9 @@ async function screenshotCarousel(browser, carousel) {
   console.log(`\n  📂  ${carousel.name}`);
   console.log(`      ${url}`);
 
+  const slideHeight = carousel.portrait ? PORTRAIT_HEIGHT : SLIDE_HEIGHT;
   const page = await browser.newPage();
-  await page.setViewportSize({ width: SLIDE_WIDTH, height: SLIDE_HEIGHT });
+  await page.setViewportSize({ width: SLIDE_WIDTH, height: slideHeight });
   await page.goto(url, { waitUntil: 'networkidle' });
 
   // Wait for Google Fonts to fully render
@@ -111,7 +114,7 @@ async function screenshotCarousel(browser, carousel) {
     await page.screenshot({
       path: file,
       type: 'png',
-      clip: { x: 0, y: 0, width: SLIDE_WIDTH, height: SLIDE_HEIGHT },
+      clip: { x: 0, y: 0, width: SLIDE_WIDTH, height: slideHeight },
     });
 
     console.log(`      ✓  slide-${num}.png`);
