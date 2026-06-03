@@ -25,29 +25,27 @@ PNGs are uploaded to Buffer and scheduled for Instagram.
 
 ```
 encoded-carousels/
-├── CLAUDE.md
-├── styles.css                              ← shared design system, all carousels link to this
-├── generator.html                          ← web form for manual carousel creation
-├── screenshot.js                           ← Playwright: node screenshot.js [name]
-├── README.md
-├── .gitignore                              ← excludes output/ and node_modules/
+├── CLAUDE.md                                  ← full system prompt for Claude
+├── README.md                                  ← setup and usage guide
+├── TEMPLATES.md                               ← technical reference for all 16 slide types
+├── styles.css                                 ← shared design system, square (1080×1080)
+├── styles-portrait.css                        ← portrait design system (1080×1350), mobile-optimised font sizes
+├── screenshot.js                              ← Playwright: node screenshot.js [name]
+├── carousel-master-template.html              ← all 16 slide types + 8 CTA variations (square)
+├── carousel-master-template-portrait.html     ← same but portrait format (1080×1350)
 ├── carousel-v1-capacity.html
-├── carousel-v1-capacity.json
-├── carousel-v2-prediction.html
-├── carousel-v2-prediction.json
-│   ... (all carousel HTML + JSON pairs)
-└── output/                                 ← PNGs, gitignored, local only
+│   ... (all carousel HTML files)
+├── matt-wagner.jpg                            ← member photo for experience carousels
+├── .gitignore                                 ← excludes output/ and node_modules/
+└── output/                                    ← PNGs, gitignored, local only
 ```
 
 ---
 
-## Output Rule — Always Deliver Both Files
+## Output Rule — Always Deliver the HTML File
 
-**Every time Claude generates or updates a carousel, it delivers:**
-1. The `.html` file
-2. The matching `.json` file
-
-No exceptions. HTML and JSON are always delivered as a pair.
+**Every time Claude generates or updates a carousel, it delivers the `.html` file.**
+Drop it into the repo folder, add to screenshot.js CAROUSELS array, and run.
 
 ---
 
@@ -633,14 +631,22 @@ Full-bleed portrait photo on the right half of the slide, blending into the dark
 ## screenshot.js Usage
 
 ```bash
-node screenshot.js                  # all carousels
-node screenshot.js v4c-matt-wagner-circle2   # one carousel by name
+node screenshot.js                        # all carousels
+node screenshot.js v22-frequency-era      # one carousel by name
+node screenshot.js master-template        # square master template (1080×1080)
+node screenshot.js master-template-portrait  # portrait master template (1080×1350)
 ```
 
 **GitHub Pages URL** (line ~18 in screenshot.js):
 ```js
 const GITHUB_PAGES_URL = 'https://majajecar.github.io/encoded-carousels';
 ```
+
+**Portrait format** — add `portrait: true` to any entry in the CAROUSELS array to render at 1080×1350:
+```js
+{ name: 'your-carousel', file: 'carousel-your-carousel.html', slides: 9, portrait: true }
+```
+Portrait carousels must link to `styles-portrait.css` instead of `styles.css`.
 
 ---
 
@@ -675,27 +681,36 @@ const GITHUB_PAGES_URL = 'https://majajecar.github.io/encoded-carousels';
 ## screenshot.js CAROUSELS Array (current)
 
 ```js
-{ name: 'v1-capacity',              file: 'carousel-v1-capacity.html',             slides: 8  },
-{ name: 'v2-prediction',            file: 'carousel-v2-prediction.html',           slides: 9  },
-{ name: 'v2b-compound-loop',        file: 'carousel-v2b-compound-loop.html',       slides: 10 },
-{ name: 'v3-identity',              file: 'carousel-v3-identity.html',             slides: 7  },
-{ name: 'v3b-identity-symptoms',    file: 'carousel-v3b-identity-symptoms.html',   slides: 7  },
-{ name: 'v4-matt-wagner',           file: 'carousel-v4-matt-wagner.html',          slides: 8  },
-{ name: 'v4b-matt-wagner-circle',   file: 'carousel-v4b-matt-wagner-circle.html',  slides: 8  },
-{ name: 'v4c-matt-wagner-circle2',  file: 'carousel-v4c-matt-wagner-circle2.html', slides: 9  },
-{ name: 'v5-compound-loop',         file: 'carousel-v5-compound-loop.html',        slides: 6  },
-{ name: 'v6-three-exits',           file: 'carousel-v6-three-exits.html',          slides: 6  },
-{ name: 'v7-encoding-equation',     file: 'carousel-v7-encoding-equation.html',    slides: 7  },
-{ name: 'v8-intentions-vs-goals',   file: 'carousel-v8-intentions-vs-goals.html',  slides: 6  },
-{ name: 'v8b-extrinsic-symptoms',   file: 'carousel-v8b-extrinsic-symptoms.html',  slides: 5  },
-{ name: 'v9-signs-belief-running',  file: 'carousel-v9-signs-belief-running.html', slides: 7  },
-{ name: 'v9b-four-signals',         file: 'carousel-v9b-four-signals.html',        slides: 6  },
-{ name: 'v10-foundation',           file: 'carousel-v10-foundation.html',          slides: 7  },
-{ name: 'v10b-what-changes',        file: 'carousel-v10b-what-changes.html',       slides: 5  },
-{ name: 'v11-response-sequence',    file: 'carousel-v11-response-sequence.html',   slides: 7  },
-{ name: 'v12-imprinting',           file: 'carousel-v12-imprinting.html',           slides: 0  },
-{ name: 'v13-compound-loop',        file: 'carousel-v13-compound-loop.html',        slides: 7  },
-{ name: 'matt-v5',                  file: 'carousel-matt-v5.html',                  slides: 0  },
+{ name: 'v1-capacity',             file: 'carousel-v1-capacity.html',             slides: 8  },
+{ name: 'v2-prediction',           file: 'carousel-v2-prediction.html',           slides: 9  },
+{ name: 'v2b-compound-loop',       file: 'carousel-v2b-compound-loop.html',       slides: 10 },
+{ name: 'v3-identity',             file: 'carousel-v3-identity.html',             slides: 7  },
+{ name: 'v3b-identity-symptoms',   file: 'carousel-v3b-identity-symptoms.html',   slides: 7  },
+{ name: 'v4-matt-wagner',          file: 'carousel-v4-matt-wagner.html',          slides: 8  },
+{ name: 'v5-compound-loop',        file: 'carousel-v5-compound-loop.html',        slides: 6  },
+{ name: 'v6-three-exits',          file: 'carousel-v6-three-exits.html',          slides: 6  },
+{ name: 'v7-encoding-equation',    file: 'carousel-v7-encoding-equation.html',    slides: 7  },
+{ name: 'v8-intentions-vs-goals',  file: 'carousel-v8-intentions-vs-goals.html',  slides: 6  },
+{ name: 'v8b-extrinsic-symptoms',  file: 'carousel-v8b-extrinsic-symptoms.html',  slides: 5  },
+{ name: 'v9-signs-belief-running', file: 'carousel-v9-signs-belief-running.html', slides: 7  },
+{ name: 'v9b-four-signals',        file: 'carousel-v9b-four-signals.html',        slides: 6  },
+{ name: 'v10-foundation',          file: 'carousel-v10-foundation.html',          slides: 7  },
+{ name: 'v10b-what-changes',       file: 'carousel-v10b-what-changes.html',       slides: 5  },
+{ name: 'v11-response-sequence',   file: 'carousel-v11-response-sequence.html',   slides: 7  },
+{ name: 'v12-imprinting',          file: 'carousel-v12-imprinting.html',          slides: 8  },
+{ name: 'v13-compound-loop',       file: 'carousel-v13-compound-loop.html',       slides: 7  },
+{ name: 'v14-imprinting',          file: 'carousel-v14-imprinting.html',          slides: 9  },
+{ name: 'v15-effort',              file: 'carousel-v15-effort.html',              slides: 9  },
+{ name: 'v16-protocol',            file: 'carousel-v16-protocol.html',            slides: 9  },
+{ name: 'v17-stack',               file: 'carousel-v17-stack.html',               slides: 9  },
+{ name: 'v18-therapy',             file: 'carousel-v18-therapy.html',             slides: 9  },
+{ name: 'v19-frequency',           file: 'carousel-v19-frequency.html',           slides: 9  },
+{ name: 'v20-hardware',            file: 'carousel-v20-hardware.html',            slides: 9  },
+{ name: 'v21-identity-ceiling',    file: 'carousel-v21-identity-ceiling.html',    slides: 9  },
+{ name: 'v22-frequency-era',       file: 'carousel-v22-frequency-era.html',       slides: 10 },
+{ name: 'cta-variations',          file: 'cta-variations.html',                   slides: 8  },
+{ name: 'master-template',         file: 'carousel-master-template.html',         slides: 24 },
+{ name: 'master-template-portrait', file: 'carousel-master-template-portrait.html', slides: 24, portrait: true },
 ```
 
 ---
@@ -815,14 +830,12 @@ Claude will:
 
 ## Future Improvements
 
-- [ ] Generate JSON files for all existing carousels (v2–v21)
+- [ ] Generate JSON files for all existing carousels
 - [ ] Content calendar — Notion linked to repo
 - [ ] Caption copy — Claude writes Instagram caption + encoded.ai link alongside every HTML
 - [ ] Proper series naming convention replacing v1, v2... numbering
-- [ ] Pipeline automation (see PIPELINE_TICKET.md)
-- [ ] YouTube thumbnail system (see THUMBNAIL_TICKET.md)
-- [ ] CTA slide added to: v11, v12, v13, matt-wagner v4c, matt-v5
-- [ ] Graduate loop diagram CSS (.loop-wrap, .loop-node, .step-pill) into styles.css
-- [ ] Add .g, .tag-tr, .swipe, .swipe-circle to styles.css
-- [ ] Full redesign pass — apply new standard treatments (gold accents, swipe, tag) to all v1–v21
-- [ ] Update screenshot.js slide counts for v12 and matt-v5 once confirmed
+- [ ] Pipeline automation
+- [ ] YouTube thumbnail system
+- [ ] CTA slide added to all older carousels (v1–v13)
+- [ ] Full redesign pass — apply new standard treatments (gold accents, swipe, tag) to v1–v13
+- [ ] Portrait versions of all existing carousels

@@ -61,7 +61,8 @@ const CAROUSELS = [
 { name: 'v22-frequency-era',       file: 'carousel-v22-frequency-era.html',       slides: 10 },
 { name: 'v23-frequency-era-white', file: 'carousel-v23-frequency-era-white.html', slides: 10 },
 { name: 'master-template',          file: 'carousel-master-template.html',          slides: 24 },
-{ name: 'master-template-portrait',  file: 'carousel-master-template-portrait.html',  slides: 24, portrait: true }
+{ name: 'master-template-portrait',  file: 'carousel-master-template-portrait.html',  slides: 24, portrait: true },
+{ name: 'product-templates', file: 'carousel-product-templates.html', slides: 3 },
   // ── ADD NEW CAROUSELS HERE ──
   // {
   //   name:   'v4-your-topic',
