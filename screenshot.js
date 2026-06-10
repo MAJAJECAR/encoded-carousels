@@ -63,6 +63,7 @@ const CAROUSELS = [
 { name: 'master-template',          file: 'carousel-master-template.html',          slides: 24 },
 { name: 'master-template-portrait',  file: 'carousel-master-template-portrait.html',  slides: 24, portrait: true },
 { name: 'product-templates', file: 'carousel-product-templates.html', slides: 3 },
+{ name: 'product-templates', file: 'carousel-product-templates.html', slides: 3, portrait: true },
   // ── ADD NEW CAROUSELS HERE ──
   // {
   //   name:   'v4-your-topic',
