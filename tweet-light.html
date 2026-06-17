@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080">
+<title>Encoded — Tweet Template (Light)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  width: 1080px;
+  height: 1080px;
+  overflow: hidden;
+  background: #f7f9f9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.canvas {
+  width: 1080px;
+  height: 1080px;
+  background: #f7f9f9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 80px;
+}
+
+.tweet-card {
+  width: 860px;
+  background: #ffffff;
+  border: 1px solid #eff3f4;
+  border-radius: 24px;
+  padding: 40px 44px 44px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 40px rgba(0,0,0,0.06);
+}
+
+/* ── HEADER ── */
+.tweet-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+.avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: #f0f0f0;
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.account-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.account-name {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.name {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: #0f1419;
+  letter-spacing: -0.01em;
+}
+
+.verified {
+  width: 26px;
+  height: 26px;
+  flex-shrink: 0;
+}
+
+.handle {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 22px;
+  font-weight: 400;
+  color: #536471;
+}
+
+/* X logo top right */
+.x-logo {
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.x-logo svg {
+  width: 44px;
+  height: 44px;
+  fill: #0f1419;
+}
+
+/* ── TWEET TEXT ── */
+.tweet-text {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 34px;
+  font-weight: 400;
+  line-height: 1.55;
+  color: #0f1419;
+  letter-spacing: -0.01em;
+  padding-top: 4px;
+}
+
+/* ── DIVIDER ── */
+.tweet-divider {
+  width: 100%;
+  height: 1px;
+  background: #eff3f4;
+  margin-top: 36px;
+}
+</style>
+</head>
+<body>
+<div class="canvas">
+  <div class="tweet-card">
+
+    <div class="tweet-header">
+      <div class="avatar">
+        <img src="data:image/jpeg;base64,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" alt="Encoded.Ai">
+      </div>
+      <div class="account-info">
+        <div class="account-name">
+          <span class="name">Encoded.Ai</span>
+          <svg class="verified" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="12" r="12" fill="#1d9bf0"/>
+            <path d="M9.5 16.5L5.5 12.5L6.91 11.09L9.5 13.67L17.09 6.08L18.5 7.5L9.5 16.5Z" fill="white"/>
+          </svg>
+        </div>
+        <span class="handle">@encoded_ai</span>
+      </div>
+      <div class="x-logo">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.259 5.633L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- ── TWEET COPY — change this text for each post ── -->
+    <p class="tweet-text">
+      95% of your behavior runs from subconscious programming. Conscious effort — goals, plans, willpower — operates in the remaining 5%.<br><br>
+      You can't think your way out of a program that runs below thought.
+    </p>
+
+    <div class="tweet-divider"></div>
+
+  </div>
+</div>
+
+<script>
+  window.totalSlides = 1;
+  window.goToSlide = function(n) {};
+</script>
+</body>
+</html>

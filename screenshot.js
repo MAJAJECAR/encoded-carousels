@@ -64,6 +64,8 @@ const CAROUSELS = [
 { name: 'master-template-portrait',  file: 'carousel-master-template-portrait.html',  slides: 24, portrait: true },
 { name: 'product-templates', file: 'carousel-product-templates.html', slides: 3 },
 { name: 'product-templates', file: 'carousel-product-templates.html', slides: 3, portrait: true },
+{ name: 'tweet-dark',  file: 'tweet-dark.html',  slides: 1 },
+{ name: 'tweet-light', file: 'tweet-light.html',  slides: 1 },
   // ── ADD NEW CAROUSELS HERE ──
   // {
   //   name:   'v4-your-topic',
