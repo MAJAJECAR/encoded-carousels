@@ -72,6 +72,8 @@ const CAROUSELS = [
 { name: 'tweet-chris-v1-light', file: 'tweet-chris-v1-light.html', slides: 1, portrait: true },
 { name: 'tweet-chris-v2-dark',  file: 'tweet-chris-v2-dark.html',  slides: 1, portrait: true },
 { name: 'tweet-chris-v2-light', file: 'tweet-chris-v2-light.html', slides: 1, portrait: true },
+{ name: 'tweet-chris-v3-dark',  file: 'tweet-chris-v3-dark.html',  slides: 1, portrait: true },
+{ name: 'tweet-chris-v3-light', file: 'tweet-chris-v3-light.html', slides: 1, portrait: true },
   // ── ADD NEW CAROUSELS HERE ──
   // {
   //   name:   'v4-your-topic',
