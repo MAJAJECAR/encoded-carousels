@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080">
+<title>Encoded — New Single Post Designs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://api.fontshare.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500&family=Space+Mono:wght@400&display=swap" rel="stylesheet">
+<link href="https://api.fontshare.com/v2/css?f[]=switzer@400,500,600,700,800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles-portrait.css">
+<style>
+.g { color: var(--gold); }
+
+/* ── Noise texture overlay — adds subtle grain depth ── */
+.noise {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-size: 256px 256px;
+}
+
+/* ── Concept A: The Interrupt ── */
+.interrupt-slide {
+  background: #111111;
+  position: relative;
+  overflow: hidden;
+}
+
+.interrupt-word {
+  font-family: 'Switzer', sans-serif;
+  font-weight: 800;
+  font-size: 220px;
+  line-height: 0.88;
+  letter-spacing: -0.04em;
+  color: #FFFFFF;
+  /* Bleeds off left edge intentionally */
+  margin-left: -12px;
+}
+
+.interrupt-word .dim {
+  color: rgba(255,255,255,0.12);
+}
+
+.interrupt-tag {
+  font-family: 'Space Mono', monospace;
+  font-size: 13px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--t4);
+  opacity: 0.5;
+}
+
+/* ── Concept B: The Field ── */
+.field-slide {
+  background: #0E0E0E;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Radial glow — very subtle warmth at center */
+.field-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 900px;
+  height: 900px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(204,176,133,0.04) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.field-sentence {
+  font-family: 'Switzer', sans-serif;
+  font-weight: 600;
+  font-size: 64px;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  color: #FFFFFF;
+  text-align: center;
+  max-width: 820px;
+}
+
+.field-attr {
+  font-family: 'Space Mono', monospace;
+  font-size: 13px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  opacity: 0.7;
+  text-align: center;
+  margin-top: 48px;
+}
+
+/* ── Concept C: The Split Reveal ── */
+.split-slide {
+  background: #141414;
+  position: relative;
+  overflow: hidden;
+}
+
+.split-top {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-bottom: 64px;
+}
+
+.split-divider {
+  height: 2px;
+  background: linear-gradient(to right, var(--gold) 0%, rgba(204,176,133,0.2) 60%, transparent 100%);
+  flex-shrink: 0;
+}
+
+.split-bottom {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-top: 64px;
+}
+
+.split-question {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 300;
+  font-size: 34px;
+  letter-spacing: 0.01em;
+  color: var(--t4);
+  line-height: 1.5;
+}
+
+.split-answer {
+  font-family: 'Switzer', sans-serif;
+  font-weight: 700;
+  font-size: 72px;
+  letter-spacing: -0.025em;
+  line-height: 1.05;
+  color: #FFFFFF;
+}
+</style>
+</head>
+<body>
+
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- CONCEPT A-1 — THE INTERRUPT                                    -->
+<!-- Oversized typography bleeds off the canvas. Raw, bold.        -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<div class="slide active interrupt-slide" id="slide-1" style="padding:86px;">
+  <div class="noise"></div>
+
+  <!-- Brand mark top left -->
+  <div style="font-family:'Manrope',sans-serif; font-size:16px; font-weight:500; letter-spacing:0.28em; text-transform:uppercase; color:var(--gold); opacity:0.8; margin-bottom:auto;">Encoded.Ai</div>
+
+  <!-- The massive word — split across two lines with contrast -->
+  <div style="margin-bottom:auto; margin-top:auto;">
+    <div class="interrupt-word"><span class="dim">Your</span></div>
+    <div class="interrupt-word">effort</div>
+    <div class="interrupt-word"><span class="dim">isn't</span></div>
+    <div class="interrupt-word" style="color:var(--gold);">the</div>
+    <div class="interrupt-word">problem.</div>
+  </div>
+
+  <!-- Bottom row: small label + body -->
+  <div style="display:flex; flex-direction:column; gap:16px; margin-top:auto;">
+    <div style="width:48px; height:1px; background:var(--gold); opacity:0.6;"></div>
+    <p style="font-family:'Manrope',sans-serif; font-size:26px; font-weight:300; color:var(--t3); line-height:1.55; margin:0; max-width:600px;">The level you're working at is.</p>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- CONCEPT A-2 — THE INTERRUPT (variation)                        -->
+<!-- Single enormous word. Everything else stripped away.           -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<div class="slide interrupt-slide" id="slide-2" style="padding:86px;">
+  <div class="noise"></div>
+
+  <div style="font-family:'Manrope',sans-serif; font-size:16px; font-weight:500; letter-spacing:0.28em; text-transform:uppercase; color:var(--gold); opacity:0.8; margin-bottom:auto;">Encoded.Ai</div>
+
+  <div style="margin-bottom:auto; margin-top:auto;">
+    <div style="font-family:'Space Mono',monospace; font-size:16px; letter-spacing:0.2em; text-transform:uppercase; color:var(--t4); margin-bottom:32px;">The question most people skip</div>
+    <div class="interrupt-word" style="font-size:260px; line-height:0.85;">Why</div>
+    <div class="interrupt-word" style="font-size:260px; line-height:0.85; color:rgba(255,255,255,0.15);">aren't</div>
+    <div class="interrupt-word" style="font-size:260px; line-height:0.85;">you</div>
+    <div class="interrupt-word" style="font-size:260px; line-height:0.85; color:rgba(255,255,255,0.15);">changing?</div>
+  </div>
+
+  <div style="display:flex; flex-direction:column; gap:16px; margin-top:auto;">
+    <div style="width:48px; height:1px; background:var(--gold); opacity:0.6;"></div>
+    <p style="font-family:'Manrope',sans-serif; font-size:26px; font-weight:300; color:var(--t3); line-height:1.55; margin:0; max-width:700px;">Not because you lack effort. Because the program hasn't changed.</p>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- CONCEPT B-1 — THE FIELD                                        -->
+<!-- One sentence. Total darkness. Absolute center.                 -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<div class="slide field-slide" id="slide-3" style="display:flex; flex-direction:column; align-items:center; justify-content:center; padding:100px;">
+  <div class="noise"></div>
+  <div class="field-glow"></div>
+
+  <!-- Brand mark — barely there, top left -->
+  <div style="position:absolute; top:86px; left:86px; font-family:'Manrope',sans-serif; font-size:14px; font-weight:500; letter-spacing:0.28em; text-transform:uppercase; color:rgba(255,255,255,0.2);">Encoded.Ai</div>
+
+  <!-- The sentence -->
+  <div class="field-sentence">
+    You don't have a<br>motivation problem.<br>You have an <span style="color:var(--gold);">encoding</span><br>problem.
+  </div>
+
+  <div class="field-attr">encoded.ai</div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- CONCEPT B-2 — THE FIELD (variation)                            -->
+<!-- Research-backed stat in the void.                              -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<div class="slide field-slide" id="slide-4" style="display:flex; flex-direction:column; align-items:center; justify-content:center; padding:100px;">
+  <div class="noise"></div>
+  <div class="field-glow"></div>
+
+  <div style="position:absolute; top:86px; left:86px; font-family:'Manrope',sans-serif; font-size:14px; font-weight:500; letter-spacing:0.28em; text-transform:uppercase; color:rgba(255,255,255,0.2);">Encoded.Ai</div>
+
+  <!-- Big number -->
+  <div style="font-family:'Switzer',sans-serif; font-weight:800; font-size:280px; letter-spacing:-0.04em; line-height:0.85; color:#FFFFFF; text-align:center;">95<span style="font-size:120px; color:var(--gold);">%</span></div>
+
+  <div style="width:64px; height:1px; background:rgba(255,255,255,0.15); margin:40px 0;"></div>
+
+  <div style="font-family:'Manrope',sans-serif; font-weight:300; font-size:30px; color:var(--t3); text-align:center; line-height:1.6; max-width:720px;">
+    of your daily actions are driven by<br>subconscious programs — not decisions.
+  </div>
+
+  <div class="field-attr">encoded.ai</div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- CONCEPT C-1 — THE SPLIT REVEAL                                 -->
+<!-- Question top. Answer bottom. Gold divider.                     -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<div class="slide split-slide" id="slide-5" style="padding:0; display:flex; flex-direction:column;">
+  <div class="noise"></div>
+
+  <!-- Top half -->
+  <div class="split-top" style="padding:86px 86px 64px;">
+    <!-- Brand + label row -->
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:auto; padding-bottom:0;">
+      <div style="font-family:'Manrope',sans-serif; font-size:15px; font-weight:500; letter-spacing:0.28em; text-transform:uppercase; color:var(--gold); opacity:0.8;">Encoded.Ai</div>
+      <div style="font-family:'Space Mono',monospace; font-size:12px; letter-spacing:0.16em; text-transform:uppercase; color:var(--t4); opacity:0.5;">The Question</div>
+    </div>
+    <div style="flex:1; display:flex; align-items:flex-end;">
+      <p class="split-question">Why do people who know exactly what to do — still not do it?</p>
+    </div>
+  </div>
+
+  <!-- Gold divider -->
+  <div class="split-divider" style="margin:0 86px;"></div>
+
+  <!-- Bottom half -->
+  <div class="split-bottom" style="padding:64px 86px 86px;">
+    <div style="font-family:'Space Mono',monospace; font-size:12px; letter-spacing:0.16em; text-transform:uppercase; color:var(--t4); opacity:0.5; margin-bottom:28px;">The Answer</div>
+    <div class="split-answer">Knowledge<br>isn't the<br><span style="color:var(--gold);">program.</span></div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- CONCEPT C-2 — THE SPLIT REVEAL (variation)                     -->
+<!-- Before / After framing.                                        -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<div class="slide split-slide" id="slide-6" style="padding:0; display:flex; flex-direction:column;">
+  <div class="noise"></div>
+
+  <!-- Top half — Before -->
+  <div class="split-top" style="padding:86px 86px 64px; background:rgba(255,255,255,0.01);">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:auto;">
+      <div style="font-family:'Manrope',sans-serif; font-size:15px; font-weight:500; letter-spacing:0.28em; text-transform:uppercase; color:var(--gold); opacity:0.8;">Encoded.Ai</div>
+      <div style="font-family:'Space Mono',monospace; font-size:12px; letter-spacing:0.16em; text-transform:uppercase; color:var(--t4); opacity:0.5;">Before</div>
+    </div>
+    <div style="flex:1; display:flex; align-items:flex-end;">
+      <div style="font-family:'Switzer',sans-serif; font-weight:700; font-size:62px; letter-spacing:-0.025em; line-height:1.05; color:rgba(255,255,255,0.35);">Working harder<br>than everyone.<br>Still stuck.</div>
+    </div>
+  </div>
+
+  <!-- Gold divider -->
+  <div class="split-divider" style="margin:0 86px;"></div>
+
+  <!-- Bottom half — After -->
+  <div class="split-bottom" style="padding:64px 86px 86px;">
+    <div style="font-family:'Space Mono',monospace; font-size:12px; letter-spacing:0.16em; text-transform:uppercase; color:var(--t4); opacity:0.5; margin-bottom:28px;">After Encoding</div>
+    <div class="split-answer">The ceiling<br>doesn't exist<br><span style="color:var(--gold);">anymore.</span></div>
+  </div>
+</div>
+
+
+<script>
+  const allSlides = document.querySelectorAll('.slide');
+  window.totalSlides = allSlides.length;
+  window.goToSlide = function(n) {
+    allSlides.forEach(s => s.classList.remove('active'));
+    allSlides[n].classList.add('active');
+  };
+</script>
+</body>
+</html>
