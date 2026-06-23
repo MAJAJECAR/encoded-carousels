@@ -13,6 +13,9 @@
 <style>
 .g { color: var(--gold); }
 
+/* Kill the opacity transition — Playwright screenshots before it completes */
+.slide { transition: none !important; }
+
 /* ── Noise texture overlay — adds subtle grain depth ── */
 .noise {
   position: absolute;
