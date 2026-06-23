@@ -77,6 +77,7 @@ const CAROUSELS = [
 { name: 'product-templates', file: 'carousel-product-templates.html', slides: 4, portrait: true },
 { name: 'single-post-circles', file: 'single-post-circles.html', slides: 4, portrait: true },
 { name: 'single-post-new-designs', file: 'single-post-new-designs.html', slides: 5, portrait: true },
+{ name: 'asset-slides', file: 'asset-slides.html', slides: 3 },
   // ── ADD NEW CAROUSELS HERE ──
   // {
   //   name:   'v4-your-topic',
