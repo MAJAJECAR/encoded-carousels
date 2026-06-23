@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080">
+<title>Encoded — Concentric Circles Single Posts</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://api.fontshare.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500&family=Space+Mono:wght@400&display=swap" rel="stylesheet">
+<link href="https://api.fontshare.com/v2/css?f[]=switzer@400,500,600,700,800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles-portrait.css">
+<style>
+.g { color: var(--gold); }
+
+.tag-tr {
+  position: absolute;
+  top: 100px;
+  right: 86px;
+  font-family: var(--fmono);
+  font-size: 13px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--t4);
+  opacity: 0.7;
+}
+
+/* Ring label styles */
+.ring-num {
+  font-family: var(--fmono);
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--t4);
+  margin-bottom: 6px;
+}
+.ring-num.gold { color: var(--gold); }
+
+.ring-label {
+  font-family: var(--fs);
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--t2);
+  text-align: center;
+}
+.ring-label.gold { color: var(--gold); }
+</style>
+</head>
+<body>
+
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- VARIATION 1 — DIAGRAM ONLY                                 -->
+<!-- Circles fill the slide. Eyebrow top. Caption bottom.     -->
+<!-- Most visual, least text. Maximum impact.                 -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<div class="slide active" id="slide-1">
+  <div class="tag-tr">Encoded.Ai</div>
+  <div class="ew" style="margin-bottom:0;">The Stack</div>
+
+  <!-- diagram centered on canvas -->
+  <div style="position:absolute; top:52%; left:50%; transform:translate(-50%,-50%);">
+    <!-- outer -->
+    <div style="width:700px; height:700px; border-radius:50%; background:var(--s2);
+                position:relative; display:flex; align-items:center; justify-content:center;">
+      <div style="position:absolute; top:64px; text-align:center;">
+        <div class="ring-num">01</div>
+        <div class="ring-label">Behavior</div>
+      </div>
+      <!-- mid -->
+      <div style="width:480px; height:480px; border-radius:50%; background:var(--s3);
+                  position:relative; display:flex; align-items:center; justify-content:center;">
+        <div style="position:absolute; top:52px; text-align:center;">
+          <div class="ring-num">02</div>
+          <div class="ring-label">Patterns</div>
+        </div>
+        <!-- inner -->
+        <div style="width:240px; height:240px; border-radius:50%; background:var(--s4);
+                    border:2px solid rgba(204,176,133,0.5);
+                    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px;">
+          <div class="ring-num gold">03</div>
+          <div class="ring-label gold">Belief</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- caption bottom -->
+  <div style="position:absolute; bottom:100px; left:86px; right:86px;">
+    <p style="font-family:var(--fm); font-size:28px; font-weight:300; line-height:1.6; color:var(--t4);">The inner ring sets the ceiling for everything above it.</p>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- VARIATION 2 — HEADLINE + DIAGRAM                           -->
+<!-- Bold statement top. Diagram below. More context.         -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<div class="slide" id="slide-2">
+  <div class="tag-tr">Encoded.Ai</div>
+
+  <!-- top text -->
+  <div class="ew" style="margin-bottom:28px;">Why effort hits a ceiling</div>
+  <h2 style="font-family:var(--fs); font-size:72px; font-weight:700; letter-spacing:-0.025em; line-height:1.02; color:var(--t1); margin:0;">
+    You're working at<br>the wrong <span class="g">level.</span>
+  </h2>
+  <div style="height:48px; flex-shrink:0;"></div>
+
+  <!-- diagram smaller to fit below headline -->
+  <div style="flex:1; display:flex; align-items:center; justify-content:center;">
+    <div style="position:relative;">
+      <!-- outer -->
+      <div style="width:560px; height:560px; border-radius:50%; background:var(--s2);
+                  position:relative; display:flex; align-items:center; justify-content:center;">
+        <div style="position:absolute; top:52px; text-align:center;">
+          <div class="ring-num">01</div>
+          <div class="ring-label">Behavior</div>
+        </div>
+        <!-- mid -->
+        <div style="width:380px; height:380px; border-radius:50%; background:var(--s3);
+                    position:relative; display:flex; align-items:center; justify-content:center;">
+          <div style="position:absolute; top:44px; text-align:center;">
+            <div class="ring-num">02</div>
+            <div class="ring-label">Patterns</div>
+          </div>
+          <!-- inner -->
+          <div style="width:190px; height:190px; border-radius:50%; background:var(--s4);
+                      border:2px solid rgba(204,176,133,0.5);
+                      display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px;">
+            <div class="ring-num gold">03</div>
+            <div class="ring-label gold">Belief</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- VARIATION 3 — DIAGRAM + LEGEND                             -->
+<!-- Diagram left of center. Legend right with descriptions.  -->
+<!-- More educational, works for complex concepts.            -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<div class="slide" id="slide-3">
+  <div class="tag-tr">Encoded.Ai</div>
+  <div class="ew" style="margin-bottom:40px;">The Stack</div>
+
+  <div style="display:flex; align-items:center; flex:1; gap:56px;">
+
+    <!-- diagram -->
+    <div style="flex-shrink:0;">
+      <div style="width:460px; height:460px; border-radius:50%; background:var(--s2);
+                  position:relative; display:flex; align-items:center; justify-content:center;">
+        <div style="position:absolute; top:44px; text-align:center;">
+          <div class="ring-num">01</div>
+          <div class="ring-label" style="font-size:26px;">Behavior</div>
+        </div>
+        <div style="width:310px; height:310px; border-radius:50%; background:var(--s3);
+                    position:relative; display:flex; align-items:center; justify-content:center;">
+          <div style="position:absolute; top:36px; text-align:center;">
+            <div class="ring-num">02</div>
+            <div class="ring-label" style="font-size:26px;">Patterns</div>
+          </div>
+          <div style="width:154px; height:154px; border-radius:50%; background:var(--s4);
+                      border:2px solid rgba(204,176,133,0.5);
+                      display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px;">
+            <div class="ring-num gold" style="font-size:11px;">03</div>
+            <div class="ring-label gold" style="font-size:22px;">Belief</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- legend -->
+    <div style="flex:1; display:flex; flex-direction:column; gap:32px;">
+      <div style="display:flex; flex-direction:column; gap:8px;">
+        <div style="font-family:var(--fmono); font-size:13px; letter-spacing:0.14em; text-transform:uppercase; color:var(--t4);">01 — Surface</div>
+        <div style="font-family:var(--fs); font-size:32px; font-weight:700; color:var(--t2); letter-spacing:-0.01em;">Behavior</div>
+        <div style="font-family:var(--fm); font-size:22px; font-weight:300; color:var(--t4); line-height:1.5;">What others see. The output of everything below.</div>
+      </div>
+      <div style="width:100%; height:1px; background:rgba(255,255,255,0.08);"></div>
+      <div style="display:flex; flex-direction:column; gap:8px;">
+        <div style="font-family:var(--fmono); font-size:13px; letter-spacing:0.14em; text-transform:uppercase; color:var(--t4);">02 — Mid</div>
+        <div style="font-family:var(--fs); font-size:32px; font-weight:700; color:var(--t2); letter-spacing:-0.01em;">Patterns</div>
+        <div style="font-family:var(--fm); font-size:22px; font-weight:300; color:var(--t4); line-height:1.5;">Automatic responses. The programs running under thought.</div>
+      </div>
+      <div style="width:100%; height:1px; background:rgba(255,255,255,0.08);"></div>
+      <div style="display:flex; flex-direction:column; gap:8px;">
+        <div style="font-family:var(--fmono); font-size:13px; letter-spacing:0.14em; text-transform:uppercase; color:var(--gold);">03 — Source</div>
+        <div style="font-family:var(--fs); font-size:32px; font-weight:700; color:var(--gold); letter-spacing:-0.01em;">Belief</div>
+        <div style="font-family:var(--fm); font-size:22px; font-weight:300; color:var(--t3); line-height:1.5;">The core program. Sets the ceiling for everything above.</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- VARIATION 4 — FOUR RINGS                                   -->
+<!-- Four levels. Works for deeper hierarchies.               -->
+<!-- Labels centered in each zone.                            -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<div class="slide" id="slide-4">
+  <div class="tag-tr">Encoded.Ai</div>
+  <div class="ew" style="margin-bottom:0;">The Full Stack</div>
+
+  <div style="position:absolute; top:52%; left:50%; transform:translate(-50%,-50%);">
+    <!-- ring 1 outermost -->
+    <div style="width:700px; height:700px; border-radius:50%; background:var(--s2);
+                position:relative; display:flex; align-items:center; justify-content:center;">
+      <div style="position:absolute; top:56px; text-align:center;">
+        <div class="ring-num">01</div>
+        <div class="ring-label">Actions</div>
+      </div>
+      <!-- ring 2 -->
+      <div style="width:520px; height:520px; border-radius:50%; background:var(--s3);
+                  position:relative; display:flex; align-items:center; justify-content:center;">
+        <div style="position:absolute; top:48px; text-align:center;">
+          <div class="ring-num">02</div>
+          <div class="ring-label">Thoughts</div>
+        </div>
+        <!-- ring 3 -->
+        <div style="width:340px; height:340px; border-radius:50%; background:var(--s4);
+                    position:relative; display:flex; align-items:center; justify-content:center;">
+          <div style="position:absolute; top:36px; text-align:center;">
+            <div class="ring-num">03</div>
+            <div class="ring-label" style="font-size:26px;">Patterns</div>
+          </div>
+          <!-- ring 4 innermost -->
+          <div style="width:160px; height:160px; border-radius:50%;
+                      background:#1a1a1a;
+                      border:2px solid rgba(204,176,133,0.6);
+                      display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px;">
+            <div class="ring-num gold" style="font-size:11px;">04</div>
+            <div class="ring-label gold" style="font-size:22px;">Belief</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="position:absolute; bottom:100px; left:86px; right:86px;">
+    <p style="font-family:var(--fm); font-size:28px; font-weight:300; line-height:1.6; color:var(--t4);">Belief sets the ceiling. Everything above it adjusts to fit.</p>
+  </div>
+</div>
+
+
+<script>
+  const allSlides = document.querySelectorAll('.slide');
+  window.totalSlides = allSlides.length;
+  window.goToSlide = function(n) {
+    allSlides.forEach(s => s.classList.remove('active'));
+    allSlides[n].classList.add('active');
+  };
+</script>
+</body>
+</html>
