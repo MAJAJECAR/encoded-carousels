@@ -76,6 +76,7 @@ const CAROUSELS = [
 { name: 'tweet-chris-v3-light', file: 'tweet-chris-v3-light.html', slides: 1, portrait: true },
 { name: 'product-templates', file: 'carousel-product-templates.html', slides: 4, portrait: true },
 { name: 'single-post-circles', file: 'single-post-circles.html', slides: 4, portrait: true },
+{ name: 'single-post-new-designs', file: 'single-post-new-designs.html', slides: 6, portrait: true },
   // ── ADD NEW CAROUSELS HERE ──
   // {
   //   name:   'v4-your-topic',
