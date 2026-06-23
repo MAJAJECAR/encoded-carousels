@@ -312,9 +312,18 @@
 <script>
   const allSlides = document.querySelectorAll('.slide');
   window.totalSlides = allSlides.length;
+
+  // Use display:flex/none instead of opacity so Playwright captures correctly
+  allSlides.forEach((s, i) => {
+    s.style.opacity = '1';
+    s.style.transition = 'none';
+    s.style.display = i === 0 ? 'flex' : 'none';
+  });
+
   window.goToSlide = function(n) {
-    allSlides.forEach(s => s.classList.remove('active'));
-    allSlides[n].classList.add('active');
+    allSlides.forEach((s, i) => {
+      s.style.display = i === n ? 'flex' : 'none';
+    });
   };
 </script>
 </body>
