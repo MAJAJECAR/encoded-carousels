@@ -85,6 +85,16 @@ const CAROUSELS = [
 { name: 'sp-d5-hook-tweet',        file: 'sp-d5-hook-tweet.html',        slides: 1, portrait: true },
 { name: 'sp-d6-aphorism-bold',     file: 'sp-d6-aphorism-bold.html',     slides: 1, portrait: true },
 { name: 'sp-d7-aphorism-minimal',  file: 'sp-d7-aphorism-minimal.html',  slides: 1, portrait: true },
+{ name: 'sp-b2-01-anxiety-tweet',    file: 'sp-b2-01-anxiety-tweet.html',    slides: 1, portrait: true },
+{ name: 'sp-b2-02-selftrust-tweet',  file: 'sp-b2-02-selftrust-tweet.html',  slides: 1, portrait: true },
+{ name: 'sp-b2-03-identity-bold',    file: 'sp-b2-03-identity-bold.html',    slides: 1, portrait: true },
+{ name: 'sp-b2-04-philosophy-bold',  file: 'sp-b2-04-philosophy-bold.html',  slides: 1, portrait: true },
+{ name: 'sp-b2-05-addiction-photo',  file: 'sp-b2-05-addiction-photo.html',  slides: 1, portrait: true },
+{ name: 'sp-b2-06-fear-photo',       file: 'sp-b2-06-fear-photo.html',       slides: 1, portrait: true },
+{ name: 'sp-b2-07-anxiety-split',    file: 'sp-b2-07-anxiety-split.html',    slides: 1, portrait: true },
+{ name: 'sp-b2-08-fear-split',       file: 'sp-b2-08-fear-split.html',       slides: 1, portrait: true },
+{ name: 'sp-b2-09-selftrust-minimal',file: 'sp-b2-09-selftrust-minimal.html',slides: 1, portrait: true },
+{ name: 'sp-b2-10-alive-minimal',    file: 'sp-b2-10-alive-minimal.html',    slides: 1, portrait: true },
   // ── ADD NEW CAROUSELS HERE ──
   // {
   //   name:   'v4-your-topic',
