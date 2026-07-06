@@ -120,5 +120,17 @@
 
 </div>
 
+
+  <script>
+    // Required by screenshot.js — single post has only one slide
+    window.goToSlide = function(index) {
+      var slide = document.getElementById('slide-01');
+      if (slide) {
+        slide.style.display = 'flex';
+      }
+    };
+    // Show on load
+    window.goToSlide(0);
+  </script>
 </body>
 </html>
