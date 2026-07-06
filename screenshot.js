@@ -78,7 +78,7 @@ const CAROUSELS = [
 { name: 'single-post-circles', file: 'single-post-circles.html', slides: 4, portrait: true },
 { name: 'single-post-new-designs', file: 'single-post-new-designs.html', slides: 5, portrait: true },
 { name: 'asset-slides', file: 'asset-slides.html', slides: 3, portrait: true },
-{ name: 'sp-d1-hook-bold',         file: 'sp-d1-hook-bold.html',         slides: 1 },
+{ name: 'sp-d1-hook-bold',         file: 'sp-d1-hook-bold.html',         slides: 1, portrait: true },
 { name: 'sp-d2-aphorism-minimal',  file: 'sp-d2-aphorism-minimal.html',  slides: 1 },
 { name: 'sp-d3-mechanism-minimal', file: 'sp-d3-mechanism-minimal.html', slides: 1 },
 { name: 'sp-d4-proof-tweet',       file: 'sp-d4-proof-tweet.html',       slides: 1 },
