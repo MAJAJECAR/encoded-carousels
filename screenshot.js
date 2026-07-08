@@ -95,6 +95,7 @@ const CAROUSELS = [
 { name: 'sp-b2-08-fear-split',       file: 'sp-b2-08-fear-split.html',       slides: 1, portrait: true },
 { name: 'sp-b2-09-selftrust-minimal',file: 'sp-b2-09-selftrust-minimal.html',slides: 1, portrait: true },
 { name: 'sp-b2-10-alive-minimal',    file: 'sp-b2-10-alive-minimal.html',    slides: 1, portrait: true },
+{ name: 'carousel-sc01-identity', file: 'carousel-sc01-identity.html', slides: 7, portrait: true },
   // ── ADD NEW CAROUSELS HERE ──
   // {
   //   name:   'v4-your-topic',
