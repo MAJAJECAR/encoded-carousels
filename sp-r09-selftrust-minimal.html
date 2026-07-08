@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=1080">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://api.fontshare.com">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600&family=Space+Mono:wght@400&display=swap" rel="stylesheet">
+  <link href="https://api.fontshare.com/v2/css?f[]=switzer@400,500,600,700,800&display=swap" rel="stylesheet">
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html,body { width:1080px; height:1350px; background:#141414; overflow:hidden; }
+    #slide-01 { width:1080px; height:1350px; }
+  </style>
+</head>
+<body>
+<div id="slide-01" style="width:1080px;height:1350px;background:#141414;padding:120px 104px;display:flex;flex-direction:column;position:relative;overflow:hidden;">
+  <div style="position:absolute;inset:0;background:radial-gradient(70% 46% at 50% 44%,rgba(204,176,133,0.11),rgba(204,176,133,0) 72%);pointer-events:none;"></div>
+
+  <!-- Label top-centre -->
+  <div style="display:flex;justify-content:center;flex-shrink:0;">
+    <p style="font-family:'Space Mono',monospace;font-size:17px;letter-spacing:0.22em;text-transform:uppercase;color:#CCB085;margin-bottom:0;">Encoded Client Result</p>
+  </div>
+
+  <!-- Gold hairline -->
+  <div style="display:flex;justify-content:center;margin-top:28px;flex-shrink:0;">
+    <span style="width:44px;height:1px;background:#CCB085;display:inline-block;"></span>
+  </div>
+
+  <!-- Quote centred -->
+  <div style="flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;">
+    <p style="font-family:'Switzer',sans-serif;font-size:92px;font-weight:600;line-height:1.08;letter-spacing:-0.03em;color:#FFFFFF;max-width:840px;">&ldquo;The biggest change I had using Encoded was to trust myself more.&rdquo;</p>
+
+    <!-- Attribution with small photo circle -->
+    <div style="display:flex;align-items:center;gap:18px;margin-top:60px;">
+      <div style="width:64px;height:64px;border-radius:50%;background:#242424;border:1px solid rgba(255,255,255,0.10);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><span style="font-family:'Switzer',sans-serif;font-size:21px;font-weight:600;color:#666;">JD</span></div>
+      <div style="text-align:left;">
+        <p style="font-family:'Space Mono',monospace;font-size:18px;letter-spacing:0.12em;color:#898989;margin-bottom:10px;">Captured 2 months into Encoded</p>
+        <p style="font-family:'Manrope',sans-serif;font-size:26px;font-weight:500;color:#FFFFFF;">Julien Delbauve &middot; Digital AI Consultant</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom brand tag -->
+  <div style="display:flex;justify-content:center;flex-shrink:0;">
+    <span style="font-family:'Space Mono',monospace;font-size:17px;letter-spacing:0.32em;text-transform:uppercase;color:#CCB085;">Encoded.ai</span>
+  </div>
+</div>
+  <script>
+    window.goToSlide = function(i) {
+      var s = document.getElementById('slide-01');
+      if (s) s.style.display = 'flex';
+    };
+    window.goToSlide(0);
+  </script>
+</body>
+</html>

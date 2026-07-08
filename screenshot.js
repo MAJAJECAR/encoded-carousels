@@ -100,6 +100,16 @@ const CAROUSELS = [
 { name: 'carousel-sc01-identity-v2', file: 'carousel-sc01-identity-v2.html', slides: 7, portrait: true },
 { name: 'carousel-sc02-anxiety-v1', file: 'carousel-sc02-anxiety-v1.html', slides: 7, portrait: true },
 { name: 'carousel-sc02-anxiety-v2', file: 'carousel-sc02-anxiety-v2.html', slides: 7, portrait: true },
+{ name: 'sp-r01-anxiety-tweet',     file: 'sp-r01-anxiety-tweet.html',     slides: 1, portrait: true },
+{ name: 'sp-r02-selftrust-tweet',   file: 'sp-r02-selftrust-tweet.html',   slides: 1, portrait: true },
+{ name: 'sp-r03-identity-bold',     file: 'sp-r03-identity-bold.html',     slides: 1, portrait: true },
+{ name: 'sp-r04-sleep-bold',        file: 'sp-r04-sleep-bold.html',        slides: 1, portrait: true },
+{ name: 'sp-r05-addiction-photo',   file: 'sp-r05-addiction-photo.html',   slides: 1, portrait: true },
+{ name: 'sp-r06-fear-photo',        file: 'sp-r06-fear-photo.html',        slides: 1, portrait: true },
+{ name: 'sp-r07-anxiety-split',     file: 'sp-r07-anxiety-split.html',     slides: 1, portrait: true },
+{ name: 'sp-r08-fear-split',        file: 'sp-r08-fear-split.html',        slides: 1, portrait: true },
+{ name: 'sp-r09-selftrust-minimal', file: 'sp-r09-selftrust-minimal.html', slides: 1, portrait: true },
+{ name: 'sp-r10-clarity-minimal',   file: 'sp-r10-clarity-minimal.html',   slides: 1, portrait: true },
   // ── ADD NEW CAROUSELS HERE ──
   // {
   //   name:   'v4-your-topic',
