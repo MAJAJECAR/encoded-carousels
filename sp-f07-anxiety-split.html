@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html><head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=1080">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://api.fontshare.com">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600&family=Space+Mono:wght@400&display=swap" rel="stylesheet">
+  <link href="https://api.fontshare.com/v2/css?f[]=switzer@400,500,600,700,800&display=swap" rel="stylesheet">
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html,body { width:1080px; height:1350px; background:#141414; overflow:hidden; }
+    #slide-01 { width:1080px; height:1350px; }
+  </style>
+</head><body>
+<div id="slide-01" style="width:1080px;height:1350px;background:#141414;padding:90px;display:flex;flex-direction:column;position:relative;overflow:hidden;">
+
+  <!-- Top label only — no dual header -->
+  <div style="flex-shrink:0;margin-bottom:44px;">
+    <p style="font-family:'Space Mono',monospace;font-size:20px;letter-spacing:0.18em;text-transform:uppercase;color:#CCB085;">Encoded.ai Client Result</p>
+  </div>
+
+  <!-- Centred content block: before + divider + after -->
+  <div style="flex:1;display:flex;flex-direction:column;justify-content:center;gap:0;">
+
+    <!-- Before -->
+    <div style="padding-bottom:30px;">
+      <p style="font-family:'Space Mono',monospace;font-size:17px;letter-spacing:0.20em;text-transform:uppercase;color:#898989;margin-bottom:20px;">Before Encoded</p>
+      <p style="font-family:'Switzer',sans-serif;font-size:52px;font-weight:400;line-height:1.18;letter-spacing:-0.02em;color:#787878;">When morning anxiety hit and the mind just wouldn&rsquo;t stop running.</p>
+    </div>
+
+    <!-- Divider -->
+    <div style="height:1px;background:rgba(255,255,255,0.10);flex-shrink:0;"></div>
+
+    <!-- After -->
+    <div style="padding-top:30px;">
+      <p style="font-family:'Space Mono',monospace;font-size:17px;letter-spacing:0.20em;text-transform:uppercase;color:#CCB085;margin-bottom:20px;">After 3 weeks into Encoded</p>
+      <p style="font-family:'Switzer',sans-serif;font-size:52px;font-weight:600;line-height:1.18;letter-spacing:-0.02em;color:#FFFFFF;">&ldquo;I did the writing exercise. 25 minutes later it was gone. I had a great day.&rdquo;</p>
+    </div>
+
+  </div>
+
+  <!-- Clean two-line attribution -->
+  <div style="flex-shrink:0;margin-top:40px;">
+    <p style="font-family:'Switzer',sans-serif;font-size:26px;font-weight:500;color:#FFFFFF;">Matt Wagner</p>
+    <p style="font-family:'Manrope',sans-serif;font-size:22px;font-weight:400;color:#898989;margin-top:6px;">President, Client Focus</p>
+  </div>
+
+</div>
+  <script>
+    window.goToSlide = function() {
+      var s = document.getElementById('slide-01');
+      if (s) s.style.display = 'flex';
+    };
+    window.goToSlide();
+  </script>
+</body></html>
