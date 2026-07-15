@@ -120,6 +120,11 @@ const CAROUSELS = [
 { name: 'sp-f08-fear-split',        file: 'sp-f08-fear-split.html',        slides: 1, portrait: true },
 { name: 'sp-f09-selftrust-minimal', file: 'sp-f09-selftrust-minimal.html', slides: 1, portrait: true },
 { name: 'sp-f10-clarity-minimal',   file: 'sp-f10-clarity-minimal.html',   slides: 1, portrait: true },
+{ name: 'sp-n01-drew-tweet',   file: 'sp-n01-drew-tweet.html',   slides: 1, portrait: true },
+{ name: 'sp-n02-blake-bold',   file: 'sp-n02-blake-bold.html',   slides: 1, portrait: true },
+{ name: 'sp-n03-jake-photo',   file: 'sp-n03-jake-photo.html',   slides: 1, portrait: true },
+{ name: 'sp-n04-tj-split',     file: 'sp-n04-tj-split.html',     slides: 1, portrait: true },
+{ name: 'sp-n05-omar-minimal', file: 'sp-n05-omar-minimal.html', slides: 1, portrait: true },
   // ── ADD NEW CAROUSELS HERE ──
   // {
   //   name:   'v4-your-topic',
