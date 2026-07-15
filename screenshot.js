@@ -125,6 +125,8 @@ const CAROUSELS = [
 { name: 'sp-n03-jake-photo',   file: 'sp-n03-jake-photo.html',   slides: 1, portrait: true },
 { name: 'sp-n04-tj-split',     file: 'sp-n04-tj-split.html',     slides: 1, portrait: true },
 { name: 'sp-n05-omar-minimal', file: 'sp-n05-omar-minimal.html', slides: 1, portrait: true },
+{ name: 'carousel-sc03-willpower-v1', file: 'carousel-sc03-willpower-v1.html', slides: 7, portrait: true },
+{ name: 'carousel-sc03-willpower-v2', file: 'carousel-sc03-willpower-v2.html', slides: 7, portrait: true },
   // ── ADD NEW CAROUSELS HERE ──
   // {
   //   name:   'v4-your-topic',
