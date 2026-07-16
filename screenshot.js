@@ -127,6 +127,7 @@ const CAROUSELS = [
 { name: 'sp-n05-omar-minimal', file: 'sp-n05-omar-minimal.html', slides: 1, portrait: true },
 { name: 'carousel-sc03-willpower-v1', file: 'carousel-sc03-willpower-v1.html', slides: 5, portrait: true },
 { name: 'carousel-sc03-willpower-v2', file: 'carousel-sc03-willpower-v2.html', slides: 5, portrait: true },
+{ name: 'carousel-sc04-stress-v1', file: 'carousel-sc04-stress-v1.html', slides: 5, portrait: true },
   // ── ADD NEW CAROUSELS HERE ──
   // {
   //   name:   'v4-your-topic',
